@@ -1,3 +1,106 @@
-[gd_scene format=3 uid="uid://d4ketexknrx3m"]
+[gd_scene load_steps=11 format=3 uid="uid://d4ketexknrx3m"]
+
+[ext_resource type="Environment" uid="uid://cpt4fb1w5r6we" path="res://World Enviroments/Test_Enviroment.tres" id="1_ol02s"]
+[ext_resource type="PackedScene" uid="uid://2dwnnhs7udlh" path="res://Scenes/Player/Test_Player.tscn" id="1_v73am"]
+[ext_resource type="ArrayMesh" uid="uid://cpdq6vrggj8v0" path="res://Models/Tenna_Basic_Rigged.obj" id="3_ote7y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lifxf"]
+size = Vector3(100, 0.5, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ol02s"]
+albedo_color = Color(0, 0.490196, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v73am"]
+material = SubResource("StandardMaterial3D_ol02s")
+size = Vector3(100, 0.5, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ol02s"]
+size = Vector3(10, 10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ote7y"]
+albedo_color = Color(1, 0.588235, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ote7y"]
+material = SubResource("StandardMaterial3D_ote7y")
+size = Vector3(10, 50, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w0wr8"]
+size = Vector3(5, 6.79199, 5)
 
 [node name="Hunter_Test_Scene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_ol02s")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="Collision" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_lifxf")
+
+[node name="Mesh" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_v73am")
+skeleton = NodePath("../..")
+
+[node name="Player1" parent="." instance=ExtResource("1_v73am")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.207012, 1.25, 0.634258)
+
+[node name="Thing" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9307, 18.3695, 3.75951)
+
+[node name="Collision" type="CollisionShape3D" parent="Thing"]
+shape = SubResource("BoxShape3D_ol02s")
+
+[node name="Mesh" type="MeshInstance3D" parent="Thing"]
+mesh = SubResource("BoxMesh_ote7y")
+skeleton = NodePath("../..")
+
+[node name="Thing2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.6298, 18.3695, 22.3018)
+
+[node name="Collision" type="CollisionShape3D" parent="Thing2"]
+shape = SubResource("BoxShape3D_ol02s")
+
+[node name="Mesh" type="MeshInstance3D" parent="Thing2"]
+mesh = SubResource("BoxMesh_ote7y")
+skeleton = NodePath("../..")
+
+[node name="Thing3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59608, 8.82981, 33.7528)
+
+[node name="Collision" type="CollisionShape3D" parent="Thing3"]
+shape = SubResource("BoxShape3D_ol02s")
+
+[node name="Mesh" type="MeshInstance3D" parent="Thing3"]
+mesh = SubResource("BoxMesh_ote7y")
+skeleton = NodePath("../..")
+
+[node name="Thing4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5185, 14.549, -26.3467)
+
+[node name="Collision" type="CollisionShape3D" parent="Thing4"]
+shape = SubResource("BoxShape3D_ol02s")
+
+[node name="Mesh" type="MeshInstance3D" parent="Thing4"]
+mesh = SubResource("BoxMesh_ote7y")
+skeleton = NodePath("../..")
+
+[node name="Thing5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.32742, 0.37278, -7.9826)
+
+[node name="Collision" type="CollisionShape3D" parent="Thing5"]
+shape = SubResource("BoxShape3D_ol02s")
+
+[node name="Mesh" type="MeshInstance3D" parent="Thing5"]
+mesh = SubResource("BoxMesh_ote7y")
+skeleton = NodePath("../..")
+
+[node name="Thing6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2961, 4.25599, -7.9826)
+
+[node name="Collision" type="CollisionShape3D" parent="Thing6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.682466, 0)
+shape = SubResource("BoxShape3D_w0wr8")
+
+[node name="Mesh" type="MeshInstance3D" parent="Thing6"]
+mesh = ExtResource("3_ote7y")
+skeleton = NodePath("../..")

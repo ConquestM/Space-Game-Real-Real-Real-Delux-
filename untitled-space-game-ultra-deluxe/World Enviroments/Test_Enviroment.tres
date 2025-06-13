@@ -1,0 +1,15 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://cpt4fb1w5r6we"]
+
+[ext_resource type="Sky" uid="uid://fd0d10ptjdbh" path="res://World Enviroments/Skyboxes/Test_Skybox.tres" id="1_cve15"]
+
+[resource]
+background_mode = 2
+sky = ExtResource("1_cve15")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 0, 1)
+ambient_light_sky_contribution = 0.85
+reflected_light_source = 2
+ssao_enabled = true
+ssao_intensity = 4.0
+ssao_power = 2.0
+volumetric_fog_density = 0.15
