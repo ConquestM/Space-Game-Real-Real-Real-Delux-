@@ -14,6 +14,10 @@ config/name="Untitled Space Game Ultra Deluxe"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
 
+[autoload]
+
+global="*res://Scripts/global.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")

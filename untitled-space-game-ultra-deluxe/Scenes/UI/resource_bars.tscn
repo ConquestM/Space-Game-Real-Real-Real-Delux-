@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg61srfpqg77o"]
+
+[ext_resource type="Script" uid="uid://dir2gcg73on3e" path="res://Scripts/UI/resource_bars.gd" id="1_61efv"]
+
+[node name="ResourceBars" type="Control" node_paths=PackedStringArray("healthbar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_61efv")
+healthbar = NodePath("HealthBar")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 27.0
