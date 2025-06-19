@@ -1,75 +1,127 @@
 extends CharacterBody3D
 
 
-var Jump_Velocity = 4.5
-var Movement_Speed = 5.0
-var Sensitivity = 0.01
-var Switchout = false
-var Cursor_Mode = false
-var Can_Jump = true
-var Coyote_Timer_On = false
-var Fov = 80
+@export var model: MeshInstance3D
+@export var collision: CollisionShape3D
+@export var camera_Rotator: Node3D
+@export var coyote_Timer: Timer
+@export var flashlight: SpotLight3D
+var jump_velocity = 4.5
+var movement_speed = 5.0
+var sensitivity = 0.01
+var switchout = false
+var cursor_mode = false
+var can_jump = true
+var coyote_timer_on = false
+var fov = 80 # Field of view
+var normal_stats = [
+	5.0, # Movement Speed
+	2, # Height
+	0.75 # Camera Height 
+]
+var sprint_stats = [
+	8.0, # Movement Speed
+	10, # fov Increase
+	0.75 # fov Transitioner
+]
+var crouch_stats = [
+	2.0, # Movement Speed
+	1.5, # Height
+	0.25 # Camera Height 
+]
+var flashlight_enabled = false
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	# Handle Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		if Coyote_Timer_On == false:
-			$CoyoteTimer.start()
-			Coyote_Timer_On = true
+		if coyote_timer_on == false:
+			coyote_Timer.start()
+			coyote_timer_on = true
 	else:
-		Can_Jump = true
+		can_jump = true
 
-	# Handle jump.
-	if Input.is_action_just_pressed("Player_1_Jump") and Can_Jump:
-		velocity.y = Jump_Velocity
-		Can_Jump = false
+	# Allows player to jump if coyote time is on or if they are on the ground
+	if Input.is_action_just_pressed("Player_1_Jump") and can_jump:
+		velocity.y = jump_velocity
+		can_jump = false
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# Movement
 	var input_dir := Input.get_vector("Player_1_Left", "Player_1_Right", "Player_1_Forwards", "Player_1_Backwards")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * Movement_Speed
-		velocity.z = direction.z * Movement_Speed
+		# Moves positively in x and z because direction is positive
+		velocity.x = direction.x * movement_speed
+		velocity.z = direction.z * movement_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, Movement_Speed)
-		velocity.z = move_toward(velocity.z, 0, Movement_Speed)
+		# Moves Negatively in x and z because direction is Negative
+		velocity.x = move_toward(velocity.x, 0, movement_speed)
+		velocity.z = move_toward(velocity.z, 0, movement_speed)
 	
+	# Sprinting
 	if Input.is_action_pressed("Player_1_Sprint"):
-		Movement_Speed = 8
-		if $RotationHelper/Camera3D.fov < Fov + 10:
-			$RotationHelper/Camera3D.fov += 0.75
+		# Set Sprinting stats
+		movement_speed = sprint_stats[0]
+		if camera_Rotator.get_node("Camera3D").fov < fov + sprint_stats[1]:
+			camera_Rotator.get_node("Camera3D").fov += sprint_stats[2]
 	else:
-		Movement_Speed = 5
-		if $RotationHelper/Camera3D.fov > Fov:
-			$RotationHelper/Camera3D.fov -= 0.75
+		# Set Normal Stats if not sprinting
+		movement_speed = normal_stats[0]
+		if camera_Rotator.get_node("Camera3D").fov > fov:
+			camera_Rotator.get_node("Camera3D").fov -= sprint_stats[2]
+	
+	# Crouching
+	if Input.is_action_just_pressed("Player_1_Crouch"): 
+		# Smoothen camera going down
+		position.y -= 0.5
+	if Input.is_action_pressed("Player_1_Crouch"):
+		# Set Crouch Stats if crouching
+		movement_speed = crouch_stats[0]
+		model.mesh.height = crouch_stats[1]
+		collision.shape.height = crouch_stats[1]
+		camera_Rotator.position.y = crouch_stats[2]
+	elif not Input.is_action_pressed("Player_1_Sprint"):
+		# Set Normal Stats if not sprinting
+		movement_speed = normal_stats[0]
+		model.mesh.height = normal_stats[1]
+		collision.shape.height = normal_stats[1]
+		camera_Rotator.position.y = normal_stats[2]
 
 	move_and_slide()
 
 
+# Non-Physics Processing
 func _process(_delta: float) -> void:
+	# Unlock Mouse
 	if Input.is_action_just_pressed("Player_1_Settings"):
-		Cursor_Mode = not Cursor_Mode
-		if Cursor_Mode:
+		cursor_mode = not cursor_mode
+		if cursor_mode:
+			# Locked Mouse
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 		else:
+			# Unlocked Mouse
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+	
+	# flashlight Code
+	if Input.is_action_just_pressed("Player_1_Flashlight"):
+		flashlight.visible = not flashlight.visible
 
 
+# Camera Shit
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_CAPTURED:
-			rotate_y(-event.relative.x * Sensitivity)
-			if Switchout == false:
-				$RotationHelper/Camera3D.rotate_x(-event.relative.y * Sensitivity)
-				$RotationHelper/Camera3D.rotation.x = clamp($RotationHelper/Camera3D.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-			if Switchout == true:
-				$RotationHelper.rotate_x(-event.relative.y * Sensitivity)
-				$RotationHelper.rotation.x = clamp($RotationHelper.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+			rotate_y(-event.relative.x * sensitivity)
+			if switchout == false:
+				camera_Rotator.get_node("Camera3D").rotate_x(-event.relative.y * sensitivity)
+				camera_Rotator.get_node("Camera3D").rotation.x = clamp(camera_Rotator.get_node("Camera3D").rotation.x, deg_to_rad(-80), deg_to_rad(80))
+			if switchout == true:
+				camera_Rotator.rotate_x(-event.relative.y * sensitivity)
+				camera_Rotator.rotation.x = clamp(camera_Rotator.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 
 
-func _on_coyote_timer_timeout() -> void:
-	Can_Jump = false
-	Coyote_Timer_On = false
+# Coyote Time Handler
+func _on_coyote_Timer_timeout() -> void:
+	can_jump = false
+	coyote_timer_on = false

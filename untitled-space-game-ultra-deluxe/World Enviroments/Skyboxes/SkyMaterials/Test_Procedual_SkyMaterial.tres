@@ -4,5 +4,6 @@
 sky_top_color = Color(0.355353, 0.609971, 1, 1)
 sky_horizon_color = Color(0.190163, 0.835286, 0.98109, 1)
 sky_curve = 0.34
+sky_energy_multiplier = 0.0
 sun_angle_max = 90.0
 sun_curve = 0.125
