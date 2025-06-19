@@ -6,13 +6,14 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oopm7"]
 
-[node name="Player1" type="CharacterBody3D" node_paths=PackedStringArray("model", "collision", "camera_Rotator", "coyote_Timer", "flashlight")]
+[node name="Player1" type="CharacterBody3D" node_paths=PackedStringArray("model", "collision", "camera_Rotator", "coyote_Timer", "flashlight", "debug_console")]
 script = ExtResource("1_oopm7")
 model = NodePath("Model")
 collision = NodePath("Collision")
 camera_Rotator = NodePath("RotationHelper")
 coyote_Timer = NodePath("CoyoteTimer")
 flashlight = NodePath("RotationHelper/Camera3D/Flashlight")
+debug_console = NodePath("Control/TextEdit")
 
 [node name="Model" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_ubn1o")
@@ -29,8 +30,10 @@ fov = 90.0
 
 [node name="Flashlight" type="SpotLight3D" parent="RotationHelper/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.598035)
+visible = false
 light_color = Color(1, 1, 0.686275, 1)
 light_energy = 5.0
+light_volumetric_fog_energy = 10.0
 light_bake_mode = 0
 distance_fade_begin = 5.0
 distance_fade_shadow = 15.0
@@ -40,5 +43,21 @@ spot_angle = 25.0
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextEdit" type="TextEdit" parent="Control"]
+visible = false
+layout_mode = 0
+offset_top = 610.0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "Enter Command"
+placeholder_text = "Enter Command"
+editable = false
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
