@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg61srfpqg77o"]
+
+[ext_resource type="Script" uid="uid://dir2gcg73on3e" path="res://Scripts/UI/resource_bars.gd" id="1_61efv"]
+
+[node name="ResourceBars" type="Control" node_paths=PackedStringArray("health_bar", "delayed_bar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_61efv")
+health_bar = NodePath("HealthBar")
+delayed_bar = NodePath("PreviewHealthBar")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(100, 0.065, 0.039, 1)
+layout_mode = 0
+offset_top = 445.0
+offset_right = 68.0
+offset_bottom = 647.0
+fill_mode = 3
+show_percentage = false
+
+[node name="PreviewHealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_top = 444.0
+offset_right = 67.0
+offset_bottom = 647.0
+fill_mode = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 456.0
+offset_bottom = 216.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
