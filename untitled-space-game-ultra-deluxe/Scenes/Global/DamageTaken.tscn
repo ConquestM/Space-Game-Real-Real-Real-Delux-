@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkgawxd0bd12x"]
+
+[ext_resource type="Script" uid="uid://pceg7tgj5nds" path="res://Scripts/Global/damage_taken.gd" id="1_e5maf"]
+
+[node name="DamageTaken" type="Timer"]
+script = ExtResource("1_e5maf")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

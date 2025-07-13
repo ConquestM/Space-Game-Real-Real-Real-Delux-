@@ -16,7 +16,9 @@ config/icon="res://Sprites/icon.svg"
 
 [autoload]
 
+DamageTaken="*res://Scenes/Global/DamageTaken.tscn"
 ConsoleCommands="*res://Scripts/Global/console_commands.gd"
+global="*res://Scripts/Global/global.gd"
 
 [editor_plugins]
 
