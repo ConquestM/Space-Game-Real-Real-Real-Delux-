@@ -34,7 +34,15 @@ var flashlight_enabled = false
 var in_debug_console = false
 
 
+func _ready() -> void:
+	set_multiplayer_authority(name.to_int())
+
+
 func _physics_process(delta: float) -> void:
+	if ConsoleCommands.unstuck == true:
+		position.y += 50
+		ConsoleCommands.unstuck = false
+	
 	# Handle Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -44,52 +52,54 @@ func _physics_process(delta: float) -> void:
 	else:
 		can_jump = true
 
-	# Allows player to jump if coyote time is on or if they are on the ground
-	if Input.is_action_just_pressed("Player_1_Jump") and can_jump and not in_debug_console:
-		velocity.y = jump_velocity * ConsoleCommands.player_jump
-		can_jump = false
+	# Avoid controlling other players, only yourself
+	if is_multiplayer_authority():
+		# Allows player to jump if coyote time is on or if they are on the ground
+		if Input.is_action_just_pressed("Player_1_Jump") and can_jump and not in_debug_console:
+			velocity.y = jump_velocity * ConsoleCommands.player_jump
+			can_jump = false
 
-	# Movement
-	if not in_debug_console:
-		var input_dir := Input.get_vector("Player_1_Left", "Player_1_Right", "Player_1_Forwards", "Player_1_Backwards")
-		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		if direction:
-			# Moves positively in x and z because direction is positive
-			velocity.x = (direction.x * movement_speed)
-			velocity.z = (direction.z * movement_speed)
-		else:
-			# Moves Negatively in x and z because direction is Negative
-			velocity.x = move_toward(velocity.x, 0, movement_speed)
-			velocity.z = move_toward(velocity.z, 0, movement_speed)
-		
-		# Sprinting
-		if Input.is_action_pressed("Player_1_Sprint"):
-			# Set Sprinting stats
-			movement_speed = sprint_stats[0] * ConsoleCommands.player_speed
-			if camera_Rotator.get_node("Camera3D").fov < fov + sprint_stats[1]:
-				camera_Rotator.get_node("Camera3D").fov += sprint_stats[2]
-		else:
-			# Set Normal Stats if not sprinting
-			movement_speed = normal_stats[0] * ConsoleCommands.player_speed
-			if camera_Rotator.get_node("Camera3D").fov > fov:
-				camera_Rotator.get_node("Camera3D").fov -= sprint_stats[2]
-		
-		# Crouching
-		if Input.is_action_just_pressed("Player_1_Crouch"): 
-			# Smoothen camera going down
-			position.y -= 0.5
-		if Input.is_action_pressed("Player_1_Crouch"):
-			# Set Crouch Stats if crouching
-			movement_speed = crouch_stats[0] * ConsoleCommands.player_speed
-			model.mesh.height = crouch_stats[1]
-			collision.shape.height = crouch_stats[1]
-			camera_Rotator.position.y = crouch_stats[2]
-		elif not Input.is_action_pressed("Player_1_Sprint"):
-			# Set Normal Stats if not sprinting
-			movement_speed = normal_stats[0] * ConsoleCommands.player_speed
-			model.mesh.height = normal_stats[1]
-			collision.shape.height = normal_stats[1]
-			camera_Rotator.position.y = normal_stats[2]
+		# Movement
+		if not in_debug_console:
+			var input_dir := Input.get_vector("Player_1_Left", "Player_1_Right", "Player_1_Forwards", "Player_1_Backwards")
+			var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			if direction:
+				# Moves positively in x and z because direction is positive
+				velocity.x = (direction.x * movement_speed)
+				velocity.z = (direction.z * movement_speed)
+			else:
+				# Moves Negatively in x and z because direction is Negative
+				velocity.x = move_toward(velocity.x, 0, movement_speed)
+				velocity.z = move_toward(velocity.z, 0, movement_speed)
+			
+			# Sprinting
+			if Input.is_action_pressed("Player_1_Sprint"):
+				# Set Sprinting stats
+				movement_speed = sprint_stats[0] * ConsoleCommands.player_speed
+				if camera_Rotator.get_node("Camera3D").fov < fov + sprint_stats[1]:
+					camera_Rotator.get_node("Camera3D").fov += sprint_stats[2]
+			else:
+				# Set Normal Stats if not sprinting
+				movement_speed = normal_stats[0] * ConsoleCommands.player_speed
+				if camera_Rotator.get_node("Camera3D").fov > fov:
+					camera_Rotator.get_node("Camera3D").fov -= sprint_stats[2]
+			
+			# Crouching
+			if Input.is_action_just_pressed("Player_1_Crouch"): 
+				# Smoothen camera going down
+				position.y -= 0.5
+			if Input.is_action_pressed("Player_1_Crouch"):
+				# Set Crouch Stats if crouching
+				movement_speed = crouch_stats[0] * ConsoleCommands.player_speed
+				model.mesh.height = crouch_stats[1]
+				collision.shape.height = crouch_stats[1]
+				camera_Rotator.position.y = crouch_stats[2]
+			elif not Input.is_action_pressed("Player_1_Sprint"):
+				# Set Normal Stats if not sprinting
+				movement_speed = normal_stats[0] * ConsoleCommands.player_speed
+				model.mesh.height = normal_stats[1]
+				collision.shape.height = normal_stats[1]
+				camera_Rotator.position.y = normal_stats[2]
 
 		move_and_slide()
 

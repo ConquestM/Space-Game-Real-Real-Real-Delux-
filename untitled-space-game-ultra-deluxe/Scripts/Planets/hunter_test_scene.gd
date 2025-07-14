@@ -1,12 +1,16 @@
 extends Node3D
 
 
-const DAYNIGHT_INCREASER = 0.005
-const FOG_INCREASER = 0.02
+const MAX_FOG_DENSITY: float = 1
+const DAYNIGHT_INCREASER: float = 0.005
+const FOG_INCREASER: float = 0.02
 @export var daynight_cycle_timer: Timer
 @export var world_enviroment: WorldEnvironment
-var day_or_night = true # True = Day, False = Night
-var can_increase_time = true
+@export var player_scene: PackedScene
+@export var buttons: Control
+var day_or_night: bool = true # True = Day, False = Night
+var can_increase_time: bool = true
+var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 
 
 func _ready() -> void:

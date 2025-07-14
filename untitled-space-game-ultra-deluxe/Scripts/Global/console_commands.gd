@@ -9,6 +9,11 @@ var time_frozen: bool = false
 var time_speed: float = 10.0
 var player_speed: float = 1.0
 var player_jump: float = 1.0
+var weather: String = "Overcast"
+var weather_changed: bool = false
+var hosting: bool = false
+var joining: bool = false
+var unstuck: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -36,3 +41,12 @@ func _execute_command():
 		player_speed = float(current_command[2])
 	if current_command[0].contains("jump") and current_command[1].contains("set"):
 		player_jump = float(current_command[2])
+	if current_command[0].contains("weather") and current_command[1].contains("set"):
+		weather = current_command[2]
+		weather_changed = true
+	if current_command[0].contains("game") and current_command[1].contains("host"):
+		hosting = true
+	if current_command[0].contains("game") and current_command[1].contains("join"):
+		joining = true
+	if current_command[0].contains("unstuck"):
+		unstuck = true
