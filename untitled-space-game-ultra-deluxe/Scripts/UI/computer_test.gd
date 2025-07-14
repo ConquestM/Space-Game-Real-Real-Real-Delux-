@@ -1,6 +1,7 @@
 extends Node2D
 
 
+const main_game_scene = "res://Scenes/Testing/hunter_test_scene.tscn"
 @export var main_buttons: Control
 @export var main_selector: Line2D
 @export var multiplayer_buttons: Control
@@ -9,7 +10,6 @@ extends Node2D
 var current_selector: Line2D
 var current_menu: String = "Main"
 var current_button: int = 0
-var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -34,7 +34,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_singleplayer_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file(main_game_scene)
 
 
 func _on_multiplayer_pressed() -> void:
@@ -45,21 +45,13 @@ func _on_multiplayer_pressed() -> void:
 	multiplayer_buttons.show()
 
 
-func _add_player(id: int = 1):
-	var player = player_scene.instantiate()
-	player.name = str(id)
-	call_deferred("add_child", player)
-
-
 func _on_host_pressed() -> void:
-	peer.create_server(1384)
-	multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(_add_player)
-	_add_player()
+	global.multiplayer_on = true
+	ConsoleCommands.hosting = true
+	get_tree().change_scene_to_file(main_game_scene)
 
 
 func _on_join_pressed() -> void:
-	peer.create_client("localhost", 1384)
-	multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(_add_player)
-	_add_player()
+	global.multiplayer_on = true
+	ConsoleCommands.joining = true
+	get_tree().change_scene_to_file(main_game_scene)

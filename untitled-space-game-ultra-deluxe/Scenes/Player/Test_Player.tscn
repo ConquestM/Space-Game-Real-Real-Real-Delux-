@@ -1,8 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://2dwnnhs7udlh"]
+[gd_scene load_steps=8 format=3 uid="uid://2dwnnhs7udlh"]
 
 [ext_resource type="Script" uid="uid://dmyxo2atj20sh" path="res://Scripts/Player/test_player.gd" id="1_oopm7"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oopm7"]
+albedo_color = Color(1, 0, 0, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ubn1o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ox56v"]
+albedo_color = Color(0, 0.541176, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nxyyc"]
+radius = 0.2
+height = 0.6
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oopm7"]
 
@@ -10,18 +20,34 @@
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("RotationHelper/Camera3D/Flashlight:visible")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("RotationHelper:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
-[node name="Player1" type="CharacterBody3D" node_paths=PackedStringArray("model", "collision", "camera_Rotator", "coyote_Timer", "flashlight", "debug_console")]
+[node name="Player1" type="CharacterBody3D" node_paths=PackedStringArray("model", "collision", "camera_rotator", "coyote_timer", "flashlight", "debug_console")]
 script = ExtResource("1_oopm7")
 model = NodePath("Model")
 collision = NodePath("Collision")
-camera_Rotator = NodePath("RotationHelper")
-coyote_Timer = NodePath("CoyoteTimer")
+camera_rotator = NodePath("RotationHelper")
+coyote_timer = NodePath("CoyoteTimer")
 flashlight = NodePath("RotationHelper/Camera3D/Flashlight")
 debug_console = NodePath("Control/TextEdit")
 
 [node name="Model" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_oopm7")
 mesh = SubResource("CapsuleMesh_ubn1o")
+
+[node name="Visor" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.587402, -0.409167)
+material_override = SubResource("StandardMaterial3D_ox56v")
+mesh = SubResource("CapsuleMesh_nxyyc")
+skeleton = NodePath("../..")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_oopm7")

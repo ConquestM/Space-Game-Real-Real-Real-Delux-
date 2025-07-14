@@ -3,8 +3,8 @@ extends CharacterBody3D
 
 @export var model: MeshInstance3D
 @export var collision: CollisionShape3D
-@export var camera_Rotator: Node3D
-@export var coyote_Timer: Timer
+@export var camera_rotator: Node3D
+@export var coyote_timer: Timer
 @export var flashlight: SpotLight3D
 @export var debug_console: TextEdit
 var jump_velocity = 4.5
@@ -34,11 +34,18 @@ var flashlight_enabled = false
 var in_debug_console = false
 
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
 
 func _physics_process(delta: float) -> void:
+	# Multiplayer Checks
+	if not is_multiplayer_authority():
+		camera_rotator.get_node("Camera3D").current = false
+	else:
+		model.get_node("Visor").hide()
+	
+	
 	if ConsoleCommands.unstuck == true:
 		position.y += 50
 		ConsoleCommands.unstuck = false
@@ -47,20 +54,20 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		if coyote_timer_on == false:
-			coyote_Timer.start()
+			coyote_timer.start()
 			coyote_timer_on = true
 	else:
 		can_jump = true
 
-	# Avoid controlling other players, only yourself
-	if is_multiplayer_authority():
 		# Allows player to jump if coyote time is on or if they are on the ground
-		if Input.is_action_just_pressed("Player_1_Jump") and can_jump and not in_debug_console:
+		if Input.is_action_just_pressed("Player_1_Jump") and can_jump and not in_debug_console and is_multiplayer_authority():
 			velocity.y = jump_velocity * ConsoleCommands.player_jump
 			can_jump = false
 
-		# Movement
-		if not in_debug_console:
+	# Movement
+	if not in_debug_console:
+		# Avoid controlling other players, only yourself
+		if is_multiplayer_authority():
 			var input_dir := Input.get_vector("Player_1_Left", "Player_1_Right", "Player_1_Forwards", "Player_1_Backwards")
 			var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 			if direction:
@@ -76,13 +83,13 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_pressed("Player_1_Sprint"):
 				# Set Sprinting stats
 				movement_speed = sprint_stats[0] * ConsoleCommands.player_speed
-				if camera_Rotator.get_node("Camera3D").fov < fov + sprint_stats[1]:
-					camera_Rotator.get_node("Camera3D").fov += sprint_stats[2]
+				if camera_rotator.get_node("Camera3D").fov < fov + sprint_stats[1]:
+					camera_rotator.get_node("Camera3D").fov += sprint_stats[2]
 			else:
 				# Set Normal Stats if not sprinting
 				movement_speed = normal_stats[0] * ConsoleCommands.player_speed
-				if camera_Rotator.get_node("Camera3D").fov > fov:
-					camera_Rotator.get_node("Camera3D").fov -= sprint_stats[2]
+				if camera_rotator.get_node("Camera3D").fov > fov:
+					camera_rotator.get_node("Camera3D").fov -= sprint_stats[2]
 			
 			# Crouching
 			if Input.is_action_just_pressed("Player_1_Crouch"): 
@@ -93,21 +100,21 @@ func _physics_process(delta: float) -> void:
 				movement_speed = crouch_stats[0] * ConsoleCommands.player_speed
 				model.mesh.height = crouch_stats[1]
 				collision.shape.height = crouch_stats[1]
-				camera_Rotator.position.y = crouch_stats[2]
+				camera_rotator.position.y = crouch_stats[2]
 			elif not Input.is_action_pressed("Player_1_Sprint"):
 				# Set Normal Stats if not sprinting
 				movement_speed = normal_stats[0] * ConsoleCommands.player_speed
 				model.mesh.height = normal_stats[1]
 				collision.shape.height = normal_stats[1]
-				camera_Rotator.position.y = normal_stats[2]
+				camera_rotator.position.y = normal_stats[2]
 
-		move_and_slide()
+	move_and_slide()
 
 
 # Non-Physics Processing
 func _process(_delta: float) -> void:
 	# Debug Console
-	if Input.is_action_just_pressed("Enable_Debug_Console"):
+	if Input.is_action_just_pressed("Enable_Debug_Console") and is_multiplayer_authority():
 		if in_debug_console:
 			ConsoleCommands.current_command = debug_console.text.split(" ", true)
 			ConsoleCommands._execute_command()
@@ -119,7 +126,7 @@ func _process(_delta: float) -> void:
 		debug_console.editable = not debug_console.editable
 	
 	# Unlock Mouse
-	if Input.is_action_just_pressed("Player_1_Settings"):
+	if Input.is_action_just_pressed("Player_1_Settings") and is_multiplayer_authority():
 		cursor_mode = not cursor_mode
 		if cursor_mode:
 			# Locked Mouse
@@ -129,7 +136,7 @@ func _process(_delta: float) -> void:
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 	
 	# flashlight Code
-	if Input.is_action_just_pressed("Player_1_Flashlight"):
+	if Input.is_action_just_pressed("Player_1_Flashlight") and is_multiplayer_authority():
 		if not in_debug_console:
 			flashlight.visible = not flashlight.visible
 
@@ -137,17 +144,17 @@ func _process(_delta: float) -> void:
 # Camera Shit
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_CAPTURED:
+		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_CAPTURED and is_multiplayer_authority():
 			rotate_y(-event.relative.x * sensitivity)
 			if switchout == false:
-				camera_Rotator.get_node("Camera3D").rotate_x(-event.relative.y * sensitivity)
-				camera_Rotator.get_node("Camera3D").rotation.x = clamp(camera_Rotator.get_node("Camera3D").rotation.x, deg_to_rad(-80), deg_to_rad(80))
+				camera_rotator.get_node("Camera3D").rotate_x(-event.relative.y * sensitivity)
+				camera_rotator.get_node("Camera3D").rotation.x = clamp(camera_rotator.get_node("Camera3D").rotation.x, deg_to_rad(-80), deg_to_rad(80))
 			if switchout == true:
-				camera_Rotator.rotate_x(-event.relative.y * sensitivity)
-				camera_Rotator.rotation.x = clamp(camera_Rotator.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+				camera_rotator.rotate_x(-event.relative.y * sensitivity)
+				camera_rotator.rotation.x = clamp(camera_rotator.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 
 
 # Coyote Time Handler
-func _on_coyote_Timer_timeout() -> void:
+func _on_coyote_timer_timeout() -> void:
 	can_jump = false
 	coyote_timer_on = false

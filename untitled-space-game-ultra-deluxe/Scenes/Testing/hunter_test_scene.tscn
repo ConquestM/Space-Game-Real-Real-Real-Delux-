@@ -2,7 +2,7 @@
 
 [ext_resource type="Environment" uid="uid://cpt4fb1w5r6we" path="res://World Enviroments/Test_Enviroment.tres" id="1_ol02s"]
 [ext_resource type="Script" uid="uid://btjylgl6i4j3t" path="res://Scripts/Planets/hunter_test_scene.gd" id="1_w0wr8"]
-[ext_resource type="PackedScene" uid="uid://b2ooabcxcpuki" path="res://Scenes/Player/test_2d_player.tscn" id="2_x5wmc"]
+[ext_resource type="PackedScene" uid="uid://2dwnnhs7udlh" path="res://Scenes/Player/Test_Player.tscn" id="2_x5wmc"]
 [ext_resource type="Texture2D" uid="uid://des3jjyaijs3b" path="res://Sprites/icon.svg" id="3_ote7y"]
 [ext_resource type="Script" uid="uid://bpgskemgdnxun" path="res://Scripts/Planets/test_weather_handler.gd" id="5_x5wmc"]
 
@@ -118,18 +118,15 @@ texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w0wr8"]
 
-[node name="Hunter_Test_Scene" type="Node3D" node_paths=PackedStringArray("daynight_cycle_timer", "world_enviroment", "buttons")]
+[node name="Hunter_Test_Scene" type="Node3D" node_paths=PackedStringArray("daynight_cycle_timer", "world_enviroment", "terrain")]
 script = ExtResource("1_w0wr8")
 daynight_cycle_timer = NodePath("DayNightCycleTimer")
 world_enviroment = NodePath("WorldEnvironment")
 player_scene = ExtResource("2_x5wmc")
-buttons = NodePath("Multiplayer Buttons")
+terrain = NodePath("Terrain")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_ol02s")
-
-[node name="Players" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.36931, 0)
 
 [node name="Terrain" type="Terrain3D" parent="."]
 data_directory = "res://Terrain Data"
@@ -162,52 +159,8 @@ autostart = true
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://2dwnnhs7udlh")
-spawn_path = NodePath("../Players")
-
-[node name="Multiplayer Buttons" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 288.0
-offset_top = 277.0
-offset_right = 328.0
-offset_bottom = 317.0
-
-[node name="Host" type="Button" parent="Multiplayer Buttons"]
-layout_mode = 0
-offset_left = -275.0
-offset_top = -265.0
-offset_right = 20.0
-offset_bottom = -188.0
-theme_override_font_sizes/font_size = 48
-text = "Host
-"
-
-[node name="Join" type="Button" parent="Multiplayer Buttons"]
-layout_mode = 0
-offset_left = -275.0
-offset_top = -158.0
-offset_right = 20.0
-offset_bottom = -81.0
-theme_override_font_sizes/font_size = 48
-text = "Join
-"
-
-[node name="Back" type="Button" parent="Multiplayer Buttons"]
-layout_mode = 0
-offset_left = -275.0
-offset_top = -51.0
-offset_right = 20.0
-offset_bottom = 26.0
-theme_override_font_sizes/font_size = 48
-text = "Back
-"
-
-[node name="Selector" type="Line2D" parent="Multiplayer Buttons"]
-points = PackedVector2Array(80, -250, 40, -225, 80, -200)
-default_color = Color(0, 0.705882, 0, 1)
+spawn_path = NodePath("..")
 
 [connection signal="timeout" from="DayNightCycleTimer" to="." method="_on_day_night_cycle_timer_timeout"]
 [connection signal="timeout" from="WeatherHandler/FogIncreaseTimer" to="WeatherHandler" method="_on_fog_increase_timer_timeout"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
-[connection signal="pressed" from="Multiplayer Buttons/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="Multiplayer Buttons/Join" to="." method="_on_join_pressed"]

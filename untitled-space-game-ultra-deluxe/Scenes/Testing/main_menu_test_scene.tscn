@@ -110,6 +110,10 @@ text = "Back
 points = PackedVector2Array(80, -250, 40, -225, 80, -200)
 default_color = Color(0, 0.705882, 0, 1)
 
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://b2ooabcxcpuki")
+spawn_path = NodePath("..")
+
 [connection signal="pressed" from="Buttons/Singleplayer" to="." method="_on_singleplayer_pressed"]
 [connection signal="pressed" from="Buttons/Multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="Multiplayer Buttons/Host" to="." method="_on_host_pressed"]
