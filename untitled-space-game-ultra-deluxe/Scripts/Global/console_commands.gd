@@ -11,8 +11,6 @@ var player_speed: float = 1.0
 var player_jump: float = 1.0
 var weather: String = "Overcast"
 var weather_changed: bool = false
-var hosting: bool = false
-var joining: bool = false
 var unstuck: bool = false
 
 
@@ -45,8 +43,8 @@ func _execute_command():
 		weather = current_command[2]
 		weather_changed = true
 	if current_command[0].contains("game") and current_command[1].contains("host"):
-		hosting = true
+		Online.hosting = true
 	if current_command[0].contains("game") and current_command[1].contains("join"):
-		joining = true
+		Online.joining = true
 	if current_command[0].contains("unstuck"):
 		unstuck = true

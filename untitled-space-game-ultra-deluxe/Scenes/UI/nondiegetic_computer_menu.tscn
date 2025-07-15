@@ -1,0 +1,282 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv4km2o3f32gn"]
+
+[ext_resource type="Script" uid="uid://drr3d6xewk8fp" path="res://Scripts/UI/nondiegetic_computer.gd" id="1_u0jsy"]
+[ext_resource type="Texture2D" uid="uid://des3jjyaijs3b" path="res://Sprites/icon.svg" id="3_lf1we"]
+[ext_resource type="Theme" uid="uid://xersx1rqgqqv" path="res://Themes/computer_terminal.tres" id="4_88gcs"]
+
+[node name="ComputerScene" type="Node2D" node_paths=PackedStringArray("main_selector", "main_buttons", "multiplayer_buttons", "multiplayer_inputer_join", "multiplayer_inputer_host")]
+script = ExtResource("1_u0jsy")
+main_selector = NodePath("Computer/Selector")
+main_buttons = NodePath("Computer/Buttons")
+multiplayer_buttons = NodePath("Computer/Multiplayer Buttons")
+multiplayer_inputer_join = NodePath("Computer/Online Stuff Inputer (Join)")
+multiplayer_inputer_host = NodePath("Computer/Online Stuff Inputer (Host)")
+metadata/_edit_lock_ = true
+
+[node name="BG" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="BG"]
+z_index = -5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 325.0
+color = Color(0, 0, 0, 1)
+
+[node name="Icon" type="Sprite2D" parent="BG"]
+position = Vector2(-440.5, -187.5)
+scale = Vector2(2.11719, 2.11719)
+texture = ExtResource("3_lf1we")
+
+[node name="Icon2" type="Sprite2D" parent="BG"]
+position = Vector2(-440.5, 84)
+scale = Vector2(2.11719, 2.11719)
+texture = ExtResource("3_lf1we")
+
+[node name="Icon3" type="Sprite2D" parent="BG"]
+position = Vector2(-440.5, 355)
+scale = Vector2(2.11719, 2.11719)
+texture = ExtResource("3_lf1we")
+
+[node name="Icon4" type="Sprite2D" parent="BG"]
+position = Vector2(440.5, -353.5)
+scale = Vector2(2.11719, 2.11719)
+texture = ExtResource("3_lf1we")
+
+[node name="Icon5" type="Sprite2D" parent="BG"]
+position = Vector2(440.5, -82)
+scale = Vector2(2.11719, 2.11719)
+texture = ExtResource("3_lf1we")
+
+[node name="Icon6" type="Sprite2D" parent="BG"]
+position = Vector2(440.5, 189)
+scale = Vector2(2.11719, 2.11719)
+texture = ExtResource("3_lf1we")
+
+[node name="Computer" type="Node2D" parent="."]
+
+[node name="Outline" type="Line2D" parent="Computer"]
+points = PackedVector2Array(-300, -300, 300, -300, 300, 300, -300, 300)
+closed = true
+metadata/_edit_lock_ = true
+
+[node name="Buttons" type="Control" parent="Computer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Singleplayer" type="Button" parent="Computer/Buttons"]
+layout_mode = 0
+offset_left = -275.0
+offset_top = -265.0
+offset_right = 8.0
+offset_bottom = -188.0
+theme = ExtResource("4_88gcs")
+text = "Singleplayer
+"
+alignment = 0
+
+[node name="Multiplayer" type="Button" parent="Computer/Buttons"]
+layout_mode = 0
+offset_left = -275.0
+offset_top = -158.0
+offset_right = -9.0
+offset_bottom = -81.0
+theme = ExtResource("4_88gcs")
+text = "Multiplayer
+"
+alignment = 0
+
+[node name="Settings" type="Button" parent="Computer/Buttons"]
+layout_mode = 0
+offset_left = -275.0
+offset_top = -51.0
+offset_right = -89.0
+offset_bottom = 26.0
+theme = ExtResource("4_88gcs")
+text = "Settings"
+alignment = 0
+
+[node name="Quit" type="Button" parent="Computer/Buttons"]
+layout_mode = 0
+offset_left = -275.0
+offset_top = 56.0
+offset_right = -174.0
+offset_bottom = 133.0
+theme = ExtResource("4_88gcs")
+text = "Quit
+"
+alignment = 0
+
+[node name="Multiplayer Buttons" type="Control" parent="Computer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Host" type="Button" parent="Computer/Multiplayer Buttons"]
+layout_mode = 0
+offset_left = -275.0
+offset_top = -265.0
+offset_right = -167.0
+offset_bottom = -188.0
+theme = ExtResource("4_88gcs")
+text = "Host
+"
+alignment = 0
+
+[node name="JoinMenu" type="Button" parent="Computer/Multiplayer Buttons"]
+layout_mode = 0
+offset_left = -275.0
+offset_top = -158.0
+offset_right = -187.0
+offset_bottom = -81.0
+theme = ExtResource("4_88gcs")
+text = "Join
+"
+alignment = 0
+
+[node name="Back" type="Button" parent="Computer/Multiplayer Buttons"]
+layout_mode = 0
+offset_left = -275.0
+offset_top = -51.0
+offset_right = -164.0
+offset_bottom = 26.0
+theme = ExtResource("4_88gcs")
+text = "Back
+"
+alignment = 0
+
+[node name="Online Stuff Inputer (Host)" type="Control" parent="Computer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Port" type="Label" parent="Computer/Online Stuff Inputer (Host)"]
+layout_mode = 0
+offset_left = -249.0
+offset_top = -261.0
+offset_right = 48.0
+offset_bottom = -181.0
+theme = ExtResource("4_88gcs")
+text = "Port Address"
+
+[node name="Port Input" type="TextEdit" parent="Computer/Online Stuff Inputer (Host)/Port"]
+layout_mode = 0
+offset_top = 103.0
+offset_right = 500.0
+offset_bottom = 183.0
+theme = ExtResource("4_88gcs")
+text = "20277"
+placeholder_text = "Input Port Address"
+emoji_menu_enabled = false
+caret_type = 1
+caret_blink = true
+
+[node name="Join" type="Button" parent="Computer/Online Stuff Inputer (Host)"]
+layout_mode = 0
+offset_left = -249.0
+offset_top = -51.0
+offset_right = -161.0
+offset_bottom = 26.0
+theme = ExtResource("4_88gcs")
+text = "Join
+"
+alignment = 0
+
+[node name="Back" type="Button" parent="Computer/Online Stuff Inputer (Host)"]
+offset_left = -257.0
+offset_top = 167.0
+offset_right = -146.0
+offset_bottom = 244.0
+theme = ExtResource("4_88gcs")
+text = "Back
+"
+alignment = 0
+
+[node name="Online Stuff Inputer (Join)" type="Control" parent="Computer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="IP" type="Label" parent="Computer/Online Stuff Inputer (Join)"]
+layout_mode = 0
+offset_left = -249.0
+offset_top = -261.0
+offset_right = -6.0
+offset_bottom = -181.0
+theme = ExtResource("4_88gcs")
+text = "IP Address"
+
+[node name="IP Input" type="TextEdit" parent="Computer/Online Stuff Inputer (Join)/IP"]
+layout_mode = 0
+offset_top = 103.0
+offset_right = 500.0
+offset_bottom = 183.0
+theme = ExtResource("4_88gcs")
+placeholder_text = "Input IP Address"
+emoji_menu_enabled = false
+caret_type = 1
+caret_blink = true
+
+[node name="Port" type="Label" parent="Computer/Online Stuff Inputer (Join)"]
+layout_mode = 0
+offset_left = -249.0
+offset_top = -47.0
+offset_right = 48.0
+offset_bottom = 33.0
+theme = ExtResource("4_88gcs")
+text = "Port Address"
+
+[node name="Port Input" type="TextEdit" parent="Computer/Online Stuff Inputer (Join)/Port"]
+layout_mode = 0
+offset_top = 103.0
+offset_right = 500.0
+offset_bottom = 183.0
+theme = ExtResource("4_88gcs")
+text = "20277"
+placeholder_text = "Input Port Address"
+emoji_menu_enabled = false
+caret_type = 1
+caret_blink = true
+
+[node name="Join" type="Button" parent="Computer/Online Stuff Inputer (Join)"]
+layout_mode = 0
+offset_left = -249.0
+offset_top = 163.0
+offset_right = -161.0
+offset_bottom = 240.0
+theme = ExtResource("4_88gcs")
+text = "Join
+"
+alignment = 0
+
+[node name="Back" type="Button" parent="Computer/Online Stuff Inputer (Join)"]
+offset_left = 116.0
+offset_top = 163.0
+offset_right = 227.0
+offset_bottom = 240.0
+theme = ExtResource("4_88gcs")
+text = "Back
+"
+alignment = 0
+
+[node name="Selector" type="Line2D" parent="Computer"]
+points = PackedVector2Array(0, 22, -30, 44, 0, 66)
+default_color = Color(0, 0.705882, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Computer/Buttons/Singleplayer" to="." method="_on_singleplayer_pressed"]
+[connection signal="pressed" from="Computer/Buttons/Multiplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="Computer/Multiplayer Buttons/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Computer/Multiplayer Buttons/JoinMenu" to="." method="_on_join_menu_pressed"]
+[connection signal="pressed" from="Computer/Online Stuff Inputer (Host)/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Computer/Online Stuff Inputer (Join)/Join" to="." method="_on_join_pressed"]

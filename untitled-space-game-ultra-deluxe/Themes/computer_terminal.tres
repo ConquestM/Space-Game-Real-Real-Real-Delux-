@@ -1,0 +1,34 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://xersx1rqgqqv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfkpx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l61a2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uongm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_daivn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8nedo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05jxc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l57p4"]
+
+[resource]
+Button/colors/font_color = Color(0, 0.705882, 0, 1)
+Button/colors/font_focus_color = Color(0, 0.705882, 0, 1)
+Button/colors/font_hover_color = Color(0, 0.705882, 0, 1)
+Button/font_sizes/font_size = 48
+Button/styles/disabled = SubResource("StyleBoxEmpty_nfkpx")
+Button/styles/focus = SubResource("StyleBoxEmpty_l61a2")
+Button/styles/hover = SubResource("StyleBoxEmpty_uongm")
+Button/styles/normal = SubResource("StyleBoxEmpty_daivn")
+Button/styles/pressed = SubResource("StyleBoxEmpty_8nedo")
+Label/colors/font_color = Color(0, 0.705882, 0, 1)
+Label/font_sizes/font_size = 48
+TextEdit/colors/caret_color = Color(0, 0.705882, 0, 1)
+TextEdit/colors/font_color = Color(0, 0.705882, 0, 1)
+TextEdit/colors/font_placeholder_color = Color(0, 0.705882, 0, 0.588235)
+TextEdit/font_sizes/font_size = 48
+TextEdit/styles/focus = SubResource("StyleBoxEmpty_05jxc")
+TextEdit/styles/normal = SubResource("StyleBoxEmpty_l57p4")

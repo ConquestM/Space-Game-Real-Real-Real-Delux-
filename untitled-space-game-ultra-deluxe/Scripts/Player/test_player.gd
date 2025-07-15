@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var coyote_timer: Timer
 @export var flashlight: SpotLight3D
 @export var debug_console: TextEdit
+@export var multiplayer_helper: Label
 var jump_velocity = 4.5
 var movement_speed = 5.0
 var sensitivity = 0.01
@@ -36,6 +37,14 @@ var in_debug_console = false
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+	if global.multiplayer_on:
+		multiplayer_helper.text = "YOUR IP ADDRESS IS:
+			" + Online.hostip
+		multiplayer_helper.get_child(0).text = "THE PORT IS:
+			" + str(Online.port)
+	else:
+		multiplayer_helper.hide()
 
 
 func _physics_process(delta: float) -> void:
@@ -131,9 +140,11 @@ func _process(_delta: float) -> void:
 		if cursor_mode:
 			# Locked Mouse
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+			multiplayer_helper.visible = false
 		else:
 			# Unlocked Mouse
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+			multiplayer_helper.visible = true
 	
 	# flashlight Code
 	if Input.is_action_just_pressed("Player_1_Flashlight") and is_multiplayer_authority():

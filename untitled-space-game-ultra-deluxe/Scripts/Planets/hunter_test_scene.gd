@@ -29,15 +29,17 @@ func _process(_delta: float) -> void:
 	world_enviroment.environment.fog_sky_affect = ConsoleCommands.level_of_fog
 	daynight_cycle_timer.wait_time = ConsoleCommands.time_speed
 	
-	if ConsoleCommands.hosting:
-		ConsoleCommands.hosting = false
-		peer.create_server(135)
+	# Host a game via inputed port
+	if Online.hosting:
+		Online.hosting = false
+		peer.create_server(Online.port)
 		multiplayer.multiplayer_peer = peer
 		multiplayer.peer_connected.connect(_add_player)
 		_add_player()
-	if ConsoleCommands.joining:
-		ConsoleCommands.joining = false
-		peer.create_client("localhost", 135)
+	# Join a game via an ip address and port
+	if Online.joining:
+		Online.joining = false
+		peer.create_client(Online.inputedip, Online.port)
 		multiplayer.multiplayer_peer = peer
 
 
