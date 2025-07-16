@@ -12,6 +12,8 @@ config_version=5
 
 config/name="Untitled Space Game Ultra Deluxe"
 run/main_scene="uid://dv4km2o3f32gn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Huntress and Michael Space Game"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
 

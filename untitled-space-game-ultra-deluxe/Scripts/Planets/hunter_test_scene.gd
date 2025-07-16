@@ -8,6 +8,8 @@ const FOG_INCREASER: float = 0.02
 @export var world_enviroment: WorldEnvironment
 @export var player_scene: PackedScene
 @export var terrain: Terrain3D
+@export var the_sun: DirectionalLight3D
+var sun_lerp: float = 270.0
 var day_or_night: bool = true # True = Day, False = Night
 var can_increase_time: bool = true
 var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
@@ -20,7 +22,7 @@ func _ready() -> void:
 		player.position.y += 1
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	print("Fog:", ConsoleCommands.level_of_fog, " Time:", ConsoleCommands.time_of_day)
 	# Set world to their variables
 	world_enviroment.environment.sky.sky_material.sky_energy_multiplier = ConsoleCommands.time_of_day
@@ -28,6 +30,9 @@ func _process(_delta: float) -> void:
 	world_enviroment.environment.fog_density = ConsoleCommands.level_of_fog
 	world_enviroment.environment.fog_sky_affect = ConsoleCommands.level_of_fog
 	daynight_cycle_timer.wait_time = ConsoleCommands.time_speed
+	
+	# Control the sun
+	the_sun.rotation_degrees.x = lerp(the_sun.rotation_degrees.x, sun_lerp, delta)
 	
 	# Host a game via inputed port
 	if Online.hosting:
@@ -44,6 +49,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_day_night_cycle_timer_timeout() -> void:
+	sun_lerp += 3.6
 	if ConsoleCommands.time_frozen == false:
 		# Set Brightness of sky for DAY / NIGHT effect
 		if day_or_night == true: # If day, get darker

@@ -9,6 +9,7 @@ const test_game_scene = "res://Scenes/Testing/hunter_test_scene.tscn"
 @export var multiplayer_buttons: Control
 @export var multiplayer_inputer_join: Control
 @export var multiplayer_inputer_host: Control
+@export var save_files: Control
 # Menuing Stuff
 var current_menu: int = 0
 var menus: Array
@@ -16,11 +17,13 @@ var main_current_button: int = 0
 var multiplayer_current_button: int = 0
 var multiplayer_inputer_join_button: int = 0
 var multiplayer_inputer_host_button: int = 0
+var save_file_button: int = 0
 var current_button: Array = [
 	main_current_button, 
 	multiplayer_current_button,
 	multiplayer_inputer_join_button,
-	multiplayer_inputer_host_button
+	multiplayer_inputer_host_button,
+	save_file_button
 ]
 var min_button: int = 0
 var max_button: int = 3
@@ -34,7 +37,8 @@ func _ready() -> void:
 		main_buttons,
 		multiplayer_buttons,
 		multiplayer_inputer_join,
-		multiplayer_inputer_host
+		multiplayer_inputer_host,
+		save_files
 	]
 	_get_max_menu_buttons()
 
@@ -59,7 +63,9 @@ func _process(_delta: float) -> void:
 
 
 func _on_singleplayer_pressed() -> void:
-	get_tree().change_scene_to_file(test_game_scene)
+	current_menu = 4
+	main_buttons.hide()
+	save_files.show()
 
 
 func _on_multiplayer_pressed() -> void:
@@ -80,17 +86,25 @@ func _on_join_pressed() -> void:
 	get_tree().change_scene_to_file(test_game_scene)
 
 
+func _load_scene(save_file: int):
+	get_tree().change_scene_to_file(test_game_scene)
+
+
 func _back():
 	current_button[current_menu] = 0
 	if current_menu == 1:
 		current_menu = 0
 		main_buttons.show()
 		multiplayer_buttons.hide()
-	if current_menu == 2 or current_menu == 3:
+	elif current_menu == 2 or current_menu == 3:
 		current_menu = 1
 		multiplayer_inputer_join.hide()
 		multiplayer_inputer_host.hide()
 		multiplayer_buttons.show()
+	elif current_menu == 4:
+		current_menu = 0
+		main_buttons.show()
+		save_files.hide()
 
 
 func _enter():
@@ -157,6 +171,12 @@ func _enter():
 			_on_host_pressed() 
 		elif current_button[current_menu] == 2:
 			_back()
+	# Save File Menu Stuff
+	elif current_menu == 4:
+		if current_button[current_menu] == 0 or current_button[current_menu] == 1 or current_button[current_menu] == 2:
+			_load_scene(0)
+		elif current_button[current_menu] == 3:
+			_back()
 	_get_max_menu_buttons()
 
 
@@ -178,4 +198,3 @@ func _get_max_menu_buttons():
 	max_button = -1
 	for i in menus[current_menu].get_children():
 		max_button += 1
-	
