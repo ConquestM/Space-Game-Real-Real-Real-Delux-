@@ -29,10 +29,12 @@ var min_button: int = 0
 var max_button: int = 3
 var button_increaser: int = 1
 var menu_gap_size = 107
+var loading_progress: Array
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	ResourceLoader.load_threaded_request(test_game_scene)
 	menus = [
 		main_buttons,
 		multiplayer_buttons,
@@ -45,6 +47,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	ResourceLoader.load_threaded_get_status(test_game_scene, loading_progress)
+	print(loading_progress)
 	var current_menu_button = menus[current_menu].get_child(current_button[current_menu])
 	main_selector.position.x = (current_menu_button.position.x + current_menu_button.size.x + 50)
 	main_selector.position.y = current_menu_button.position.y
@@ -86,7 +90,8 @@ func _on_join_pressed() -> void:
 	get_tree().change_scene_to_file(test_game_scene)
 
 
-func _load_scene(save_file: int):
+func _load_scene(_save_file: int):
+	var load_it_slowly = ResourceLoader.load_threaded_get(test_game_scene)
 	get_tree().change_scene_to_file(test_game_scene)
 
 
