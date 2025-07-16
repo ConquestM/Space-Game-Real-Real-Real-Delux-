@@ -22,6 +22,10 @@ ConsoleCommands="*res://Scripts/Global/console_commands.gd"
 global="*res://Scripts/Global/global.gd"
 Online="*res://Scripts/Global/online.gd"
 
+[display]
+
+window/subwindows/embed_subwindows=false
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")

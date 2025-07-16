@@ -144,6 +144,15 @@ mesh = SubResource("BoxMesh_ote7y")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_w0wr8")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94689, 1.40765, 1.69655)
+mesh = SubResource("BoxMesh_ote7y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_w0wr8")
+
 [node name="DayNightCycleTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
