@@ -3,6 +3,7 @@ extends Control
 @export var delayed_bar: Node
 @export var hunger_bar: Node
 @export var thirst_bar: Node
+@export var resources_count: Node
 
 
 func _process(_delta: float) -> void:
@@ -14,6 +15,7 @@ func _process(_delta: float) -> void:
 	global.thirst -= 0.1
 	hunger_bar.value = global.hunger
 	thirst_bar.value = global.thirst
+	resources_count.text = "Resources: " + str(global.resources)
 
 
 func _on_button_pressed():

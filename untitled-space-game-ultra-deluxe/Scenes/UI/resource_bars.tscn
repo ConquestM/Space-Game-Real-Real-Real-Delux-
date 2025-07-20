@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dir2gcg73on3e" path="res://Scripts/UI/resource_bars.gd" id="1_61efv"]
 
-[node name="ResourceBars" type="Control" node_paths=PackedStringArray("health_bar", "delayed_bar", "hunger_bar", "thirst_bar")]
+[node name="ResourceBars" type="Control" node_paths=PackedStringArray("health_bar", "delayed_bar", "hunger_bar", "thirst_bar", "resources_count")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,22 +10,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_61efv")
-health_bar = NodePath("HealthBar")
-delayed_bar = NodePath("PreviewHealthBar")
-hunger_bar = NodePath("HungerBar")
-thirst_bar = NodePath("ThirstBar")
+health_bar = NodePath("CanvasLayer/HealthBar")
+delayed_bar = NodePath("CanvasLayer/PreviewHealthBar")
+hunger_bar = NodePath("CanvasLayer/HungerBar")
+thirst_bar = NodePath("CanvasLayer/ThirstBar")
+resources_count = NodePath("CanvasLayer/ResourcesCount")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-layout_mode = 0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
 offset_top = 445.0
 offset_right = 68.0
 offset_bottom = 647.0
 fill_mode = 3
 show_percentage = false
 
-[node name="HungerBar" type="ProgressBar" parent="."]
+[node name="HungerBar" type="ProgressBar" parent="CanvasLayer"]
 modulate = Color(100, 4.645, 0, 1)
-layout_mode = 0
 offset_left = 68.0
 offset_top = 445.0
 offset_right = 136.0
@@ -33,18 +34,16 @@ offset_bottom = 647.0
 fill_mode = 3
 show_percentage = false
 
-[node name="PreviewHealthBar" type="ProgressBar" parent="."]
+[node name="PreviewHealthBar" type="ProgressBar" parent="CanvasLayer"]
 modulate = Color(100, 0, 0, 1)
-layout_mode = 0
 offset_top = 444.0
 offset_right = 67.0
 offset_bottom = 647.0
 fill_mode = 3
 show_percentage = false
 
-[node name="ThirstBar" type="ProgressBar" parent="."]
+[node name="ThirstBar" type="ProgressBar" parent="CanvasLayer"]
 modulate = Color(0, 0, 100, 1)
-layout_mode = 0
 offset_left = 137.0
 offset_top = 444.0
 offset_right = 204.0
@@ -52,9 +51,14 @@ offset_bottom = 647.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
+[node name="Button" type="Button" parent="CanvasLayer"]
 offset_right = 456.0
 offset_bottom = 216.0
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="ResourcesCount" type="Label" parent="CanvasLayer"]
+offset_top = 420.0
+offset_right = 97.0
+offset_bottom = 443.0
+text = "Resources: 0"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
