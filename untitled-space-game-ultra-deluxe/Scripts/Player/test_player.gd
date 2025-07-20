@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export var flashlight: SpotLight3D
 @export var debug_console: TextEdit
 @export var multiplayer_helper: Label
+@export var Looking: RayCast3D
 var jump_velocity = 4.5
 var movement_speed = 5.0
 var sensitivity = 0.01
@@ -33,6 +34,7 @@ var crouch_stats = [
 ]
 var flashlight_enabled = false
 var in_debug_console = false
+var looking_object = null
 
 
 func _enter_tree() -> void:
@@ -149,6 +151,14 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Player_1_Flashlight") and is_multiplayer_authority():
 		if not in_debug_console:
 			flashlight.visible = not flashlight.visible
+	
+	if Looking.is_colliding():
+		looking_object = Looking.get_collider()
+		print(looking_object)
+		if Input.is_action_just_pressed("Player_1_Interact"):
+			global.collected_object = looking_object
+			print(global.collected_object)
+			
 
 
 # Camera Shit

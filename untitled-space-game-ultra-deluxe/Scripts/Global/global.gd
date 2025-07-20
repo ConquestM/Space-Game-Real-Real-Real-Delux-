@@ -6,6 +6,8 @@ var health: int = 100 : set = _hp_change
 var hunger: float = 100 
 var thirst: float = 100 
 var hp_changing: bool = false
+var collected_object: Object = null
+var resources: int = 0
 
 
 func _hp_change(_value):

@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://dkv47a61k4hlg"]
+[gd_scene load_steps=3 format=3 uid="uid://dkv47a61k4hlg"]
+
+[ext_resource type="PackedScene" uid="uid://d4ketexknrx3m" path="res://Scenes/Testing/hunter_test_scene.tscn" id="1_5ywjb"]
+[ext_resource type="PackedScene" uid="uid://6f6p5l0qx3ke" path="res://Scenes/Planet/Resource.tscn" id="2_rrtud"]
 
 [node name="Michael_Test_Scene" type="Node3D"]
+
+[node name="Hunter_Test_Scene" parent="." instance=ExtResource("1_5ywjb")]
+
+[node name="Resource" parent="Hunter_Test_Scene" instance=ExtResource("2_rrtud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.91721, 0.595998, 0)
