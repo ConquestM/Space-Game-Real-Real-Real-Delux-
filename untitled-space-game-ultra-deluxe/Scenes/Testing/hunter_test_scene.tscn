@@ -118,12 +118,13 @@ texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w0wr8"]
 
-[node name="Hunter_Test_Scene" type="Node3D" node_paths=PackedStringArray("daynight_cycle_timer", "world_enviroment", "terrain")]
+[node name="Hunter_Test_Scene" type="Node3D" node_paths=PackedStringArray("daynight_cycle_timer", "world_enviroment", "terrain", "the_sun")]
 script = ExtResource("1_w0wr8")
 daynight_cycle_timer = NodePath("DayNightCycleTimer")
 world_enviroment = NodePath("WorldEnvironment")
 player_scene = ExtResource("2_x5wmc")
 terrain = NodePath("Terrain")
+the_sun = NodePath("THE FUCKING SUN")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_ol02s")
@@ -144,6 +145,15 @@ mesh = SubResource("BoxMesh_ote7y")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_w0wr8")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94689, 1.40765, 1.69655)
+mesh = SubResource("BoxMesh_ote7y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_w0wr8")
+
 [node name="DayNightCycleTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
@@ -160,6 +170,13 @@ autostart = true
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://2dwnnhs7udlh")
 spawn_path = NodePath("..")
+
+[node name="THE FUCKING SUN" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 8.74095e-08, 1.52573e-09, 0, -0.0174523, 0.999848, 8.74228e-08, 0.999848, 0.0174523, 0, 0, 0)
+light_color = Color(1, 1, 0.882353, 1)
+light_angular_distance = 7.7
+shadow_enabled = true
+shadow_normal_bias = 1.0
 
 [connection signal="timeout" from="DayNightCycleTimer" to="." method="_on_day_night_cycle_timer_timeout"]
 [connection signal="timeout" from="WeatherHandler/FogIncreaseTimer" to="WeatherHandler" method="_on_fog_increase_timer_timeout"]

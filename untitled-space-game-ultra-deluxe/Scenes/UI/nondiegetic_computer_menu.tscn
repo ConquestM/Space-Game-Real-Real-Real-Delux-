@@ -1,16 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv4km2o3f32gn"]
+[gd_scene load_steps=5 format=3 uid="uid://dv4km2o3f32gn"]
 
 [ext_resource type="Script" uid="uid://drr3d6xewk8fp" path="res://Scripts/UI/nondiegetic_computer.gd" id="1_u0jsy"]
 [ext_resource type="Texture2D" uid="uid://des3jjyaijs3b" path="res://Sprites/icon.svg" id="3_lf1we"]
 [ext_resource type="Theme" uid="uid://xersx1rqgqqv" path="res://Themes/computer_terminal.tres" id="4_88gcs"]
+[ext_resource type="PackedScene" uid="uid://bjdhwr6uhqfmk" path="res://Scenes/UI/loading_screen.tscn" id="4_ljg75"]
 
-[node name="ComputerScene" type="Node2D" node_paths=PackedStringArray("main_selector", "main_buttons", "multiplayer_buttons", "multiplayer_inputer_join", "multiplayer_inputer_host")]
+[node name="ComputerScene" type="Node2D" node_paths=PackedStringArray("main_selector", "main_buttons", "multiplayer_buttons", "multiplayer_inputer_join", "multiplayer_inputer_host", "save_files")]
 script = ExtResource("1_u0jsy")
 main_selector = NodePath("Computer/Selector")
 main_buttons = NodePath("Computer/Buttons")
 multiplayer_buttons = NodePath("Computer/Multiplayer Buttons")
 multiplayer_inputer_join = NodePath("Computer/Online Stuff Inputer (Join)")
 multiplayer_inputer_host = NodePath("Computer/Online Stuff Inputer (Host)")
+save_files = NodePath("Computer/Save Files")
 metadata/_edit_lock_ = true
 
 [node name="BG" type="Node2D" parent="."]
@@ -158,9 +160,9 @@ offset_bottom = 40.0
 
 [node name="Port" type="Label" parent="Computer/Online Stuff Inputer (Host)"]
 layout_mode = 0
-offset_left = -249.0
+offset_left = -278.0
 offset_top = -261.0
-offset_right = 48.0
+offset_right = 19.0
 offset_bottom = -181.0
 theme = ExtResource("4_88gcs")
 text = "Port Address"
@@ -179,9 +181,9 @@ caret_blink = true
 
 [node name="Join" type="Button" parent="Computer/Online Stuff Inputer (Host)"]
 layout_mode = 0
-offset_left = -249.0
+offset_left = -278.0
 offset_top = -51.0
-offset_right = -161.0
+offset_right = -170.0
 offset_bottom = 26.0
 theme = ExtResource("4_88gcs")
 text = "Host"
@@ -189,9 +191,9 @@ alignment = 0
 
 [node name="Back" type="Button" parent="Computer/Online Stuff Inputer (Host)"]
 layout_mode = 0
-offset_left = -257.0
+offset_left = -286.0
 offset_top = 167.0
-offset_right = -146.0
+offset_right = -175.0
 offset_bottom = 244.0
 theme = ExtResource("4_88gcs")
 text = "Back
@@ -207,9 +209,9 @@ offset_bottom = 40.0
 
 [node name="IP" type="Label" parent="Computer/Online Stuff Inputer (Join)"]
 layout_mode = 0
-offset_left = -249.0
+offset_left = -278.0
 offset_top = -261.0
-offset_right = -6.0
+offset_right = -35.0
 offset_bottom = -181.0
 theme = ExtResource("4_88gcs")
 text = "IP Address"
@@ -227,9 +229,9 @@ caret_blink = true
 
 [node name="Port" type="Label" parent="Computer/Online Stuff Inputer (Join)"]
 layout_mode = 0
-offset_left = -249.0
+offset_left = -278.0
 offset_top = -47.0
-offset_right = 48.0
+offset_right = 19.0
 offset_bottom = 33.0
 theme = ExtResource("4_88gcs")
 text = "Port Address"
@@ -248,9 +250,9 @@ caret_blink = true
 
 [node name="Join" type="Button" parent="Computer/Online Stuff Inputer (Join)"]
 layout_mode = 0
-offset_left = -249.0
+offset_left = -278.0
 offset_top = 163.0
-offset_right = -161.0
+offset_right = -190.0
 offset_bottom = 240.0
 theme = ExtResource("4_88gcs")
 text = "Join
@@ -259,10 +261,60 @@ alignment = 0
 
 [node name="Back" type="Button" parent="Computer/Online Stuff Inputer (Join)"]
 layout_mode = 0
-offset_left = 116.0
+offset_left = 87.0
 offset_top = 163.0
-offset_right = 227.0
+offset_right = 198.0
 offset_bottom = 240.0
+theme = ExtResource("4_88gcs")
+text = "Back
+"
+alignment = 0
+
+[node name="Save Files" type="Control" parent="Computer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Save" type="Button" parent="Computer/Save Files"]
+layout_mode = 0
+offset_left = -275.0
+offset_top = -265.0
+offset_right = -167.0
+offset_bottom = -188.0
+theme = ExtResource("4_88gcs")
+text = "Save File 1"
+alignment = 0
+
+[node name="Save2" type="Button" parent="Computer/Save Files"]
+layout_mode = 0
+offset_left = -275.0
+offset_top = -158.0
+offset_right = -187.0
+offset_bottom = -81.0
+theme = ExtResource("4_88gcs")
+text = "Save File 2
+"
+alignment = 0
+
+[node name="Save3" type="Button" parent="Computer/Save Files"]
+layout_mode = 0
+offset_left = -275.0
+offset_top = -51.0
+offset_right = -164.0
+offset_bottom = 26.0
+theme = ExtResource("4_88gcs")
+text = "Save File 3
+"
+alignment = 0
+
+[node name="Back" type="Button" parent="Computer/Save Files"]
+layout_mode = 0
+offset_left = -278.0
+offset_top = 167.0
+offset_right = -167.0
+offset_bottom = 244.0
 theme = ExtResource("4_88gcs")
 text = "Back
 "
@@ -275,9 +327,17 @@ default_color = Color(0, 0.705882, 0, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 metadata/_edit_lock_ = true
 
+[node name="LoadingScreen" parent="." node_paths=PackedStringArray("get_progress_from") instance=ExtResource("4_ljg75")]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+get_progress_from = NodePath("..")
+
 [connection signal="pressed" from="Computer/Buttons/Singleplayer" to="." method="_on_singleplayer_pressed"]
 [connection signal="pressed" from="Computer/Buttons/Multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="Computer/Multiplayer Buttons/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Computer/Multiplayer Buttons/JoinMenu" to="." method="_on_join_menu_pressed"]
 [connection signal="pressed" from="Computer/Online Stuff Inputer (Host)/Join" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="Computer/Online Stuff Inputer (Join)/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Computer/Save Files/Back" to="." method="_back"]

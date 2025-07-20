@@ -37,14 +37,15 @@ var in_debug_console = false
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
-	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 	if global.multiplayer_on:
+		multiplayer_helper.get_parent().show()
 		multiplayer_helper.text = "YOUR IP ADDRESS IS:
 			" + Online.hostip
 		multiplayer_helper.get_child(0).text = "THE PORT IS:
 			" + str(Online.port)
 	else:
-		multiplayer_helper.hide()
+		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+		multiplayer_helper.get_parent().queue_free()
 
 
 func _physics_process(delta: float) -> void:
@@ -140,11 +141,9 @@ func _process(_delta: float) -> void:
 		if cursor_mode:
 			# Locked Mouse
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
-			multiplayer_helper.visible = false
 		else:
 			# Unlocked Mouse
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
-			multiplayer_helper.visible = true
 	
 	# flashlight Code
 	if Input.is_action_just_pressed("Player_1_Flashlight") and is_multiplayer_authority():
@@ -169,3 +168,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_coyote_timer_timeout() -> void:
 	can_jump = false
 	coyote_timer_on = false
+
+
+func _on_window_close_requested() -> void:
+	multiplayer_helper.get_parent().queue_free()
