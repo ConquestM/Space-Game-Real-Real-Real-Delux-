@@ -8,11 +8,15 @@ const FOG_INCREASER: float = 0.02
 @export var world_enviroment: WorldEnvironment
 @export var player_scene: PackedScene
 @export var terrain: Terrain3D
+# Sun Stuff
 @export var the_sun: DirectionalLight3D
 var sun_lerp: float = 270.0
+# Time Stuff
 var day_or_night: bool = true # True = Day, False = Night
 var can_increase_time: bool = true
+# Multiplayer Stuff
 var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+
 
 
 func _ready() -> void:

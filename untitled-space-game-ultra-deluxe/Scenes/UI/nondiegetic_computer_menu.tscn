@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://xersx1rqgqqv" path="res://Themes/computer_terminal.tres" id="4_88gcs"]
 [ext_resource type="PackedScene" uid="uid://bjdhwr6uhqfmk" path="res://Scenes/UI/loading_screen.tscn" id="4_ljg75"]
 
-[node name="ComputerScene" type="Node2D" node_paths=PackedStringArray("main_selector", "main_buttons", "multiplayer_buttons", "multiplayer_inputer_join", "multiplayer_inputer_host", "save_files")]
+[node name="ComputerScene" type="Node2D" node_paths=PackedStringArray("main_selector", "main_buttons", "multiplayer_buttons", "multiplayer_inputer_join", "multiplayer_inputer_host", "save_files", "loading_screen")]
 script = ExtResource("1_u0jsy")
 main_selector = NodePath("Computer/Selector")
 main_buttons = NodePath("Computer/Buttons")
@@ -13,6 +13,7 @@ multiplayer_buttons = NodePath("Computer/Multiplayer Buttons")
 multiplayer_inputer_join = NodePath("Computer/Online Stuff Inputer (Join)")
 multiplayer_inputer_host = NodePath("Computer/Online Stuff Inputer (Host)")
 save_files = NodePath("Computer/Save Files")
+loading_screen = NodePath("LoadingScreen")
 metadata/_edit_lock_ = true
 
 [node name="BG" type="Node2D" parent="."]
@@ -328,6 +329,7 @@ default_color = Color(0, 0.705882, 0, 1)
 metadata/_edit_lock_ = true
 
 [node name="LoadingScreen" parent="." node_paths=PackedStringArray("get_progress_from") instance=ExtResource("4_ljg75")]
+visible = false
 offset_left = -576.0
 offset_top = -324.0
 offset_right = -576.0

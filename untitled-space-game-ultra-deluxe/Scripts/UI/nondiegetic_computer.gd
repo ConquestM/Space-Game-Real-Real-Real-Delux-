@@ -2,7 +2,7 @@ extends Node2D
 
 
 # Saved Scenes
-const test_game_scene = "res://Scenes/Testing/hunter_test_scene.tscn"
+const TEST_GAME_SCENE = "res://Scenes/Testing/hunter_test_scene.tscn"
 # In Scene Stuff
 @export var main_selector: Line2D
 @export var main_buttons: Control
@@ -10,6 +10,7 @@ const test_game_scene = "res://Scenes/Testing/hunter_test_scene.tscn"
 @export var multiplayer_inputer_join: Control
 @export var multiplayer_inputer_host: Control
 @export var save_files: Control
+@export var loading_screen: Control
 # Menuing Stuff
 var current_menu: int = 0
 var menus: Array
@@ -34,7 +35,6 @@ var loading_progress: Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ResourceLoader.load_threaded_request(test_game_scene)
 	menus = [
 		main_buttons,
 		multiplayer_buttons,
@@ -47,8 +47,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	ResourceLoader.load_threaded_get_status(test_game_scene, loading_progress)
-	print(loading_progress)
 	var current_menu_button = menus[current_menu].get_child(current_button[current_menu])
 	main_selector.position.x = (current_menu_button.position.x + current_menu_button.size.x + 50)
 	main_selector.position.y = current_menu_button.position.y
@@ -81,18 +79,19 @@ func _on_multiplayer_pressed() -> void:
 func _on_host_pressed() -> void:
 	global.multiplayer_on = true
 	Online.hosting = true
-	get_tree().change_scene_to_file(test_game_scene)
+	get_tree().change_scene_to_file(TEST_GAME_SCENE)
 
 
 func _on_join_pressed() -> void:
 	global.multiplayer_on = true
 	Online.joining = true
-	get_tree().change_scene_to_file(test_game_scene)
+	get_tree().change_scene_to_file(TEST_GAME_SCENE)
 
 
 func _load_scene(_save_file: int):
-	var load_it_slowly = ResourceLoader.load_threaded_get(test_game_scene)
-	get_tree().change_scene_to_file(test_game_scene)
+	loading_screen.selected_scene = TEST_GAME_SCENE
+	loading_screen._start()
+	loading_screen.show()
 
 
 func _back():
