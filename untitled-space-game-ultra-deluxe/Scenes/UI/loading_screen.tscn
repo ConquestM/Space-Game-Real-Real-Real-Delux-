@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ck0q2ipimeep" path="res://Scripts/UI/loading_screen.gd" id="1_qj53y"]
 
-[node name="LoadingScreen" type="Control" node_paths=PackedStringArray("progress_bar")]
+[node name="LoadingScreen" type="Control" node_paths=PackedStringArray("progress_bar", "timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qj53y")
 progress_bar = NodePath("ProgressBar")
+timer = NodePath("wait")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -24,3 +25,8 @@ offset_left = 76.0
 offset_top = 500.0
 offset_right = 1076.0
 offset_bottom = 530.0
+
+[node name="wait" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="wait" to="." method="_on_wait_timeout"]
