@@ -33,7 +33,6 @@ var crouch_stats = [
 	0.25 # Camera Height 
 ]
 var flashlight_enabled = false
-var in_debug_console = false
 var looking_object = null
 
 
@@ -51,93 +50,92 @@ func _enter_tree() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# Check if in cutscene or smth simmilar
+	# Multiplayer Checks
+	if not is_multiplayer_authority():
+		camera_rotator.get_node("Camera3D").current = false
+	else:
+		model.get_node("Visor").hide()
+	
+	
+	if ConsoleCommands.unstuck == true:
+		position.y += 50
+		ConsoleCommands.unstuck = false
+	
+	# Handle Gravity
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		if coyote_timer_on == false:
+			coyote_timer.start()
+			coyote_timer_on = true
+	else:
+		can_jump = true
+
+	# Allows player to jump if coyote time is on or if they are on the ground
+	if Input.is_action_just_pressed("Player_1_Jump"):
+		if can_jump and is_multiplayer_authority() and global.can_player_move:
+			velocity.y = jump_velocity * ConsoleCommands.player_jump
+			can_jump = false
+			global.last_player_pos = position + Vector3(0, 2, 0)
+
+	# Movement
 	if global.can_player_move:
-		# Multiplayer Checks
-		if not is_multiplayer_authority():
-			camera_rotator.get_node("Camera3D").current = false
-		else:
-			model.get_node("Visor").hide()
-		
-		
-		if ConsoleCommands.unstuck == true:
-			position.y += 50
-			ConsoleCommands.unstuck = false
-		
-		# Handle Gravity
-		if not is_on_floor():
-			velocity += get_gravity() * delta
-			if coyote_timer_on == false:
-				coyote_timer.start()
-				coyote_timer_on = true
-		else:
-			can_jump = true
-
-			# Allows player to jump if coyote time is on or if they are on the ground
-			if Input.is_action_just_pressed("Player_1_Jump") and can_jump and not in_debug_console and is_multiplayer_authority():
-				velocity.y = jump_velocity * ConsoleCommands.player_jump
-				can_jump = false
-				# Save where player jumped from
-				global.last_player_pos = Vector3(position.x, position.y + 50, position.z)
-				print(global.last_player_pos)
-
-		# Movement
-		if not in_debug_console:
-			# Avoid controlling other players, only yourself
-			if is_multiplayer_authority():
-				var input_dir := Input.get_vector("Player_1_Left", "Player_1_Right", "Player_1_Forwards", "Player_1_Backwards")
-				var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-				if direction:
-					# Moves positively in x and z because direction is positive
-					velocity.x = (direction.x * movement_speed)
-					velocity.z = (direction.z * movement_speed)
-				else:
-					# Moves Negatively in x and z because direction is Negative
-					velocity.x = move_toward(velocity.x, 0, movement_speed)
-					velocity.z = move_toward(velocity.z, 0, movement_speed)
-				
-				# Sprinting
-				if Input.is_action_pressed("Player_1_Sprint"):
-					# Set Sprinting stats
-					movement_speed = sprint_stats[0] * ConsoleCommands.player_speed
-					if camera_rotator.get_node("Camera3D").fov < fov + sprint_stats[1]:
-						camera_rotator.get_node("Camera3D").fov += sprint_stats[2]
-				else:
-					# Set Normal Stats if not sprinting
-					movement_speed = normal_stats[0] * ConsoleCommands.player_speed
-					if camera_rotator.get_node("Camera3D").fov > fov:
-						camera_rotator.get_node("Camera3D").fov -= sprint_stats[2]
-				
-				# Crouching
-				if Input.is_action_just_pressed("Player_1_Crouch"): 
-					# Smoothen camera going down
-					position.y -= 0.5
-				if Input.is_action_pressed("Player_1_Crouch"):
-					# Set Crouch Stats if crouching
-					movement_speed = crouch_stats[0] * ConsoleCommands.player_speed
-					model.mesh.height = crouch_stats[1]
-					collision.shape.height = crouch_stats[1]
-					camera_rotator.position.y = crouch_stats[2]
-				elif not Input.is_action_pressed("Player_1_Sprint"):
-					# Set Normal Stats if not sprinting
-					movement_speed = normal_stats[0] * ConsoleCommands.player_speed
-					model.mesh.height = normal_stats[1]
-					collision.shape.height = normal_stats[1]
-					camera_rotator.position.y = normal_stats[2]
+		# Avoid controlling other players, only yourself
+		if is_multiplayer_authority():
+			var input_dir := Input.get_vector("Player_1_Left", "Player_1_Right", "Player_1_Forwards", "Player_1_Backwards")
+			var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			if direction:
+				# Moves positively in x and z because direction is positive
+				velocity.x = (direction.x * movement_speed)
+				velocity.z = (direction.z * movement_speed)
+			else:
+				# Moves Negatively in x and z because direction is Negative
+				velocity.x = move_toward(velocity.x, 0, movement_speed)
+				velocity.z = move_toward(velocity.z, 0, movement_speed)
+			
+			# Sprinting
+			if Input.is_action_pressed("Player_1_Sprint"):
+				# Set Sprinting stats
+				movement_speed = sprint_stats[0] * ConsoleCommands.player_speed
+				if camera_rotator.get_node("Camera3D").fov < fov + sprint_stats[1]:
+					camera_rotator.get_node("Camera3D").fov += sprint_stats[2]
+			else:
+				# Set Normal Stats if not sprinting
+				movement_speed = normal_stats[0] * ConsoleCommands.player_speed
+				if camera_rotator.get_node("Camera3D").fov > fov:
+					camera_rotator.get_node("Camera3D").fov -= sprint_stats[2]
+			
+			# Crouching
+			if Input.is_action_just_pressed("Player_1_Crouch"): 
+				# Smoothen camera going down
+				position.y -= 0.5
+			if Input.is_action_pressed("Player_1_Crouch"):
+				# Set Crouch Stats if crouching
+				movement_speed = crouch_stats[0] * ConsoleCommands.player_speed
+				model.mesh.height = crouch_stats[1]
+				collision.shape.height = crouch_stats[1]
+				camera_rotator.position.y = crouch_stats[2]
+			elif not Input.is_action_pressed("Player_1_Sprint"):
+				# Set Normal Stats if not sprinting
+				movement_speed = normal_stats[0] * ConsoleCommands.player_speed
+				model.mesh.height = normal_stats[1]
+				collision.shape.height = normal_stats[1]
+				camera_rotator.position.y = normal_stats[2]
 
 	move_and_slide()
 
 
 # Non-Physics Processing
 func _process(_delta: float) -> void:
+	if global.resources == 3:
+		$Control/Label.hide()
 	# Debug Console
 	if Input.is_action_just_pressed("Enable_Debug_Console") and is_multiplayer_authority():
-		if in_debug_console:
+		if not global.can_player_move:
 			ConsoleCommands.current_command = debug_console.text.split(" ", true)
 			ConsoleCommands._execute_command()
 		else:
 			debug_console.grab_focus()
-		in_debug_console = not in_debug_console
+		global.can_player_move = not global.can_player_move
 		debug_console.text = ""
 		debug_console.visible = not debug_console.visible
 		debug_console.editable = not debug_console.editable
@@ -154,7 +152,7 @@ func _process(_delta: float) -> void:
 	
 	# flashlight Code
 	if Input.is_action_just_pressed("Player_1_Flashlight") and is_multiplayer_authority():
-		if not in_debug_console:
+		if global.can_player_move:
 			flashlight.visible = not flashlight.visible
 	
 	if Looking.is_colliding():
@@ -163,7 +161,6 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("Player_1_Interact"):
 			global.collected_object = looking_object
 			print(global.collected_object)
-			
 
 
 # Camera Shit

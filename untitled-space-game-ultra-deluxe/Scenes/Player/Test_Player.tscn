@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://2dwnnhs7udlh"]
+[gd_scene load_steps=10 format=3 uid="uid://2dwnnhs7udlh"]
 
-[ext_resource type="Script" uid="uid://dmyxo2atj20sh" path="res://Scripts/Player/test_player.gd" id="1_oopm7"]
+[ext_resource type="Script" uid="uid://dt0tqgm60pyve" path="res://Scripts/Player/player.gd" id="1_ox56v"]
+[ext_resource type="PackedScene" uid="uid://cg61srfpqg77o" path="res://Scenes/UI/resource_bars.tscn" id="2_nxyyc"]
 [ext_resource type="Theme" uid="uid://xersx1rqgqqv" path="res://Themes/computer_terminal.tres" id="2_ox56v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oopm7"]
@@ -31,8 +32,8 @@ properties/3/path = NodePath("RotationHelper:rotation")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
-[node name="Player1" type="CharacterBody3D" node_paths=PackedStringArray("model", "collision", "camera_rotator", "coyote_timer", "flashlight", "debug_console", "multiplayer_helper")]
-script = ExtResource("1_oopm7")
+[node name="Player1" type="CharacterBody3D" node_paths=PackedStringArray("model", "collision", "camera_rotator", "coyote_timer", "flashlight", "debug_console", "multiplayer_helper", "Looking")]
+script = ExtResource("1_ox56v")
 model = NodePath("Model")
 collision = NodePath("Collision")
 camera_rotator = NodePath("RotationHelper")
@@ -40,6 +41,7 @@ coyote_timer = NodePath("CoyoteTimer")
 flashlight = NodePath("RotationHelper/Camera3D/Flashlight")
 debug_console = NodePath("Control/TextEdit")
 multiplayer_helper = NodePath("Window/MultiplayerHelper")
+Looking = NodePath("RotationHelper/Camera3D/RayCast3D")
 
 [node name="Model" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_oopm7")
@@ -72,6 +74,10 @@ distance_fade_shadow = 15.0
 spot_range = 7.5
 spot_angle = 25.0
 
+[node name="RayCast3D" type="RayCast3D" parent="RotationHelper/Camera3D"]
+visible = false
+target_position = Vector3(0, 0, -3)
+
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
@@ -91,6 +97,18 @@ offset_bottom = 648.0
 text = "Enter Command"
 placeholder_text = "Enter Command"
 editable = false
+
+[node name="ResourceBars" parent="Control" instance=ExtResource("2_nxyyc")]
+layout_mode = 1
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("2_ox56v")
+theme_override_font_sizes/font_size = 32
+text = "Current Objective:
+Collect Red Objects"
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_oopm7")
