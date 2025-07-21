@@ -91,9 +91,6 @@ metadata/spin = true
 [node name="MeshInstance3D" parent="Grounds/Area2/SimResource2" index="0"]
 visible = false
 
-[node name="CollisionShape3D" parent="Grounds/Area2/SimResource2" index="1"]
-debug_color = Color(0.635294, 0.196078, 0.180392, 1)
-
 [node name="SimResource3" parent="Grounds/Area2" instance=ExtResource("4_w857d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96712, 2, -19.9236)
 metadata/spin = true
@@ -103,7 +100,6 @@ visible = false
 
 [node name="CollisionShape3D" parent="Grounds/Area2/SimResource3" index="1"]
 shape = SubResource("SphereShape3D_uqebe")
-debug_color = Color(0.635294, 0.196078, 0.180392, 1)
 
 [node name="Respawn" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, -11.5)

@@ -3,6 +3,7 @@ extends Node2D
 
 # Saved Scenes
 const TEST_GAME_SCENE = "res://Scenes/Testing/hunter_test_scene.tscn"
+const GAME_START = "res://Scenes/Gameplay Scenes/Non-Planetoid/tutorial.tscn"
 # In Scene Stuff
 @export var main_selector: Line2D
 @export var main_buttons: Control
@@ -89,7 +90,7 @@ func _on_join_pressed() -> void:
 
 
 func _load_scene(_save_file: int):
-	loading_screen.selected_scene = TEST_GAME_SCENE
+	loading_screen.selected_scene = GAME_START
 	loading_screen._start()
 	loading_screen.show()
 

@@ -13,11 +13,11 @@ func _ready() -> void:
 	if OS.has_feature("windows"):
 		print("windows")
 		if OS.has_environment("COMPUTERNAME"):
-			hostip =  IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1)
+			hostip = IP.get_local_addresses()[5]
 	elif OS.has_feature("linuxbsd"):
 		print("linux")
 		if OS.has_environment("HOSTNAME"):
-			hostip =  IP.resolve_hostname(str(OS.get_environment("HOSTNAME")),1)
+			hostip = IP.resolve_hostname(str(OS.get_environment("HOSTNAME")),1)
 	elif OS.has_feature("macos"):
 		print("mac")
 		if OS.has_environment("USER"):
