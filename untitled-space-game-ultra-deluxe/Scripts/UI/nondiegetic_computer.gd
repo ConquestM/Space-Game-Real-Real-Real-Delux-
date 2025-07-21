@@ -3,7 +3,7 @@ extends Node2D
 
 # Saved Scenes
 const TEST_GAME_SCENE = "res://Scenes/Testing/hunter_test_scene.tscn"
-const GAME_START = "res://Scenes/Gameplay Scenes/Non-Planetoid/tutorial.tscn"
+const TUTORIAL_SCENE = "res://Scenes/Gameplay Scenes/Non-Planetoid/tutorial.tscn"
 # In Scene Stuff
 @export var main_selector: Line2D
 @export var main_buttons: Control
@@ -80,17 +80,17 @@ func _on_multiplayer_pressed() -> void:
 func _on_host_pressed() -> void:
 	global.multiplayer_on = true
 	Online.hosting = true
-	get_tree().change_scene_to_file(TEST_GAME_SCENE)
+	_load_scene(0, TUTORIAL_SCENE)
 
 
 func _on_join_pressed() -> void:
 	global.multiplayer_on = true
 	Online.joining = true
-	get_tree().change_scene_to_file(TEST_GAME_SCENE)
+	_load_scene(0, TUTORIAL_SCENE)
 
 
-func _load_scene(_save_file: int):
-	loading_screen.selected_scene = GAME_START
+func _load_scene(_save_file: int, selected_scene):
+	loading_screen.selected_scene = selected_scene
 	loading_screen._start()
 	loading_screen.show()
 
@@ -179,7 +179,7 @@ func _enter():
 	# Save File Menu Stuff
 	elif current_menu == 4:
 		if current_button[current_menu] == 0 or current_button[current_menu] == 1 or current_button[current_menu] == 2:
-			_load_scene(0)
+			_load_scene(0, TUTORIAL_SCENE)
 		elif current_button[current_menu] == 3:
 			_back()
 	_get_max_menu_buttons()

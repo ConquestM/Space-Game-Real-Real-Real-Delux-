@@ -30,6 +30,7 @@ size = Vector3(0.75, 0.5, 1)
 [node name="Tutorial" type="Node3D" node_paths=PackedStringArray("lerp_timer")]
 script = ExtResource("1_oe6tc")
 lerp_timer = NodePath("Respawn/lerptimer")
+player_scene = ExtResource("4_i0kwk")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_sw33o")
@@ -112,8 +113,9 @@ shape = SubResource("WorldBoundaryShape3D_w857d")
 [node name="lerptimer" type="Timer" parent="Respawn"]
 wait_time = 2.0
 
-[node name="Player1" parent="." instance=ExtResource("4_i0kwk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.19062, 2.41964, 3.25905)
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://2dwnnhs7udlh")
+spawn_path = NodePath("..")
 
 [connection signal="body_entered" from="Respawn" to="." method="_on_respawn_body_entered"]
 [connection signal="timeout" from="Respawn/lerptimer" to="." method="_on_lerptimer_timeout"]
