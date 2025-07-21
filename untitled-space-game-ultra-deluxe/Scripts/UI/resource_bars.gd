@@ -17,7 +17,3 @@ func _process(_delta: float) -> void:
 	hunger_bar.value = global.hunger
 	thirst_bar.value = global.thirst
 	resources_count.text = "Resources: " + str(global.resources)
-
-
-func _on_button_pressed():
-	global.health -= 5

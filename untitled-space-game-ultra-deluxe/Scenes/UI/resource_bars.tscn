@@ -51,14 +51,8 @@ offset_bottom = 647.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_right = 456.0
-offset_bottom = 216.0
-
 [node name="ResourcesCount" type="Label" parent="CanvasLayer"]
 offset_top = 420.0
 offset_right = 97.0
 offset_bottom = 443.0
 text = "Resources: 0"
-
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

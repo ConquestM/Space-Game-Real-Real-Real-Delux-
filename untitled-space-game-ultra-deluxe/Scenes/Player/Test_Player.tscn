@@ -77,6 +77,7 @@ spot_angle = 25.0
 
 [node name="RayCast3D" type="RayCast3D" parent="RotationHelper/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -0.11162, -0.928609, 0, 2.71528, -0.0381734, 0, 0, 0)
+visible = false
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.15
