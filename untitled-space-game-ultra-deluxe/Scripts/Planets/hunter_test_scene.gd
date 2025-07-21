@@ -27,7 +27,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	print("Fog:", ConsoleCommands.level_of_fog, " Time:", ConsoleCommands.time_of_day)
+	if global.debug_mode:
+		print("Fog:", ConsoleCommands.level_of_fog, " Time:", ConsoleCommands.time_of_day)
 	# Set world to their variables
 	world_enviroment.environment.sky.sky_material.sky_energy_multiplier = ConsoleCommands.time_of_day
 	world_enviroment.environment.ambient_light_energy = ConsoleCommands.time_of_day

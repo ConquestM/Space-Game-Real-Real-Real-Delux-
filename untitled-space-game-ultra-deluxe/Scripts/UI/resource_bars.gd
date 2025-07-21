@@ -10,7 +10,8 @@ func _process(_delta: float) -> void:
 	delayed_bar.value = global.health
 	if global.hp_changing == false:
 		health_bar.value = delayed_bar.value
-	print(delayed_bar.value)
+	if global.debug_mode:
+		print(delayed_bar.value)
 	global.hunger -= 0.05
 	global.thirst -= 0.1
 	hunger_bar.value = global.hunger

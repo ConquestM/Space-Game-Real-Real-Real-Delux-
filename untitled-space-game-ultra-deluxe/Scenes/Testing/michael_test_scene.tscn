@@ -7,5 +7,5 @@
 
 [node name="Hunter_Test_Scene" parent="." instance=ExtResource("1_5ywjb")]
 
-[node name="Resource" parent="Hunter_Test_Scene" instance=ExtResource("2_rrtud")]
+[node name="Resource2" parent="Hunter_Test_Scene" instance=ExtResource("2_rrtud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.91721, 0.595998, 0)
