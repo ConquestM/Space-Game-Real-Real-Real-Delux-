@@ -126,8 +126,6 @@ func _physics_process(delta: float) -> void:
 
 # Non-Physics Processing
 func _process(_delta: float) -> void:
-	if global.resources == 3:
-		$Control/Label.hide()
 	# Debug Console
 	if Input.is_action_just_pressed("Enable_Debug_Console") and is_multiplayer_authority():
 		if not global.can_player_move:
