@@ -1,4 +1,17 @@
-[gd_scene format=3 uid="uid://btayc7jxe623f"]
+[gd_scene load_steps=10 format=3 uid="uid://btayc7jxe623f"]
+
+[ext_resource type="Texture2D" uid="uid://0varscxlrhgr" path="res://Sprites/devart_choice_selector.png" id="1_14c37"]
+[ext_resource type="Script" uid="uid://d04rpg4v03jkv" path="res://Scripts/UI/choice_selectors.gd" id="1_ocfk1"]
+[ext_resource type="Texture2D" uid="uid://ruoo5p3heiwc" path="res://Sprites/dev art/devart_choice_fight.png" id="2_d7pnp"]
+[ext_resource type="Script" uid="uid://dpufibdhw2xip" path="res://Scripts/UI/Choice Stuff/choices.gd" id="3_oc57t"]
+[ext_resource type="Texture2D" uid="uid://bnfd8l7cfcpnk" path="res://Sprites/dev art/devart_choice_resources.png" id="3_ocfk1"]
+[ext_resource type="Texture2D" uid="uid://jsiwsxpcr7tm" path="res://Sprites/dev art/devart_choice_move.png" id="4_oc57t"]
+[ext_resource type="Texture2D" uid="uid://c5jf610pbof2d" path="res://Sprites/dev art/devart_choice_cancel.png" id="5_jcwk3"]
+[ext_resource type="Texture2D" uid="uid://jn3ndcjfj0cp" path="res://Sprites/dev art/devart_crosshair.png" id="8_jcwk3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_n8rc6"]
+radius = 25.0
+height = 50.0
 
 [node name="CrewUi" type="Control"]
 layout_mode = 3
@@ -7,3 +20,74 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Choice Selectors" type="Control" parent="." node_paths=PackedStringArray("selector")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ocfk1")
+selector = NodePath("../Moving Selector")
+
+[node name="Fight" type="Sprite2D" parent="Choice Selectors" node_paths=PackedStringArray("parent")]
+position = Vector2(0, -100)
+rotation = 0.785398
+texture = ExtResource("1_14c37")
+script = ExtResource("3_oc57t")
+parent = NodePath("..")
+
+[node name="DevartChoiceFight" type="Sprite2D" parent="Choice Selectors/Fight"]
+z_index = 1
+position = Vector2(-2.12132, -2.87868)
+rotation = 5.49779
+texture = ExtResource("2_d7pnp")
+
+[node name="Resources" type="Sprite2D" parent="Choice Selectors" node_paths=PackedStringArray("parent")]
+position = Vector2(100, 0)
+rotation = 2.35619
+texture = ExtResource("1_14c37")
+script = ExtResource("3_oc57t")
+parent = NodePath("..")
+
+[node name="DevartChoiceResources" type="Sprite2D" parent="Choice Selectors/Resources"]
+z_index = 1
+position = Vector2(-1.62131, -2.37868)
+rotation = 3.92699
+scale = Vector2(1, -1)
+texture = ExtResource("3_ocfk1")
+
+[node name="Move" type="Sprite2D" parent="Choice Selectors" node_paths=PackedStringArray("parent")]
+position = Vector2(0, 100)
+rotation = -2.3562
+texture = ExtResource("1_14c37")
+script = ExtResource("3_oc57t")
+parent = NodePath("..")
+
+[node name="DevartChoiceMove" type="Sprite2D" parent="Choice Selectors/Move"]
+z_index = 1
+position = Vector2(-3.57863, -5.21539)
+rotation = 2.3562
+scale = Vector2(1, -1)
+texture = ExtResource("4_oc57t")
+
+[node name="Cancel" type="Sprite2D" parent="Choice Selectors" node_paths=PackedStringArray("parent")]
+position = Vector2(-100, 0)
+rotation = 5.49779
+texture = ExtResource("1_14c37")
+script = ExtResource("3_oc57t")
+parent = NodePath("..")
+
+[node name="DevartChoiceCancel" type="Sprite2D" parent="Choice Selectors/Cancel"]
+z_index = 1
+position = Vector2(-3.17172, -4.75064)
+rotation = -0.785402
+texture = ExtResource("5_jcwk3")
+
+[node name="Moving Selector" type="MeshInstance2D" parent="."]
+mesh = SubResource("SphereMesh_n8rc6")
+
+[node name="DevartCrosshair" type="Sprite2D" parent="."]
+position = Vector2(-1, -2)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_jcwk3")
