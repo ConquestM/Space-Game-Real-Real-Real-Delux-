@@ -192,14 +192,14 @@ mesh = SubResource("BoxMesh_01wjg")
 [node name="Area4" type="Node" parent="Grounds"]
 
 [node name="Area1" type="StaticBody3D" parent="Grounds/Area4"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -70.7065)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -66.2006)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grounds/Area4/Area1"]
 shape = SubResource("HeightMapShape3D_sw33o")
 debug_color = Color(0, 0.6, 0, 0.419608)
 
 [node name="Crewmate" type="AnimatableBody3D" parent="Grounds/Area4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -73.8845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -69.3786)
 script = ExtResource("5_i0kwk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grounds/Area4/Crewmate"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://btayc7jxe623f"]
+[gd_scene load_steps=9 format=3 uid="uid://btayc7jxe623f"]
 
 [ext_resource type="Texture2D" uid="uid://0varscxlrhgr" path="res://Sprites/devart_choice_selector.png" id="1_14c37"]
 [ext_resource type="Script" uid="uid://d04rpg4v03jkv" path="res://Scripts/UI/choice_selectors.gd" id="1_ocfk1"]
@@ -9,10 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://c5jf610pbof2d" path="res://Sprites/dev art/devart_choice_cancel.png" id="5_jcwk3"]
 [ext_resource type="Texture2D" uid="uid://jn3ndcjfj0cp" path="res://Sprites/dev art/devart_crosshair.png" id="8_jcwk3"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_n8rc6"]
-radius = 25.0
-height = 50.0
-
 [node name="CrewUi" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -22,13 +18,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
 
 [node name="Choice Selectors" type="Control" parent="." node_paths=PackedStringArray("selector")]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 576.0
+offset_top = 324.0
+offset_right = 616.0
+offset_bottom = 364.0
 script = ExtResource("1_ocfk1")
-selector = NodePath("../Moving Selector")
+selector = NodePath("../DevartCrosshair")
 
 [node name="Fight" type="Sprite2D" parent="Choice Selectors" node_paths=PackedStringArray("parent")]
 position = Vector2(0, -100)
@@ -84,10 +83,7 @@ position = Vector2(-3.17172, -4.75064)
 rotation = -0.785402
 texture = ExtResource("5_jcwk3")
 
-[node name="Moving Selector" type="MeshInstance2D" parent="."]
-mesh = SubResource("SphereMesh_n8rc6")
-
 [node name="DevartCrosshair" type="Sprite2D" parent="."]
-position = Vector2(-1, -2)
-scale = Vector2(0.1, 0.1)
+position = Vector2(576, 324)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("8_jcwk3")

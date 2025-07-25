@@ -1,7 +1,7 @@
 extends Control
 
 const POS_INT: int = 45
-@export var selector: MeshInstance2D
+@export var selector: Sprite2D
 @export var pos_no: int = 0
 var dir: Vector2
 
@@ -16,10 +16,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	# Constantly lerping position for smooth movement
-	selector.position = lerp(selector.position, Vector2((POS_INT * dir.x),-(POS_INT * dir.y)), delta * 15)
+	selector.global_position = lerp(selector.global_position, Vector2(576, 324) + Vector2((POS_INT * dir.x),-(POS_INT * dir.y)), delta * 15)
 	
 	# If the player cannot move then let the selector move
-	if global.can_player_move:
+	if not global.can_player_move:
 		# Get Inputs to move the selector
 		dir = Input.get_vector("Player_1_Left", "Player_1_Right", "Player_1_Backwards", "Player_1_Forwards")
 		

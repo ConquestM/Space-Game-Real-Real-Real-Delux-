@@ -11,6 +11,8 @@ func _process(delta: float) -> void:
 	if parent.pos_no != 4 and self == parent.get_child(parent.pos_no):
 		scale_float = 1.15
 		if Input.is_action_just_pressed("Player_1_Interact"):
-			print(name)
+			if name == "Cancel":
+				get_parent().get_parent().queue_free()
+				global.can_player_move = true
 	else:
 		scale_float = 0.85
