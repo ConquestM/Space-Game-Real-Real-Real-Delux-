@@ -8,7 +8,8 @@ extends CharacterBody3D
 @export var flashlight: SpotLight3D
 @export var debug_console: TextEdit
 @export var multiplayer_helper: Label
-@export var Looking: RayCast3D
+@export var looking: RayCast3D
+@export var crosshair: Sprite2D
 var jump_velocity = 4.5
 var movement_speed = 5.0
 var sensitivity = 0.01
@@ -79,6 +80,8 @@ func _physics_process(delta: float) -> void:
 
 	# Movement
 	if global.can_player_move:
+		looking.target_position = Vector3(0, 0, -3)
+		crosshair.show()
 		# Avoid controlling other players, only yourself
 		if is_multiplayer_authority():
 			var input_dir := Input.get_vector("Player_1_Left", "Player_1_Right", "Player_1_Forwards", "Player_1_Backwards")
@@ -120,14 +123,15 @@ func _physics_process(delta: float) -> void:
 				model.mesh.height = normal_stats[1]
 				collision.shape.height = normal_stats[1]
 				camera_rotator.position.y = normal_stats[2]
+	else:
+		looking.target_position = Vector3(0, -3, -3)
+		crosshair.hide()
 
 	move_and_slide()
 
 
 # Non-Physics Processing
 func _process(_delta: float) -> void:
-	if global.resources == 3:
-		$Control/Label.hide()
 	# Debug Console
 	if Input.is_action_just_pressed("Enable_Debug_Console") and is_multiplayer_authority():
 		if not global.can_player_move:
@@ -155,15 +159,13 @@ func _process(_delta: float) -> void:
 		if global.can_player_move:
 			flashlight.visible = not flashlight.visible
 	
-	if Looking.is_colliding():
-		looking_object = Looking.get_collider()
-		print(looking_object)
+	if looking.is_colliding():
+		looking_object = looking.get_collider()
 		if Input.is_action_just_pressed("Player_1_Interact"):
 			global.collected_object = looking_object
-			print(global.collected_object)
 
 
-# Camera Shit
+# Camera Shtuff
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_CAPTURED and is_multiplayer_authority():
