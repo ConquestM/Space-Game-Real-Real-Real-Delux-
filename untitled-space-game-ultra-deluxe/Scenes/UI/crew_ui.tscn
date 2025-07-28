@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=3 uid="uid://btayc7jxe623f"]
+
+[ext_resource type="Texture2D" uid="uid://0varscxlrhgr" path="res://Sprites/devart_choice_selector.png" id="1_14c37"]
+[ext_resource type="Script" uid="uid://d04rpg4v03jkv" path="res://Scripts/UI/choice_selectors.gd" id="1_ocfk1"]
+[ext_resource type="Texture2D" uid="uid://ruoo5p3heiwc" path="res://Sprites/dev art/devart_choice_fight.png" id="2_d7pnp"]
+[ext_resource type="Script" uid="uid://dpufibdhw2xip" path="res://Scripts/UI/Choice Stuff/choices.gd" id="3_oc57t"]
+[ext_resource type="Texture2D" uid="uid://bnfd8l7cfcpnk" path="res://Sprites/dev art/devart_choice_resources.png" id="3_ocfk1"]
+[ext_resource type="Texture2D" uid="uid://jsiwsxpcr7tm" path="res://Sprites/dev art/devart_choice_move.png" id="4_oc57t"]
+[ext_resource type="Texture2D" uid="uid://c5jf610pbof2d" path="res://Sprites/dev art/devart_choice_cancel.png" id="5_jcwk3"]
+[ext_resource type="Texture2D" uid="uid://jn3ndcjfj0cp" path="res://Sprites/dev art/devart_crosshair.png" id="8_jcwk3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcwk3"]
+size = Vector2(442.275, 447)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0hqe"]
+size = Vector2(442.275, 445.846)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jcwk3"]
+
+[node name="CrewUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Choice Selectors" type="Control" parent="." node_paths=PackedStringArray("selector", "mouse_collider")]
+anchors_preset = 0
+offset_left = 576.0
+offset_top = 324.0
+offset_right = 616.0
+offset_bottom = 364.0
+script = ExtResource("1_ocfk1")
+selector = NodePath("../DevartCrosshair")
+mouse_collider = NodePath("Mouse")
+
+[node name="Fight" type="Sprite2D" parent="Choice Selectors" node_paths=PackedStringArray("parent")]
+position = Vector2(0, -100)
+rotation = 0.785398
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_14c37")
+script = ExtResource("3_oc57t")
+parent = NodePath("..")
+
+[node name="DevartChoiceFight" type="Sprite2D" parent="Choice Selectors/Fight"]
+z_index = 1
+position = Vector2(-2.12132, -2.87868)
+rotation = 5.49779
+texture = ExtResource("2_d7pnp")
+
+[node name="Fight_Mouse_Area" type="Area2D" parent="Choice Selectors/Fight"]
+visible = false
+position = Vector2(-154.778, -157.921)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Choice Selectors/Fight/Fight_Mouse_Area"]
+position = Vector2(-0.36261, 0)
+shape = SubResource("RectangleShape2D_jcwk3")
+
+[node name="Resources" type="Sprite2D" parent="Choice Selectors" node_paths=PackedStringArray("parent")]
+position = Vector2(100, 0)
+rotation = 2.35619
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_14c37")
+script = ExtResource("3_oc57t")
+parent = NodePath("..")
+
+[node name="DevartChoiceResources" type="Sprite2D" parent="Choice Selectors/Resources"]
+z_index = 1
+position = Vector2(-1.62131, -2.37868)
+rotation = 3.92699
+scale = Vector2(1, -1)
+texture = ExtResource("3_ocfk1")
+
+[node name="Resources_Mouse_Area" type="Area2D" parent="Choice Selectors/Resources"]
+visible = false
+position = Vector2(-157.92, -156.35)
+rotation = -1.57079
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Choice Selectors/Resources/Resources_Mouse_Area"]
+position = Vector2(-0.36261, 0)
+shape = SubResource("RectangleShape2D_jcwk3")
+
+[node name="Move" type="Sprite2D" parent="Choice Selectors" node_paths=PackedStringArray("parent")]
+position = Vector2(0, 100)
+rotation = -2.3562
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_14c37")
+script = ExtResource("3_oc57t")
+parent = NodePath("..")
+
+[node name="DevartChoiceMove" type="Sprite2D" parent="Choice Selectors/Move"]
+z_index = 1
+position = Vector2(-3.57863, -5.21539)
+rotation = 2.3562
+scale = Vector2(1, -1)
+texture = ExtResource("4_oc57t")
+
+[node name="Move_Mouse_Area" type="Area2D" parent="Choice Selectors/Move"]
+visible = false
+position = Vector2(-155.563, -157.136)
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Choice Selectors/Move/Move_Mouse_Area"]
+position = Vector2(-0.36261, 0.576996)
+shape = SubResource("RectangleShape2D_s0hqe")
+
+[node name="Cancel" type="Sprite2D" parent="Choice Selectors" node_paths=PackedStringArray("parent")]
+position = Vector2(-100, 0)
+rotation = 5.49779
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_14c37")
+script = ExtResource("3_oc57t")
+parent = NodePath("..")
+
+[node name="DevartChoiceCancel" type="Sprite2D" parent="Choice Selectors/Cancel"]
+z_index = 1
+position = Vector2(-3.17172, -4.75064)
+rotation = -0.785402
+texture = ExtResource("5_jcwk3")
+
+[node name="Cancel_Mouse_Area" type="Area2D" parent="Choice Selectors/Cancel"]
+visible = false
+position = Vector2(-157.135, -155.563)
+rotation = 1.57079
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Choice Selectors/Cancel/Cancel_Mouse_Area"]
+position = Vector2(-0.36261, 0)
+shape = SubResource("RectangleShape2D_jcwk3")
+
+[node name="Mouse" type="StaticBody2D" parent="Choice Selectors"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Choice Selectors/Mouse"]
+shape = SubResource("CircleShape2D_jcwk3")
+
+[node name="DevartCrosshair" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_jcwk3")
+
+[connection signal="body_entered" from="Choice Selectors/Fight/Fight_Mouse_Area" to="Choice Selectors" method="_on_fight_mouse_area_body_entered"]
+[connection signal="body_entered" from="Choice Selectors/Resources/Resources_Mouse_Area" to="Choice Selectors" method="_on_resources_mouse_area_body_entered"]
+[connection signal="body_entered" from="Choice Selectors/Move/Move_Mouse_Area" to="Choice Selectors" method="_on_move_mouse_area_body_entered"]
+[connection signal="body_entered" from="Choice Selectors/Cancel/Cancel_Mouse_Area" to="Choice Selectors" method="_on_cancel_mouse_area_body_entered"]

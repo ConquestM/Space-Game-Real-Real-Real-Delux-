@@ -43,6 +43,10 @@ folder_colors={
 "res://World Enviroments/Skyboxes/": "blue"
 }
 
+[global_group]
+
+go_there="Stuff NPC's wanna go to"
+
 [input]
 
 ui_accept={

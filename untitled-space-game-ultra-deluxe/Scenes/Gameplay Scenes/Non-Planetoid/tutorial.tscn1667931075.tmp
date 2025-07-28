@@ -1,0 +1,211 @@
+[gd_scene load_steps=17 format=3 uid="uid://dogn4iwa3st8x"]
+
+[ext_resource type="Script" uid="uid://cj15ldbi1xku0" path="res://Scripts/Non-Planets/tutorial.gd" id="1_oe6tc"]
+[ext_resource type="Environment" uid="uid://cpt4fb1w5r6we" path="res://World Enviroments/Test_Enviroment.tres" id="1_sw33o"]
+[ext_resource type="PackedScene" uid="uid://2dwnnhs7udlh" path="res://Scenes/Player/Test_Player.tscn" id="4_i0kwk"]
+[ext_resource type="PackedScene" uid="uid://6f6p5l0qx3ke" path="res://Scenes/Planet/Resource.tscn" id="4_w857d"]
+
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_sw33o"]
+map_width = 20
+map_depth = 20
+map_data = PackedFloat32Array(100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100)
+
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_oe6tc"]
+map_width = 20
+map_depth = 20
+map_data = PackedFloat32Array(100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oe6tc"]
+radius = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_i0kwk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_01wjg"]
+size = Vector3(0.75, 0.5, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uqebe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w857d"]
+size = Vector3(18, 20, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uqebe"]
+size = Vector3(32.0833, 6.29968, 1)
+
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_w857d"]
+map_width = 20
+map_depth = 20
+map_data = PackedFloat32Array(100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i0kwk"]
+size = Vector3(22, 1, 34)
+
+[sub_resource type="BoxMesh" id="BoxMesh_01wjg"]
+size = Vector3(22, 1, 34)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_w857d"]
+
+[node name="Tutorial" type="Node3D" node_paths=PackedStringArray("lerp_timer", "wall_timer", "wall_1", "worldenviro")]
+script = ExtResource("1_oe6tc")
+lerp_timer = NodePath("Respawn/lerptimer")
+wall_timer = NodePath("Grounds/Area2/walltimer")
+wall_1 = NodePath("Grounds/Area2/Wall")
+dark_walls = [NodePath("Grounds/Area3/Walls"), NodePath("Grounds/Area3/Walls2")]
+worldenviro = NodePath("WorldEnvironment")
+player_scene = ExtResource("4_i0kwk")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_sw33o")
+
+[node name="Grounds" type="Node" parent="."]
+
+[node name="Area1" type="StaticBody3D" parent="Grounds"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grounds/Area1"]
+shape = SubResource("HeightMapShape3D_sw33o")
+debug_color = Color(0, 0.6, 0, 0.419608)
+
+[node name="Area2" type="Node" parent="Grounds"]
+
+[node name="Area2" type="StaticBody3D" parent="Grounds/Area2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -23.3996)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grounds/Area2/Area2"]
+shape = SubResource("HeightMapShape3D_oe6tc")
+debug_color = Color(0, 0.6, 0, 0.419608)
+
+[node name="Stool 1" type="StaticBody3D" parent="Grounds/Area2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -20)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grounds/Area2/Stool 1"]
+shape = SubResource("CylinderShape3D_oe6tc")
+debug_color = Color(0.321416, 0.577446, 0.199009, 1)
+
+[node name="Stool 2" type="StaticBody3D" parent="Grounds/Area2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -20)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grounds/Area2/Stool 2"]
+shape = SubResource("CylinderShape3D_oe6tc")
+debug_color = Color(0.321416, 0.577446, 0.199009, 1)
+
+[node name="Stool 3" type="StaticBody3D" parent="Grounds/Area2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grounds/Area2/Stool 3"]
+shape = SubResource("CylinderShape3D_oe6tc")
+debug_color = Color(0.321416, 0.577446, 0.199009, 1)
+
+[node name="SimResource1" parent="Grounds/Area2" instance=ExtResource("4_w857d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0830665, 2, -30.0886)
+metadata/spin = true
+
+[node name="MeshInstance3D" parent="Grounds/Area2/SimResource1" index="0"]
+visible = false
+mesh = SubResource("BoxMesh_i0kwk")
+
+[node name="CollisionShape3D" parent="Grounds/Area2/SimResource1" index="1"]
+shape = SubResource("BoxShape3D_01wjg")
+debug_color = Color(0.898642, 0.12543, 0.225405, 1)
+
+[node name="SimResource2" parent="Grounds/Area2" instance=ExtResource("4_w857d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.992, 2, -19.9721)
+metadata/spin = true
+
+[node name="MeshInstance3D" parent="Grounds/Area2/SimResource2" index="0"]
+visible = false
+
+[node name="SimResource3" parent="Grounds/Area2" instance=ExtResource("4_w857d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96712, 2, -19.9236)
+metadata/spin = true
+
+[node name="MeshInstance3D" parent="Grounds/Area2/SimResource3" index="0"]
+visible = false
+
+[node name="CollisionShape3D" parent="Grounds/Area2/SimResource3" index="1"]
+shape = SubResource("SphereShape3D_uqebe")
+
+[node name="Wall" type="AnimatableBody3D" parent="Grounds/Area2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -33)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grounds/Area2/Wall"]
+shape = SubResource("BoxShape3D_w857d")
+debug_color = Color(0.168627, 0.384314, 0.117647, 1)
+
+[node name="walltimer" type="Timer" parent="Grounds/Area2"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Area3" type="Node" parent="Grounds"]
+
+[node name="DarkArea" type="Area3D" parent="Grounds/Area3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34.8225)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grounds/Area3/DarkArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.737427, 2.64984, 0)
+visible = false
+shape = SubResource("BoxShape3D_uqebe")
+
+[node name="LightArea" type="Area3D" parent="Grounds/Area3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114822, -0.0454712, -46.382)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grounds/Area3/LightArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.737427, 2.64984, 0)
+visible = false
+shape = SubResource("BoxShape3D_uqebe")
+
+[node name="Area3" type="StaticBody3D" parent="Grounds/Area3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -41.3165)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grounds/Area3/Area3"]
+shape = SubResource("HeightMapShape3D_w857d")
+debug_color = Color(0, 0.6, 0, 0.419608)
+
+[node name="Walls" type="StaticBody3D" parent="Grounds/Area3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.22779, 0, -37.3882)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grounds/Area3/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_i0kwk")
+debug_color = Color(0.176471, 0.317647, 0.113725, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grounds/Area3/Walls"]
+mesh = SubResource("BoxMesh_01wjg")
+
+[node name="Walls2" type="StaticBody3D" parent="Grounds/Area3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.38635, 0, -42.9789)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grounds/Area3/Walls2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_i0kwk")
+debug_color = Color(0.176471, 0.317647, 0.113725, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grounds/Area3/Walls2"]
+mesh = SubResource("BoxMesh_01wjg")
+
+[node name="Respawn" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, -11.5)
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Respawn"]
+shape = SubResource("WorldBoundaryShape3D_w857d")
+
+[node name="lerptimer" type="Timer" parent="Respawn"]
+wait_time = 2.0
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://2dwnnhs7udlh")
+spawn_path = NodePath("..")
+
+[connection signal="tree_exited" from="Grounds/Area2/SimResource1" to="." method="_on_sim_resource_tree_exited"]
+[connection signal="tree_exited" from="Grounds/Area2/SimResource2" to="." method="_on_sim_resource_tree_exited"]
+[connection signal="tree_exited" from="Grounds/Area2/SimResource3" to="." method="_on_sim_resource_tree_exited"]
+[connection signal="timeout" from="Grounds/Area2/walltimer" to="." method="_on_walltimer_timeout"]
+[connection signal="body_entered" from="Grounds/Area3/DarkArea" to="." method="_on_dark_area_body_entered"]
+[connection signal="body_entered" from="Respawn" to="." method="_on_respawn_body_entered"]
+[connection signal="timeout" from="Respawn/lerptimer" to="." method="_on_lerptimer_timeout"]
+
+[editable path="Grounds/Area2/SimResource1"]
+[editable path="Grounds/Area2/SimResource2"]
+[editable path="Grounds/Area2/SimResource3"]

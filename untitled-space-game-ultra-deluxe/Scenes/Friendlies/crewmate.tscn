@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://q6y055i2kux"]
+
+[ext_resource type="Script" uid="uid://d30rjkseomgfn" path="res://Scripts/Planets/crew_member.gd" id="1_h8bdo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b5qh6"]
+
+[node name="Crewmate" type="CharacterBody3D" node_paths=PackedStringArray("navigation_agent", "raycast")]
+script = ExtResource("1_h8bdo")
+navigation_agent = NodePath("NavigationAgent3D")
+raycast = NodePath("RayCast3D")
+metadata/_custom_type_script = "uid://b2h4kcvi0ha2"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_b5qh6")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

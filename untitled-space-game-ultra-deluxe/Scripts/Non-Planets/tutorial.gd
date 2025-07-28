@@ -4,9 +4,16 @@ extends Node3D
 var can_move_body: bool = false
 var body_real: Node3D
 @export var lerp_timer: Timer
+@export var wall_timer: Timer
+@export var wall_1: AnimatableBody3D
+@export var dark_walls: Array
+@export var worldenviro: WorldEnvironment
+@export var darkarea: Area3D
+@export var lightarea: Area3D
 # Multiplayer Stuff
 @export var player_scene: PackedScene
 var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,7 +24,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if can_move_body:
+	if can_move_body and body_real.has_meta("player"):
 		body_real.get_node("Collision").disabled = true
 		body_real.velocity = Vector3(0, 0, 0)
 		body_real.position = lerp(body_real.position, global.last_player_pos, (delta * 2))
@@ -38,16 +45,18 @@ func _process(delta: float) -> void:
 
 # Move player back to where they jumped from
 func _on_respawn_body_entered(body: Node3D) -> void:
-	global.can_player_move = false
-	can_move_body = true
-	body_real = body
-	lerp_timer.start()
+	if body.has_meta("player"):
+		global.can_player_move = false
+		can_move_body = true
+		body_real = body
+		lerp_timer.start()
 
 
 func _on_lerptimer_timeout() -> void:
-	global.can_player_move = true
-	can_move_body = false
-	body_real.get_node("Collision").disabled = false
+	if body_real.has_meta("player"):
+		global.can_player_move = true
+		can_move_body = false
+		body_real.get_node("Collision").disabled = false
 
 
 func _add_player(id = 1):
@@ -55,3 +64,29 @@ func _add_player(id = 1):
 	player.name = str(id)
 	add_child(player, true)
 	player.position.y += 1
+
+
+func _on_sim_resource_tree_exited() -> void:
+	if global.resources == 3:
+		wall_timer.start()
+
+
+func _on_walltimer_timeout() -> void:
+	if wall_1.position.y >= -9:
+		wall_1.position.y -= 1
+		wall_timer.start()
+
+
+func _on_dark_area_body_entered(body: Node3D) -> void:
+	if body.has_meta("player"):
+		get_node(dark_walls[0]).show()
+		get_node(dark_walls[1]).show()
+
+
+
+func _on_light_area_body_entered(body: Node3D) -> void:
+	if body.has_meta("player"):
+		get_node(dark_walls[0]).queue_free()
+		get_node(dark_walls[1]).queue_free()
+		darkarea.queue_free()
+		lightarea.queue_free()
