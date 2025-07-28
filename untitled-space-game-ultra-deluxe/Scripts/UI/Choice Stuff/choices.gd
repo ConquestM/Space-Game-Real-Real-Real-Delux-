@@ -21,6 +21,6 @@ func _process(delta: float) -> void:
 				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 				global.can_player_move = true
 			if name == "Move":
-				parent_crewmate.position.y += 0.1
+				parent_crewmate._search_for_move_to()
 	else:
 		scale_float = 0.85
