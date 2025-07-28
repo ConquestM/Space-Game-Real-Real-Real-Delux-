@@ -11,5 +11,5 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	if (player.global_transform.origin - global_transform.origin) < 10:
+	if (player.global_transform.origin - global_transform.origin).normalized() < 10:
 		print("jump")
