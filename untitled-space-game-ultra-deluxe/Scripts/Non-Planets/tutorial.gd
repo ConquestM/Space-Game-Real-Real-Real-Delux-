@@ -6,13 +6,16 @@ var body_real: Node3D
 @export var lerp_timer: Timer
 @export var wall_timer: Timer
 @export var wall_1: AnimatableBody3D
-@export var dark_walls: Array
 @export var worldenviro: WorldEnvironment
-@export var darkarea: Area3D
-@export var lightarea: Area3D
-# Multiplayer Stuff
 @export var player_scene: PackedScene
+@export var bridges: Array
+@export var nav_mesh: NavigationRegion3D
+@export var go_awayinator: ColorRect
+# Multiplayer Stuff
 var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+# Ending Stuff
+var go_away: bool = false
+var increaser: float = 0.0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -41,6 +44,11 @@ func _process(delta: float) -> void:
 		Online.joining = false
 		peer.create_client(Online.inputedip, Online.port)
 		multiplayer.multiplayer_peer = peer
+	
+	if go_away:
+		increaser += 0.01
+		go_awayinator.get_parent().show()
+		go_awayinator.color = Color(0.0, 0.0, 0.0 ,increaser)
 
 
 # Move player back to where they jumped from
@@ -77,16 +85,11 @@ func _on_walltimer_timeout() -> void:
 		wall_timer.start()
 
 
-func _on_dark_area_body_entered(body: Node3D) -> void:
-	if body.has_meta("player"):
-		get_node(dark_walls[0]).show()
-		get_node(dark_walls[1]).show()
+func _end_tutorial():
+	go_away = true
 
 
-
-func _on_light_area_body_entered(body: Node3D) -> void:
-	if body.has_meta("player"):
-		get_node(dark_walls[0]).queue_free()
-		get_node(dark_walls[1]).queue_free()
-		darkarea.queue_free()
-		lightarea.queue_free()
+func bridge_button():
+	for i in bridges:
+		get_node(i).position.y = 0
+	nav_mesh.bake_navigation_mesh()

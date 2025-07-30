@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dogn4iwa3st8x"]
+[gd_scene load_steps=23 format=3 uid="uid://dogn4iwa3st8x"]
 
 [ext_resource type="Script" uid="uid://cj15ldbi1xku0" path="res://Scripts/Non-Planets/tutorial.gd" id="1_oe6tc"]
 [ext_resource type="Environment" uid="uid://cpt4fb1w5r6we" path="res://World Enviroments/Test_Enviroment.tres" id="1_sw33o"]
@@ -8,13 +8,22 @@
 [ext_resource type="PackedScene" uid="uid://q6y055i2kux" path="res://Scenes/Friendlies/crewmate.tscn" id="7_uqebe"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_uqebe"]
-vertices = PackedVector3Array(-7.97779, 0.5, -74.2006, -7.97779, 0.5, -58.2006, 7.77221, 0.5, -58.2006, 7.77221, 0.5, -74.2006, -7.97779, 0.5, -43.4506, -7.22779, 0.5, -43.4506, -6.97779, 0.5, -44.7006, -7.97779, 0.5, -50.4506, 7.77221, 0.5, -44.7006, 7.77221, 0.5, -50.4506, -6.22779, 17.5, -43.7006, -6.22779, 17.5, -42.9506, 8.02221, 17.5, -42.9506, 8.02221, 17.5, -43.7006, 9.27221, 17.5, -43.7006, 9.27221, 17.5, -42.9506, 14.7722, 17.5, -42.9506, 14.7722, 17.5, -43.7006, 7.27221, 0.5, -38.9506, 7.52221, 0.5, -37.7006, 7.77221, 0.5, -37.7006, 7.77221, 0.5, -41.9506, -6.97779, 0.5, -41.9506, -7.97779, 0.5, -38.9506, -14.7278, 17.5, -37.9506, -14.7278, 17.5, -37.2006, -9.22779, 17.5, -37.2006, -9.22779, 17.5, -37.9506, -7.97779, 17.5, -37.9506, -7.97779, 17.5, -37.2006, 6.27221, 17.5, -37.2006, 6.27221, 17.5, -37.9506, 7.27221, 0.5, -36.2006, 7.77221, 0.5, -34.2006, -7.97779, 0.5, -36.2006, -7.97779, 0.5, -34.2006, -0.72779, 0.5, -31.7006, 0.0222101, 0.5, -31.7006, 0.0222101, 0.5, -31.9506, -7.97779, 0.5, -31.9506, -4.22779, 0.5, -21.7006, -3.47779, 0.5, -20.9506, -2.72779, 0.5, -20.9506, -0.72779, 0.5, -28.4506, -7.97779, 0.5, -19.9506, -6.72779, 0.5, -20.2006, -5.72779, 0.5, -21.7006, -1.72779, 0.5, -29.4506, -1.72779, 0.5, -30.7006, 0.77221, 0.5, -31.7006, 7.77221, 0.5, -31.9506, 6.52221, 0.5, -20.9506, 6.52221, 0.5, -19.9506, 7.77221, 0.5, -19.9506, 2.52221, 0.5, -20.9506, 3.52221, 0.5, -20.9506, 4.27221, 0.5, -21.7006, 0.77221, 0.5, -28.4506, 5.77221, 0.5, -21.7006, 1.52221, 0.5, -30.9506, 1.52221, 0.5, -28.9506, 3.27221, 0.5, -19.4506, -3.47779, 0.5, -18.9506, 6.02221, 0.5, -18.4506, 7.77221, 0.5, -15.2006, -5.97779, 0.5, -18.4506, -7.97779, 0.5, -15.2006, 4.02221, 0.5, -18.4506, -3.97779, 0.5, -18.4506, -7.97779, 0.5, 5.2994, -0.97779, 0.5, 5.2994, -0.72779, 0.5, 4.2994, -7.97779, 0.5, -10.7006, 0.52221, 0.5, 4.2994, 0.77221, 0.5, 5.2994, 7.77221, 0.5, 5.2994, 7.77221, 0.5, -10.7006)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 7), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(5, 22, 4), PackedInt32Array(4, 22, 23), PackedInt32Array(21, 18, 22), PackedInt32Array(22, 18, 23), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(19, 20, 32), PackedInt32Array(32, 20, 33), PackedInt32Array(34, 32, 35), PackedInt32Array(35, 32, 33), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 39), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(44, 46, 45), PackedInt32Array(47, 43, 39), PackedInt32Array(39, 43, 46), PackedInt32Array(39, 46, 44), PackedInt32Array(39, 36, 48), PackedInt32Array(39, 48, 47), PackedInt32Array(43, 40, 46), PackedInt32Array(37, 38, 49), PackedInt32Array(49, 38, 50), PackedInt32Array(53, 52, 51), PackedInt32Array(55, 54, 56), PackedInt32Array(56, 54, 57), PackedInt32Array(51, 58, 53), PackedInt32Array(53, 58, 60), PackedInt32Array(53, 60, 59), PackedInt32Array(53, 59, 50), PackedInt32Array(57, 60, 56), PackedInt32Array(56, 60, 58), PackedInt32Array(59, 49, 50), PackedInt32Array(57, 54, 43), PackedInt32Array(43, 54, 42), PackedInt32Array(54, 55, 61), PackedInt32Array(62, 41, 42), PackedInt32Array(52, 53, 63), PackedInt32Array(63, 53, 64), PackedInt32Array(45, 65, 44), PackedInt32Array(44, 65, 66), PackedInt32Array(67, 64, 68), PackedInt32Array(68, 64, 66), PackedInt32Array(62, 61, 68), PackedInt32Array(68, 61, 67), PackedInt32Array(67, 63, 64), PackedInt32Array(66, 65, 68), PackedInt32Array(54, 61, 42), PackedInt32Array(42, 61, 62), PackedInt32Array(70, 69, 71), PackedInt32Array(71, 69, 72), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 76), PackedInt32Array(71, 72, 73), PackedInt32Array(73, 72, 76)]
+vertices = PackedVector3Array(7.92037, 0.5, -74.2006, 0.920366, 0.5, -74.2006, 0.670366, 0.5, -72.7006, 7.92037, 0.5, -58.2006, -0.579634, 0.5, -72.7006, -0.829634, 0.5, -74.2006, -7.82963, 0.5, -74.2006, -7.82963, 0.5, -58.2006, -1.07963, -49.5, -56.7006, -1.07963, -49.5, -50.4506, 1.17037, -49.5, -50.4506, 1.17037, -49.5, -56.7006, -7.82963, 0.5, -43.4506, -6.82963, 0.5, -43.4506, -6.57963, 0.5, -44.7006, -7.82963, 0.5, -50.4506, 7.92037, 0.5, -44.7006, 7.92037, 0.5, -50.4506, -5.82963, 17.5, -43.7006, -5.82963, 17.5, -42.9506, 8.17037, 17.5, -42.9506, 8.17037, 17.5, -43.7006, 9.42037, 17.5, -43.7006, 9.42037, 17.5, -42.9506, 15.4204, 17.5, -42.9506, 15.4204, 17.5, -43.7006, -6.57963, 0.5, -41.9506, -7.82963, 0.5, -38.9506, 6.42037, 0.5, -38.9506, 6.67037, 0.5, -37.7006, 7.92037, 0.5, -37.7006, 7.92037, 0.5, -41.9506, -15.5796, 17.5, -37.9506, -15.5796, 17.5, -37.2006, -9.32963, 17.5, -37.2006, -9.32963, 17.5, -37.9506, -8.07963, 17.5, -37.9506, -8.07963, 17.5, -37.2006, 5.67037, 17.5, -37.2006, 5.67037, 17.5, -37.9506, 6.42037, 0.5, -36.2006, 7.92037, 0.5, -34.2006, -7.82963, 0.5, -36.2006, -7.82963, 0.5, -34.2006, -4.32963, 0.5, -21.7006, -3.57963, 0.5, -20.9506, -3.32963, 0.5, -20.9506, -0.829634, 0.5, -28.4506, -7.82963, 0.5, -19.9506, -6.57963, 0.5, -19.9506, -6.57963, 0.5, -20.9506, -1.57963, 0.5, -30.9506, -0.0796337, 0.5, -31.7006, -0.0796337, 0.5, -31.9506, -7.82963, 0.5, -31.9506, -5.57963, 0.5, -21.7006, -1.57963, 0.5, -28.9506, 1.17037, 0.5, -31.4506, 7.92037, 0.5, -31.9506, 6.42037, 0.5, -21.2006, 6.67037, 0.5, -19.9506, 7.92037, 0.5, -20.2006, 2.67037, 0.5, -20.9506, 3.42037, 0.5, -20.9506, 4.42037, 0.5, -21.7006, 0.920366, 0.5, -28.4506, 5.67037, 0.5, -21.7006, 1.67037, 0.5, -30.7006, 1.67037, 0.5, -29.2006, 6.67037, 0.5, -19.2006, -3.32963, 0.5, -19.2006, 3.42037, 0.5, -18.9506, -6.07963, 0.5, -18.4506, -7.82963, 0.5, -15.2006, 5.92037, 0.5, -18.4506, 7.92037, 0.5, -15.2006, 3.92037, 0.5, -18.4506, -4.07963, 0.5, -18.4506, -1.07963, -49.5, -16.4506, -1.07963, -49.5, -14.9506, 1.17037, -49.5, -14.9506, 1.17037, -49.5, -16.4506, -1.07963, -49.5, -13.7006, -1.07963, -49.5, -12.2006, 1.17037, -49.5, -12.2006, 1.17037, -49.5, -13.7006, -1.07963, -49.5, -10.9506, -1.07963, -49.5, -9.2006, 1.17037, -49.5, -9.2006, 1.17037, -49.5, -10.9506, -7.82963, 0.5, 5.2994, -0.829634, 0.5, 5.2994, -0.579634, 0.5, 4.2994, -7.82963, 0.5, -10.7006, 0.670366, 0.5, 4.2994, 0.920366, 0.5, 5.2994, 7.92037, 0.5, 5.2994, 7.92037, 0.5, -10.7006)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(4, 2, 7), PackedInt32Array(7, 2, 3), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(16, 14, 17), PackedInt32Array(17, 14, 15), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(25, 24, 22), PackedInt32Array(22, 24, 23), PackedInt32Array(13, 26, 12), PackedInt32Array(12, 26, 27), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 31), PackedInt32Array(35, 34, 32), PackedInt32Array(32, 34, 33), PackedInt32Array(39, 38, 36), PackedInt32Array(36, 38, 37), PackedInt32Array(29, 30, 40), PackedInt32Array(40, 30, 41), PackedInt32Array(42, 40, 43), PackedInt32Array(43, 40, 41), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(50, 49, 48), PackedInt32Array(52, 51, 53), PackedInt32Array(53, 51, 54), PackedInt32Array(56, 55, 50), PackedInt32Array(51, 56, 54), PackedInt32Array(54, 56, 50), PackedInt32Array(54, 50, 48), PackedInt32Array(47, 44, 56), PackedInt32Array(56, 44, 55), PackedInt32Array(52, 53, 57), PackedInt32Array(57, 53, 58), PackedInt32Array(61, 60, 59), PackedInt32Array(63, 62, 64), PackedInt32Array(64, 62, 65), PackedInt32Array(64, 65, 66), PackedInt32Array(67, 57, 58), PackedInt32Array(68, 67, 58), PackedInt32Array(65, 59, 66), PackedInt32Array(68, 58, 65), PackedInt32Array(65, 58, 59), PackedInt32Array(59, 58, 61), PackedInt32Array(65, 62, 47), PackedInt32Array(47, 62, 46), PackedInt32Array(69, 60, 61), PackedInt32Array(70, 45, 46), PackedInt32Array(62, 63, 71), PackedInt32Array(49, 72, 48), PackedInt32Array(48, 72, 73), PackedInt32Array(69, 61, 74), PackedInt32Array(74, 61, 75), PackedInt32Array(77, 76, 73), PackedInt32Array(73, 76, 75), PackedInt32Array(71, 76, 70), PackedInt32Array(70, 76, 77), PackedInt32Array(73, 72, 77), PackedInt32Array(76, 74, 75), PackedInt32Array(46, 62, 70), PackedInt32Array(70, 62, 71), PackedInt32Array(81, 80, 78), PackedInt32Array(78, 80, 79), PackedInt32Array(85, 84, 82), PackedInt32Array(82, 84, 83), PackedInt32Array(89, 88, 86), PackedInt32Array(86, 88, 87), PackedInt32Array(91, 90, 92), PackedInt32Array(92, 90, 93), PackedInt32Array(95, 94, 96), PackedInt32Array(96, 94, 97), PackedInt32Array(92, 93, 94), PackedInt32Array(94, 93, 97)]
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_sw33o"]
 map_width = 20
 map_depth = 20
 map_data = PackedFloat32Array(100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b5qh6"]
+size = Vector3(0.5, 1.5, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n57pc"]
+radius = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_01wjg"]
+radius = 1.5
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_oe6tc"]
 map_width = 20
@@ -34,9 +43,6 @@ size = Vector3(0.75, 0.5, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_w857d"]
 size = Vector3(18, 20, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uqebe"]
-size = Vector3(32.0833, 6.29968, 1)
-
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_w857d"]
 map_width = 20
 map_depth = 20
@@ -48,24 +54,23 @@ size = Vector3(22, 1, 34)
 [sub_resource type="BoxMesh" id="BoxMesh_01wjg"]
 size = Vector3(22, 1, 34)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_b5qh6"]
-size = Vector3(0.5, 1.5, 0.5)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_n57pc"]
-radius = 0.25
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_01wjg"]
+map_width = 4
+map_depth = 9
+map_data = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_w857d"]
 
-[node name="Tutorial" type="Node3D" node_paths=PackedStringArray("lerp_timer", "wall_timer", "wall_1", "worldenviro", "darkarea", "lightarea")]
+[node name="Tutorial" type="Node3D" node_paths=PackedStringArray("lerp_timer", "wall_timer", "wall_1", "worldenviro", "nav_mesh", "go_awayinator")]
 script = ExtResource("1_oe6tc")
 lerp_timer = NodePath("Respawn/lerptimer")
 wall_timer = NodePath("WorldEnvironment/NavigationRegion3D/Grounds/Area2/walltimer")
 wall_1 = NodePath("WorldEnvironment/NavigationRegion3D/Grounds/Area2/Wall")
-dark_walls = [NodePath("WorldEnvironment/NavigationRegion3D/Grounds/Area3/Walls"), NodePath("WorldEnvironment/NavigationRegion3D/Grounds/Area3/Walls2")]
 worldenviro = NodePath("WorldEnvironment")
-darkarea = NodePath("WorldEnvironment/NavigationRegion3D/Grounds/Area3/DarkArea")
-lightarea = NodePath("WorldEnvironment/NavigationRegion3D/Grounds/Area3/LightArea")
 player_scene = ExtResource("4_i0kwk")
+bridges = [NodePath("WorldEnvironment/NavigationRegion3D/Grounds/Bridge/Bridge1"), NodePath("WorldEnvironment/NavigationRegion3D/Grounds/Bridge/Bridge2")]
+nav_mesh = NodePath("WorldEnvironment/NavigationRegion3D")
+go_awayinator = NodePath("FadeOut/ColorRect")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_sw33o")
@@ -81,6 +86,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.65716)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area1"]
 shape = SubResource("HeightMapShape3D_sw33o")
 debug_color = Color(0, 0.6, 0, 0.419608)
+
+[node name="Button" type="Node3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area1" groups=["go_there"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.8355)
+
+[node name="ButtonBase" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/ButtonBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_b5qh6")
+
+[node name="Button" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button"]
+script = ExtResource("6_01wjg")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("SphereShape3D_n57pc")
+debug_color = Color(0.944938, 0, 0.123924, 0.42)
+
+[node name="ButtonArea" type="Area3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41524, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/ButtonArea"]
+shape = SubResource("SphereShape3D_01wjg")
 
 [node name="Area2" type="Node" parent="WorldEnvironment/NavigationRegion3D/Grounds"]
 
@@ -141,6 +169,10 @@ visible = false
 [node name="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource3" index="1"]
 shape = SubResource("SphereShape3D_uqebe")
 
+[node name="walltimer" type="Timer" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2"]
+wait_time = 0.05
+one_shot = true
+
 [node name="Wall" type="AnimatableBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -33)
 
@@ -148,27 +180,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -33)
 shape = SubResource("BoxShape3D_w857d")
 debug_color = Color(0.168627, 0.384314, 0.117647, 1)
 
-[node name="walltimer" type="Timer" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2"]
-wait_time = 0.05
-one_shot = true
-
 [node name="Area3" type="Node" parent="WorldEnvironment/NavigationRegion3D/Grounds"]
-
-[node name="DarkArea" type="Area3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34.8225)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3/DarkArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.737427, 2.64984, 0)
-visible = false
-shape = SubResource("BoxShape3D_uqebe")
-
-[node name="LightArea" type="Area3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114822, -0.0454712, -46.382)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3/LightArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.737427, 2.64984, 0)
-visible = false
-shape = SubResource("BoxShape3D_uqebe")
 
 [node name="Area3" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -41.3165)
@@ -178,7 +190,7 @@ shape = SubResource("HeightMapShape3D_w857d")
 debug_color = Color(0, 0.6, 0, 0.419608)
 
 [node name="Walls" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.22779, 0, -37.3882)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5.07963, 0, -37.3882)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -189,7 +201,7 @@ debug_color = Color(0.176471, 0.317647, 0.113725, 1)
 mesh = SubResource("BoxMesh_01wjg")
 
 [node name="Walls2" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.38635, 0, -42.9789)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.87595, 0, -42.9789)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3/Walls2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -211,22 +223,40 @@ debug_color = Color(0, 0.6, 0, 0.419608)
 [node name="Crewmate2" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area4" instance=ExtResource("7_uqebe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.343, 1.2133, -66.4927)
 
-[node name="Button" type="Node3D" parent="WorldEnvironment/NavigationRegion3D/Grounds" groups=["go_there"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.17834)
+[node name="Button" type="Node3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -73.588)
 
-[node name="ButtonBase" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Button"]
+[node name="ButtonBase" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area4/Button"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Button/ButtonBase"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area4/Button/ButtonBase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_b5qh6")
 
-[node name="Button" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Button"]
+[node name="Button_Bridge" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area4/Button"]
 script = ExtResource("6_01wjg")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Button/Button"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area4/Button/Button_Bridge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("SphereShape3D_n57pc")
 debug_color = Color(0.944938, 0, 0.123924, 0.42)
+
+[node name="Bridge" type="Node" parent="WorldEnvironment/NavigationRegion3D/Grounds"]
+
+[node name="Bridge1" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Bridge"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, -50, -15)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Bridge/Bridge1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.30165e-07, 0, -2.18659)
+shape = SubResource("HeightMapShape3D_01wjg")
+debug_color = Color(0, 0.6, 0, 0.419608)
+
+[node name="Bridge2" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Bridge"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, -50, -57.017)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Bridge/Bridge2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.43811e-07, 0, -2.93923)
+shape = SubResource("HeightMapShape3D_01wjg")
+debug_color = Color(0, 0.6, 0, 0.419608)
 
 [node name="Respawn" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, -11.5)
@@ -243,15 +273,24 @@ wait_time = 2.0
 _spawnable_scenes = PackedStringArray("uid://2dwnnhs7udlh")
 spawn_path = NodePath("..")
 
-[node name="Crewmate" parent="." instance=ExtResource("7_uqebe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.343, 1.2133, -5.33478)
+[node name="FadeOut" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+follow_viewport_enabled = true
 
+[node name="ColorRect" type="ColorRect" parent="FadeOut"]
+z_as_relative = false
+offset_left = -145.0
+offset_top = -169.0
+offset_right = 1276.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0)
+
+[connection signal="body_entered" from="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/ButtonArea" to="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/Button" method="_on_button_area_body_entered"]
 [connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource1" to="." method="_on_sim_resource_tree_exited"]
 [connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource2" to="." method="_on_sim_resource_tree_exited"]
 [connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource3" to="." method="_on_sim_resource_tree_exited"]
 [connection signal="timeout" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/walltimer" to="." method="_on_walltimer_timeout"]
-[connection signal="body_entered" from="WorldEnvironment/NavigationRegion3D/Grounds/Area3/DarkArea" to="." method="_on_dark_area_body_entered"]
-[connection signal="body_entered" from="WorldEnvironment/NavigationRegion3D/Grounds/Area3/LightArea" to="." method="_on_light_area_body_entered"]
 [connection signal="body_entered" from="Respawn" to="." method="_on_respawn_body_entered"]
 [connection signal="timeout" from="Respawn/lerptimer" to="." method="_on_lerptimer_timeout"]
 

@@ -5,7 +5,7 @@ const CREW_UI_SCENE: PackedScene = preload("res://Scenes/UI/crew_ui.tscn")
 @export var navigation_agent: NavigationAgent3D
 var id = get_instance_id()
 var moving = false
-var moved_to = []
+var moved_to = [null]
 
 
 # Checks if interacted with if so, adds circle crew UI
@@ -42,10 +42,7 @@ func _physics_process(delta: float) -> void:
 			# Sets the pathfinding pos constantly
 			navigation_agent.target_position = target.position
 		
-		# Run something when the navigation is finished, else navigate there
-		if navigation_agent.is_navigation_finished():
-			_run_after_navi()
-		else:
+		# Navigate pathfinding while moving is active
 			var current_agent_position: Vector3 = global_position
 			var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 
@@ -53,7 +50,10 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 
 
-func _run_after_navi():
+func _run_after_navi(object_type: String):
 	moving = false
 	moved_to.append(target)
+	print(moved_to)
 	target = null
+	if object_type == "Tutorial_Button":
+		get_tree().current_scene._end_tutorial()

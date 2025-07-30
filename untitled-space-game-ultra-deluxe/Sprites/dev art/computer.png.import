@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0varscxlrhgr"
-path="res://.godot/imported/devart_choice_selector.png-ede9f9f78c7d214a1f1b2085230ecbe2.ctex"
+uid="uid://c31b5jdl1mcfb"
+path="res://.godot/imported/computer.png-844b8c8f786d286c7fa66e2767687b07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/devart_choice_selector.png"
-dest_files=["res://.godot/imported/devart_choice_selector.png-ede9f9f78c7d214a1f1b2085230ecbe2.ctex"]
+source_file="res://Sprites/dev art/computer.png"
+dest_files=["res://.godot/imported/computer.png-844b8c8f786d286c7fa66e2767687b07.ctex"]
 
 [params]
 
