@@ -43,12 +43,24 @@ var req_0: bool = true
 var req_1: bool = false
 var req_2: bool = false
 var req_3: bool = false
+var req_4: bool = false
+var req_5: bool = false
+var req_6: bool = false
+var req_7: bool = false
+var req_8: bool = false
+var req_9: bool = false
 # An array to grab all the flags from
 var req_array: Array = [
 	req_0,
 	req_1,
 	req_2,
-	req_3
+	req_3,
+	req_4,
+	req_5,
+	req_6,
+	req_7,
+	req_8,
+	req_9
 ]
 
 
@@ -89,7 +101,6 @@ func _on_timer_timeout() -> void:
 			can_go_next_character = false
 			text_increase_timer.start(0.05)
 	else:
-		print(req_array[current_text])
 		if req_array[current_text]:
 			next_dia_timer.start(1)
 		else:
@@ -132,3 +143,23 @@ func _check_reqs():
 func _on_dia_3_body_entered(body: Node3D) -> void:
 	if body.has_meta("player"):
 		req_array[2] = true
+
+
+func _on_dia_4_body_entered(body: Node3D) -> void:
+	if body.has_meta("player"):
+		req_array[3] = true
+
+
+func _on_sim_resource_1_tree_exited() -> void:
+	if global.resources == 3:
+		req_array[4] = true
+
+
+func _on_dia_5_body_entered(body: Node3D) -> void:
+	if body.has_meta("player"):
+		req_array[5] = true
+
+
+func _on_dia_6_body_entered(body: Node3D) -> void:
+	if body.has_meta("player"):
+		req_array[6] = true

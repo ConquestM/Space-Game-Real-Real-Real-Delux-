@@ -301,14 +301,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.364968)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.62256, 1.75368)
 shape = SubResource("BoxShape3D_uqebe")
 
+[node name="Dia_4" type="Area3D" parent="Tutorial_Areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.629)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Areas/Dia_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.62256, 1.75368)
+shape = SubResource("BoxShape3D_uqebe")
+
+[node name="Dia_5" type="Area3D" parent="Tutorial_Areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -47.2027)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Areas/Dia_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.62256, 1.75368)
+shape = SubResource("BoxShape3D_uqebe")
+
+[node name="Dia_6" type="Area3D" parent="Tutorial_Areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60.5868)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Areas/Dia_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.62256, 1.75368)
+shape = SubResource("BoxShape3D_uqebe")
+
 [connection signal="body_entered" from="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/ButtonArea" to="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/Button" method="_on_button_area_body_entered"]
 [connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource1" to="." method="_on_sim_resource_tree_exited"]
+[connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource1" to="TutorialDialogueUi" method="_on_sim_resource_1_tree_exited"]
 [connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource2" to="." method="_on_sim_resource_tree_exited"]
+[connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource2" to="TutorialDialogueUi" method="_on_sim_resource_1_tree_exited"]
 [connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource3" to="." method="_on_sim_resource_tree_exited"]
+[connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource3" to="TutorialDialogueUi" method="_on_sim_resource_1_tree_exited"]
 [connection signal="timeout" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/walltimer" to="." method="_on_walltimer_timeout"]
 [connection signal="body_entered" from="Respawn" to="." method="_on_respawn_body_entered"]
 [connection signal="timeout" from="Respawn/lerptimer" to="." method="_on_lerptimer_timeout"]
 [connection signal="body_entered" from="Tutorial_Areas/Dia_3" to="TutorialDialogueUi" method="_on_dia_3_body_entered"]
+[connection signal="body_entered" from="Tutorial_Areas/Dia_4" to="TutorialDialogueUi" method="_on_dia_4_body_entered"]
+[connection signal="body_entered" from="Tutorial_Areas/Dia_5" to="TutorialDialogueUi" method="_on_dia_5_body_entered"]
+[connection signal="body_entered" from="Tutorial_Areas/Dia_6" to="TutorialDialogueUi" method="_on_dia_6_body_entered"]
 
 [editable path="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource1"]
 [editable path="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource2"]

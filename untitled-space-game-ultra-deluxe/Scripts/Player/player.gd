@@ -1,22 +1,23 @@
 extends CharacterBody3D
 
 
+@export_group("Player Body Stuff")
+@export var looking: RayCast3D
+@export var multiplayer_helper: Label
 @export var model: MeshInstance3D
 @export var collision: CollisionShape3D
 @export var camera_rotator: Node3D
-@export var coyote_timer: Timer
 @export var flashlight: SpotLight3D
-@export var debug_console: TextEdit
-@export var multiplayer_helper: Label
-@export var looking: RayCast3D
+@export_group("Player UI Stuff")
 @export var crosshair: Sprite2D
+@export var resourcebars: Control
+@export var debug_console: TextEdit
+@export_group("Script Stuff")
+@export var coyote_timer: Timer
+# Player Statistics
 var jump_velocity = 4.5
 var movement_speed = 5.0
 var sensitivity = 0.01
-var switchout = false
-var cursor_mode = false
-var can_jump = true
-var coyote_timer_on = false
 var fov = 80 # Field of view
 var normal_stats = [
 	5.0, # Movement Speed
@@ -33,11 +34,18 @@ var crouch_stats = [
 	1.5, # Height
 	0.25 # Camera Height 
 ]
+# Flags
+var switchout = false
+var cursor_mode = false
+var can_jump = true
+var coyote_timer_on = false
 var flashlight_enabled = false
+# Nodes
 var looking_object = null
 
 
 func _enter_tree() -> void:
+	# Multiplayer stuff, basically if not in multiplayer, only spawn one player and not anything multiplayer related.
 	set_multiplayer_authority(name.to_int())
 	if global.multiplayer_on:
 		multiplayer_helper.get_parent().show()
@@ -48,6 +56,10 @@ func _enter_tree() -> void:
 	else:
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 		multiplayer_helper.queue_free()
+	# Kill the resources in the tutorial
+	if get_tree().current_scene.name == "Tutorial":
+		resourcebars.queue_free()
+	
 
 
 func _physics_process(delta: float) -> void:

@@ -33,17 +33,18 @@ properties/3/path = NodePath("RotationHelper:rotation")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
-[node name="Player1" type="CharacterBody3D" node_paths=PackedStringArray("model", "collision", "camera_rotator", "coyote_timer", "flashlight", "debug_console", "multiplayer_helper", "looking", "crosshair")]
+[node name="Player1" type="CharacterBody3D" node_paths=PackedStringArray("looking", "multiplayer_helper", "model", "collision", "camera_rotator", "flashlight", "crosshair", "resourcebars", "debug_console", "coyote_timer")]
 script = ExtResource("1_ox56v")
+looking = NodePath("RotationHelper/Camera3D/RayCast3D")
+multiplayer_helper = NodePath("Window/MultiplayerHelper")
 model = NodePath("Model")
 collision = NodePath("Collision")
 camera_rotator = NodePath("RotationHelper")
-coyote_timer = NodePath("CoyoteTimer")
 flashlight = NodePath("RotationHelper/Camera3D/Flashlight")
-debug_console = NodePath("Control/TextEdit")
-multiplayer_helper = NodePath("Window/MultiplayerHelper")
-looking = NodePath("RotationHelper/Camera3D/RayCast3D")
 crosshair = NodePath("Control/DevartCrosshair")
+resourcebars = NodePath("Control/ResourceBars")
+debug_console = NodePath("Control/TextEdit")
+coyote_timer = NodePath("CoyoteTimer")
 metadata/player = true
 
 [node name="Model" type="MeshInstance3D" parent="."]
