@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://c31b5jdl1mcfb" path="res://Sprites/dev art/computer.png" id="1_k6fbm"]
 [ext_resource type="Theme" uid="uid://xersx1rqgqqv" path="res://Themes/computer_terminal.tres" id="3_81a64"]
 
-[node name="TutorialDialogueUi" type="CanvasLayer" node_paths=PackedStringArray("textbox", "text_increase_timer")]
+[node name="TutorialDialogueUi" type="CanvasLayer" node_paths=PackedStringArray("textbox", "text_increase_timer", "next_dia_timer")]
 script = ExtResource("1_gbjbx")
 textbox = NodePath("Label")
 text_increase_timer = NodePath("Timer")
+next_dia_timer = NodePath("Next_Dia_Timer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 240.0
@@ -36,4 +37,8 @@ wait_time = 0.05
 one_shot = true
 autostart = true
 
+[node name="Next_Dia_Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Next_Dia_Timer" to="." method="_on_next_dia_timer_timeout"]

@@ -1,12 +1,16 @@
 extends CanvasLayer
 
 
+# How much the text should increase by.
+const TEXT_INCREASER: int = 1
 @export var textbox: Label
 @export var text_increase_timer: Timer
-var text_increaser: int = 1
+@export var next_dia_timer: Timer
+# Current Dialogue
 var current_text: int = 0
+# Current Character (Letter) of current Dialogue
 var current_character: int = 0
-# Dialogue
+# Dialogue strings
 var dia_1: String = "Welcome to your company mandated, state of the art, training simulation!"
 var dia_2: String = "To get started, try walking around with WASD."
 var dia_3: String = "Nice work!
@@ -32,26 +36,43 @@ var all_dia: Array = [
 	dia_8,
 	dia_9
 ]
+# This is a flag used to check whether the current character is a , or . or ! to add realism to the text.
 var can_go_next_character: bool = false
+# Dialogue Progress Flags (Checks)
+var req_0: bool = true
+var req_1: bool = false
+var req_2: bool = false
+var req_3: bool = false
+# An array to grab all the flags from
+var req_array: Array = [
+	req_0,
+	req_1,
+	req_2,
+	req_3
+]
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	textbox.visible_ratio = 0
+	global.can_player_move = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	textbox.text = all_dia[current_text]
 	if Input.is_action_just_pressed("Player_1_Accept"):
 		if textbox.visible_ratio != 1:
 			textbox.visible_ratio = 1
 		else:
 			_next_text()
+	
+	_check_reqs()
 
 
 func _on_timer_timeout() -> void:
 	if textbox.visible_ratio != 1:
+		# Adds delays when certain characters are detected
 		if all_dia[current_text][current_character].contains(",") and not can_go_next_character:
 			can_go_next_character = true
 			text_increase_timer.start(0.15)
@@ -62,18 +83,52 @@ func _on_timer_timeout() -> void:
 			can_go_next_character = true
 			text_increase_timer.start(0.15)
 		else:
-			textbox.visible_characters += text_increaser
+			# Increases the visible letters / characters to give an effect of someone writing the text.
+			textbox.visible_characters += TEXT_INCREASER
 			current_character += 1
 			can_go_next_character = false
+			text_increase_timer.start(0.05)
+	else:
+		print(req_array[current_text])
+		if req_array[current_text]:
+			next_dia_timer.start(1)
+		else:
 			text_increase_timer.start(0.05)
 
 
 func _next_text():
+	# Lets the code know how many lines of dialogue there are, then stores that
 	var max_dia: int = -1
 	for i in all_dia:
 		max_dia += 1
+	# Check to see if the current dialogue is not the final one, if not then it should reset the text and change to the next one.
 	if current_text != max_dia:
 		textbox.visible_ratio = 0
 		current_text += 1
 		current_character = 0
 		text_increase_timer.start(0.05)
+
+
+func _on_next_dia_timer_timeout() -> void:
+	_next_text()
+	if current_text == 1:
+		global.can_player_move = true
+
+
+# Function used to check to see if certain flags should be set to true
+func _check_reqs():
+	# This checks to see if the player has moved, if so then flag 1 is set to true and it stops checking
+	if not req_1 and global.can_player_move:
+		if (
+		Input.is_action_just_pressed("Player_1_Forwards")
+		or Input.is_action_just_pressed("Player_1_Backwards")
+		or Input.is_action_just_pressed("Player_1_Left")
+		or Input.is_action_just_pressed("Player_1_Right")
+		):
+			req_array[1] = true
+
+
+# Area that sets flag 2 ti true
+func _on_dia_3_body_entered(body: Node3D) -> void:
+	if body.has_meta("player"):
+		req_array[2] = true

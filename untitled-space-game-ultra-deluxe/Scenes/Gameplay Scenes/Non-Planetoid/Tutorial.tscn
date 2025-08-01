@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dogn4iwa3st8x"]
+[gd_scene load_steps=25 format=3 uid="uid://dogn4iwa3st8x"]
 
 [ext_resource type="Script" uid="uid://cj15ldbi1xku0" path="res://Scripts/Non-Planets/tutorial.gd" id="1_oe6tc"]
 [ext_resource type="Environment" uid="uid://cpt4fb1w5r6we" path="res://World Enviroments/Test_Enviroment.tres" id="1_sw33o"]
 [ext_resource type="PackedScene" uid="uid://2dwnnhs7udlh" path="res://Scenes/Player/Test_Player.tscn" id="4_i0kwk"]
 [ext_resource type="PackedScene" uid="uid://6f6p5l0qx3ke" path="res://Scenes/Planet/Resource.tscn" id="4_w857d"]
 [ext_resource type="Script" uid="uid://bqer1vj14rv67" path="res://Scripts/Planets/3d_button.gd" id="6_01wjg"]
+[ext_resource type="PackedScene" uid="uid://b7qy57j08aoqf" path="res://Scenes/UI/tutorial_dialogue_ui.tscn" id="7_b5qh6"]
 [ext_resource type="PackedScene" uid="uid://q6y055i2kux" path="res://Scenes/Friendlies/crewmate.tscn" id="7_uqebe"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_uqebe"]
@@ -60,6 +61,9 @@ map_depth = 9
 map_data = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_w857d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uqebe"]
+size = Vector3(20, 6.24512, 1)
 
 [node name="Tutorial" type="Node3D" node_paths=PackedStringArray("lerp_timer", "wall_timer", "wall_1", "worldenviro", "nav_mesh", "go_awayinator")]
 script = ExtResource("1_oe6tc")
@@ -286,6 +290,17 @@ offset_right = 1276.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 0)
 
+[node name="TutorialDialogueUi" parent="." instance=ExtResource("7_b5qh6")]
+
+[node name="Tutorial_Areas" type="Node" parent="."]
+
+[node name="Dia_3" type="Area3D" parent="Tutorial_Areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.364968)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Areas/Dia_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.62256, 1.75368)
+shape = SubResource("BoxShape3D_uqebe")
+
 [connection signal="body_entered" from="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/ButtonArea" to="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/Button" method="_on_button_area_body_entered"]
 [connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource1" to="." method="_on_sim_resource_tree_exited"]
 [connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource2" to="." method="_on_sim_resource_tree_exited"]
@@ -293,6 +308,7 @@ color = Color(0, 0, 0, 0)
 [connection signal="timeout" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/walltimer" to="." method="_on_walltimer_timeout"]
 [connection signal="body_entered" from="Respawn" to="." method="_on_respawn_body_entered"]
 [connection signal="timeout" from="Respawn/lerptimer" to="." method="_on_lerptimer_timeout"]
+[connection signal="body_entered" from="Tutorial_Areas/Dia_3" to="TutorialDialogueUi" method="_on_dia_3_body_entered"]
 
 [editable path="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource1"]
 [editable path="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource2"]
