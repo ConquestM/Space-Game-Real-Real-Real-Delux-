@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://btayc7jxe623f"]
 
-[ext_resource type="Texture2D" uid="uid://0varscxlrhgr" path="res://Sprites/devart_choice_selector.png" id="1_14c37"]
+[ext_resource type="Texture2D" uid="uid://cei60v11w022u" path="res://Sprites/dev art/devart_choice_selector.png" id="1_14c37"]
 [ext_resource type="Script" uid="uid://d04rpg4v03jkv" path="res://Scripts/UI/choice_selectors.gd" id="1_ocfk1"]
 [ext_resource type="Texture2D" uid="uid://ruoo5p3heiwc" path="res://Sprites/dev art/devart_choice_fight.png" id="2_d7pnp"]
 [ext_resource type="Script" uid="uid://dpufibdhw2xip" path="res://Scripts/UI/Choice Stuff/choices.gd" id="3_oc57t"]
