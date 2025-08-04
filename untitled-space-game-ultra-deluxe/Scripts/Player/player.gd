@@ -35,7 +35,6 @@ var crouch_stats = [
 	0.25 # Camera Height 
 ]
 # Flags
-var switchout = false
 var cursor_mode = false
 var can_jump = true
 var coyote_timer_on = false
@@ -181,13 +180,12 @@ func _process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_CAPTURED and is_multiplayer_authority():
-			rotate_y(-event.relative.x * sensitivity)
-			if switchout == false:
-				camera_rotator.get_node("Camera3D").rotate_x(-event.relative.y * sensitivity)
-				camera_rotator.get_node("Camera3D").rotation.x = clamp(camera_rotator.get_node("Camera3D").rotation.x, deg_to_rad(-80), deg_to_rad(80))
-			if switchout == true:
-				camera_rotator.rotate_x(-event.relative.y * sensitivity)
-				camera_rotator.rotation.x = clamp(camera_rotator.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+			rotate_y(-event.relative.x * sensitivity) # Rotates the x axis reletive to mouse.
+			# Rotates the y axis reletive to mouse, and has a cap to stop the player from breaking their neck.
+			camera_rotator.rotate_x(-event.relative.y * sensitivity)
+			camera_rotator.rotation.x = clamp(
+				camera_rotator.rotation.x, deg_to_rad(-80), deg_to_rad(80)
+			)
 
 
 # Coyote Time Handler

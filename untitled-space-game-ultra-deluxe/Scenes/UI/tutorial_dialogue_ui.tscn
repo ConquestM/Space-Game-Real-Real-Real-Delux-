@@ -6,22 +6,28 @@
 
 [node name="TutorialDialogueUi" type="CanvasLayer" node_paths=PackedStringArray("textbox", "text_increase_timer", "next_dia_timer")]
 script = ExtResource("1_gbjbx")
-textbox = NodePath("Label")
-text_increase_timer = NodePath("Timer")
-next_dia_timer = NodePath("Next_Dia_Timer")
+textbox = NodePath("Control/Label")
+text_increase_timer = NodePath("Control/Timer")
+next_dia_timer = NodePath("Control/Next_Dia_Timer")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 336.0
+offset_right = 336.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
 offset_right = 240.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
 color = Color(0, 0, 0, 0.196078)
 
-[node name="Computer" type="Sprite2D" parent="."]
+[node name="Computer" type="Sprite2D" parent="Control"]
 position = Vector2(40, 40)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("1_k6fbm")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Control"]
 offset_left = 100.0
 offset_right = 480.0
 offset_bottom = 80.0
@@ -32,13 +38,13 @@ vertical_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 1
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="Control"]
 wait_time = 0.05
 one_shot = true
 autostart = true
 
-[node name="Next_Dia_Timer" type="Timer" parent="."]
+[node name="Next_Dia_Timer" type="Timer" parent="Control"]
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Next_Dia_Timer" to="." method="_on_next_dia_timer_timeout"]
+[connection signal="timeout" from="Control/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Control/Next_Dia_Timer" to="." method="_on_next_dia_timer_timeout"]
