@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://2dwnnhs7udlh"]
+[gd_scene load_steps=12 format=3 uid="uid://2dwnnhs7udlh"]
 
 [ext_resource type="Script" uid="uid://dt0tqgm60pyve" path="res://Scripts/Player/player.gd" id="1_ox56v"]
 [ext_resource type="PackedScene" uid="uid://cg61srfpqg77o" path="res://Scenes/UI/resource_bars.tscn" id="2_nxyyc"]
+[ext_resource type="PackedScene" uid="uid://81pofolvy554" path="res://Scenes/UI/pause_menu.tscn" id="2_oo5qb"]
 [ext_resource type="Theme" uid="uid://xersx1rqgqqv" path="res://Themes/computer_terminal.tres" id="2_ox56v"]
 [ext_resource type="Texture2D" uid="uid://jn3ndcjfj0cp" path="res://Sprites/dev art/devart_crosshair.png" id="3_743u0"]
 
@@ -45,6 +46,7 @@ crosshair = NodePath("Control/DevartCrosshair")
 resourcebars = NodePath("Control/ResourceBars")
 debug_console = NodePath("Control/TextEdit")
 coyote_timer = NodePath("CoyoteTimer")
+pause_menu = ExtResource("2_oo5qb")
 metadata/player = true
 
 [node name="Model" type="MeshInstance3D" parent="."]

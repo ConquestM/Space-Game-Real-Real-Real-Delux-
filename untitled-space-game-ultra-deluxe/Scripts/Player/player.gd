@@ -14,6 +14,7 @@ extends CharacterBody3D
 @export var debug_console: TextEdit
 @export_group("Script Stuff")
 @export var coyote_timer: Timer
+@export var pause_menu: PackedScene
 # Player Statistics
 var jump_velocity = 4.5
 var movement_speed = 5.0
@@ -35,7 +36,7 @@ var crouch_stats = [
 	0.25 # Camera Height 
 ]
 # Flags
-var cursor_mode = false
+var cursor_mode = true
 var can_jump = true
 var coyote_timer_on = false
 var flashlight_enabled = false
@@ -157,13 +158,17 @@ func _process(_delta: float) -> void:
 	
 	# Unlock Mouse
 	if Input.is_action_just_pressed("Player_1_Settings") and is_multiplayer_authority():
+		var pause = pause_menu.instantiate()
 		cursor_mode = not cursor_mode
 		if cursor_mode:
 			# Locked Mouse
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+			global.can_player_move = true
 		else:
 			# Unlocked Mouse
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+			add_child(pause)
+			global.can_player_move = false
 	
 	# flashlight Code
 	if Input.is_action_just_pressed("Player_1_Flashlight") and is_multiplayer_authority():

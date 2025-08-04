@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://81pofolvy554"]
+
+[ext_resource type="Script" uid="uid://ddt0rv5a0o2eb" path="res://Scripts/UI/pause_menu.gd" id="1_8rf44"]
+[ext_resource type="Theme" uid="uid://xersx1rqgqqv" path="res://Themes/computer_terminal.tres" id="1_rrvs5"]
+
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("selector")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8rf44")
+selector = NodePath("Panel/Selector")
+buttons = [NodePath("Panel/Button_1"), NodePath("Panel/Button_2"), NodePath("Panel/Button_3")]
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1144.0
+offset_bottom = 640.0
+theme = ExtResource("1_rrvs5")
+
+[node name="Button_1" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 264.0
+offset_bottom = 131.0
+theme = ExtResource("1_rrvs5")
+text = "Button 1"
+
+[node name="Button_2" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 278.0
+offset_right = 264.0
+offset_bottom = 345.0
+theme = ExtResource("1_rrvs5")
+text = "Button 2"
+
+[node name="Button_3" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 500.0
+offset_right = 264.0
+offset_bottom = 567.0
+theme = ExtResource("1_rrvs5")
+text = "Button 3"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 725.0
+offset_top = 64.0
+offset_right = 1010.0
+offset_bottom = 131.0
+text = "Suit Console
+:)"
+
+[node name="Selector" type="Line2D" parent="Panel"]
+position = Vector2(334, 56)
+points = PackedVector2Array(0, 22, -30, 44, 0, 66)
+default_color = Color(0, 0.705882, 0, 1)
+
+[connection signal="pressed" from="Panel/Button_1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="Panel/Button_2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/Button_3" to="." method="_on_button_3_pressed"]
