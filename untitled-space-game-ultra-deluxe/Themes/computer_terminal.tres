@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://xersx1rqgqqv"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://xersx1rqgqqv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfkpx"]
 
@@ -9,6 +9,13 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_daivn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8nedo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfkpx"]
+bg_color = Color(0, 0.196078, 0, 0.196078)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05jxc"]
 
@@ -26,6 +33,7 @@ Button/styles/normal = SubResource("StyleBoxEmpty_daivn")
 Button/styles/pressed = SubResource("StyleBoxEmpty_8nedo")
 Label/colors/font_color = Color(0, 0.705882, 0, 1)
 Label/font_sizes/font_size = 48
+Panel/styles/panel = SubResource("StyleBoxFlat_nfkpx")
 TextEdit/colors/caret_color = Color(0, 0.705882, 0, 1)
 TextEdit/colors/font_color = Color(0, 0.705882, 0, 1)
 TextEdit/colors/font_placeholder_color = Color(0, 0.705882, 0, 0.588235)
