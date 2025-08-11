@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccwj4qlymwnn0"]
+[gd_scene load_steps=5 format=3 uid="uid://ccwj4qlymwnn0"]
 
 [ext_resource type="Script" uid="uid://o2jf3ratf5dw" path="res://Scripts/Enemies/test_enemy.gd" id="1_og2n6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m5xl4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0b88p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_og2n6"]
+size = Vector3(30, 5, 30)
 
 [node name="TestEnemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("1_og2n6")
@@ -17,3 +20,10 @@ mesh = SubResource("CapsuleMesh_m5xl4")
 shape = SubResource("CapsuleShape3D_0b88p")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_og2n6")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
