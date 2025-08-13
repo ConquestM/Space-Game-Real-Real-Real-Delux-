@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjdhwr6uhqfmk"]
+[gd_scene load_steps=3 format=3 uid="uid://bjdhwr6uhqfmk"]
 
 [ext_resource type="Script" uid="uid://ck0q2ipimeep" path="res://Scripts/UI/loading_screen.gd" id="1_qj53y"]
+[ext_resource type="Theme" uid="uid://xersx1rqgqqv" path="res://Themes/computer_terminal.tres" id="2_63kij"]
 
-[node name="LoadingScreen" type="Control" node_paths=PackedStringArray("progress_bar", "timer")]
+[node name="LoadingScreen" type="Control" node_paths=PackedStringArray("progress_bar", "timer", "loading_text")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_qj53y")
 progress_bar = NodePath("ProgressBar")
 timer = NodePath("wait")
+loading_text = NodePath("Join")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -25,8 +27,26 @@ offset_left = 76.0
 offset_top = 500.0
 offset_right = 1076.0
 offset_bottom = 530.0
+theme = ExtResource("2_63kij")
+value = 17.48
+show_percentage = false
 
 [node name="wait" type="Timer" parent="."]
 one_shot = true
 
+[node name="Join" type="Button" parent="."]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 224.0
+offset_right = 703.0
+offset_bottom = 291.0
+theme = ExtResource("2_63kij")
+text = "Loading"
+icon_alignment = 1
+
+[node name="Timer" type="Timer" parent="Join"]
+wait_time = 0.67
+autostart = true
+
 [connection signal="timeout" from="wait" to="." method="_on_wait_timeout"]
+[connection signal="timeout" from="Join/Timer" to="." method="_on_timer_timeout"]

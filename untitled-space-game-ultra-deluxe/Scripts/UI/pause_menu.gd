@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	current_button = clamp(current_button, 0, 2)
 	var button = get_node(buttons[current_button])
 	
@@ -25,13 +25,20 @@ func _process(delta: float) -> void:
 		dir = 0
 	if Input.is_action_just_pressed("Player_1_Settings"):
 		queue_free()
+	if Input.is_action_just_pressed("Player_1_Accept"):
+		if current_button == 0:
+			_on_button_1_pressed()
+		elif current_button == 1:
+			_on_button_2_pressed()
+		elif current_button == 2:
+			_on_button_3_pressed()
 
 
 func _on_button_1_pressed() -> void:
 	if current_button != 0:
 		current_button = 0
 	else:
-		print("name")
+		queue_free()
 
 
 func _on_button_2_pressed() -> void:
@@ -45,4 +52,4 @@ func _on_button_3_pressed() -> void:
 	if current_button != 2:
 		current_button = 2
 	else:
-		print("name")
+		get_tree().change_scene_to_file("res://Scenes/UI/nondiegetic_computer_menu.tscn")

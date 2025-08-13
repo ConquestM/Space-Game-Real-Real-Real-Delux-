@@ -17,6 +17,7 @@ offset_left = 336.0
 offset_right = 336.0
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
 offset_right = 240.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
@@ -28,6 +29,7 @@ scale = Vector2(1.25, 1.25)
 texture = ExtResource("1_k6fbm")
 
 [node name="Label" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 100.0
 offset_right = 480.0
 offset_bottom = 80.0

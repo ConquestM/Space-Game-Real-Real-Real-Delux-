@@ -49,6 +49,8 @@ func _process(delta: float) -> void:
 		increaser += 0.01
 		go_awayinator.get_parent().show()
 		go_awayinator.color = Color(0.0, 0.0, 0.0 ,increaser)
+	if increaser >= 1:
+		get_tree().change_scene_to_file("res://Scenes/Gameplay Scenes/Non-Planetoid/Ship.tscn")
 
 
 # Move player back to where they jumped from

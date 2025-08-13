@@ -29,7 +29,7 @@ offset_top = 64.0
 offset_right = 264.0
 offset_bottom = 131.0
 theme = ExtResource("1_rrvs5")
-text = "Button 1"
+text = "Resume"
 
 [node name="Button_2" type="Button" parent="Panel"]
 layout_mode = 0
@@ -38,7 +38,7 @@ offset_top = 278.0
 offset_right = 264.0
 offset_bottom = 345.0
 theme = ExtResource("1_rrvs5")
-text = "Button 2"
+text = "Settings"
 
 [node name="Button_3" type="Button" parent="Panel"]
 layout_mode = 0
@@ -47,7 +47,7 @@ offset_top = 500.0
 offset_right = 264.0
 offset_bottom = 567.0
 theme = ExtResource("1_rrvs5")
-text = "Button 3"
+text = "Quit"
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0

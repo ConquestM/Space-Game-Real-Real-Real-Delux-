@@ -1,0 +1,13 @@
+extends Node3D
+
+@export var resource: Node
+var float_height: float = 2.6
+
+
+func _process(_delta: float) -> void:
+	var id = get_node("@StaticBody3D@22304").get_instance_id()
+	
+	if global.collected_object == instance_from_id(id):
+		global.collected_object = null
+		global.play_camera_cutscene_1 = true
+		#get_tree().change_scene_to_file("res://Scenes/UI/nondiegetic_computer_menu.tscn")

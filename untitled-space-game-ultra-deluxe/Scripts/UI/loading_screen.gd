@@ -4,6 +4,7 @@ extends Control
 @export var get_progress_from: Node2D
 @export var progress_bar: ProgressBar
 @export var timer: Timer
+@export var loading_text: Button
 var selected_scene: String
 var started_loading: bool = false
 var loading_progress: Array = [0]
@@ -33,3 +34,10 @@ func _start():
 func _on_wait_timeout() -> void:
 	var load_it_slowly = ResourceLoader.load_threaded_get(selected_scene)
 	get_tree().change_scene_to_packed(load_it_slowly)
+
+
+func _on_timer_timeout() -> void:
+	if loading_text.text.contains("..."):
+		loading_text.text = "Loading"
+	else:
+		loading_text.text += "."

@@ -42,6 +42,7 @@ var coyote_timer_on = false
 var flashlight_enabled = false
 # Nodes
 var looking_object = null
+var cam_cutscene_point = null
 
 
 func _enter_tree() -> void:
@@ -170,7 +171,7 @@ func _process(_delta: float) -> void:
 			add_child(pause)
 			global.can_player_move = false
 	
-	# flashlight Code
+	# Flashlight Code
 	if Input.is_action_just_pressed("Player_1_Flashlight") and is_multiplayer_authority():
 		if global.can_player_move:
 			flashlight.visible = not flashlight.visible
@@ -179,6 +180,13 @@ func _process(_delta: float) -> void:
 		looking_object = looking.get_collider()
 		if Input.is_action_just_pressed("Player_1_Interact"):
 			global.collected_object = looking_object
+	
+	if global.play_camera_cutscene_1:
+		global.play_camera_cutscene_1 = false
+		for index in get_tree().current_scene.get_children():
+			if index.name == "Camera_Cutscene_Point":
+				cam_cutscene_point = index
+				_camera_cutscene()
 
 
 # Camera Shtuff
@@ -201,3 +209,7 @@ func _on_coyote_timer_timeout() -> void:
 
 func _on_window_close_requested() -> void:
 	multiplayer_helper.queue_free()
+
+
+func _camera_cutscene():
+	camera_rotator.get_node("Camera3D").position = cam_cutscene_point.position

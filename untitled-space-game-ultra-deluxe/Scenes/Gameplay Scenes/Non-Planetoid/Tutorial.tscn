@@ -1,12 +1,47 @@
-[gd_scene load_steps=25 format=3 uid="uid://dogn4iwa3st8x"]
+[gd_scene load_steps=27 format=3 uid="uid://dogn4iwa3st8x"]
 
 [ext_resource type="Script" uid="uid://cj15ldbi1xku0" path="res://Scripts/Non-Planets/tutorial.gd" id="1_oe6tc"]
-[ext_resource type="Environment" uid="uid://cpt4fb1w5r6we" path="res://World Enviroments/Test_Enviroment.tres" id="1_sw33o"]
 [ext_resource type="PackedScene" uid="uid://2dwnnhs7udlh" path="res://Scenes/Player/Test_Player.tscn" id="4_i0kwk"]
 [ext_resource type="PackedScene" uid="uid://6f6p5l0qx3ke" path="res://Scenes/Planet/Resource.tscn" id="4_w857d"]
 [ext_resource type="Script" uid="uid://bqer1vj14rv67" path="res://Scripts/Planets/3d_button.gd" id="6_01wjg"]
 [ext_resource type="PackedScene" uid="uid://b7qy57j08aoqf" path="res://Scenes/UI/tutorial_dialogue_ui.tscn" id="7_b5qh6"]
 [ext_resource type="PackedScene" uid="uid://q6y055i2kux" path="res://Scenes/Friendlies/crewmate.tscn" id="7_uqebe"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_01wjg"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_curve = 0.34
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+sun_angle_max = 90.0
+sun_curve = 0.125
+
+[sub_resource type="Sky" id="Sky_uqebe"]
+sky_material = SubResource("ProceduralSkyMaterial_01wjg")
+radiance_size = 2
+
+[sub_resource type="Environment" id="Environment_b5qh6"]
+background_mode = 2
+sky = SubResource("Sky_uqebe")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 0, 1)
+ambient_light_sky_contribution = 0.85
+reflected_light_source = 2
+ssao_enabled = true
+ssao_intensity = 4.0
+ssao_power = 2.0
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.0
+fog_sky_affect = 0.0
+fog_depth_curve = 0.5
+fog_depth_begin = 5.0
+fog_depth_end = 12.0
+volumetric_fog_density = 1.0
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_length = 16.0
+volumetric_fog_sky_affect = 0.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_uqebe"]
 vertices = PackedVector3Array(7.92037, 0.5, -74.2006, 0.920366, 0.5, -74.2006, 0.670366, 0.5, -72.7006, 7.92037, 0.5, -58.2006, -0.579634, 0.5, -72.7006, -0.829634, 0.5, -74.2006, -7.82963, 0.5, -74.2006, -7.82963, 0.5, -58.2006, -1.07963, -49.5, -56.7006, -1.07963, -49.5, -50.4506, 1.17037, -49.5, -50.4506, 1.17037, -49.5, -56.7006, -7.82963, 0.5, -43.4506, -6.82963, 0.5, -43.4506, -6.57963, 0.5, -44.7006, -7.82963, 0.5, -50.4506, 7.92037, 0.5, -44.7006, 7.92037, 0.5, -50.4506, -5.82963, 17.5, -43.7006, -5.82963, 17.5, -42.9506, 8.17037, 17.5, -42.9506, 8.17037, 17.5, -43.7006, 9.42037, 17.5, -43.7006, 9.42037, 17.5, -42.9506, 15.4204, 17.5, -42.9506, 15.4204, 17.5, -43.7006, -6.57963, 0.5, -41.9506, -7.82963, 0.5, -38.9506, 6.42037, 0.5, -38.9506, 6.67037, 0.5, -37.7006, 7.92037, 0.5, -37.7006, 7.92037, 0.5, -41.9506, -15.5796, 17.5, -37.9506, -15.5796, 17.5, -37.2006, -9.32963, 17.5, -37.2006, -9.32963, 17.5, -37.9506, -8.07963, 17.5, -37.9506, -8.07963, 17.5, -37.2006, 5.67037, 17.5, -37.2006, 5.67037, 17.5, -37.9506, 6.42037, 0.5, -36.2006, 7.92037, 0.5, -34.2006, -7.82963, 0.5, -36.2006, -7.82963, 0.5, -34.2006, -4.32963, 0.5, -21.7006, -3.57963, 0.5, -20.9506, -3.32963, 0.5, -20.9506, -0.829634, 0.5, -28.4506, -7.82963, 0.5, -19.9506, -6.57963, 0.5, -19.9506, -6.57963, 0.5, -20.9506, -1.57963, 0.5, -30.9506, -0.0796337, 0.5, -31.7006, -0.0796337, 0.5, -31.9506, -7.82963, 0.5, -31.9506, -5.57963, 0.5, -21.7006, -1.57963, 0.5, -28.9506, 1.17037, 0.5, -31.4506, 7.92037, 0.5, -31.9506, 6.42037, 0.5, -21.2006, 6.67037, 0.5, -19.9506, 7.92037, 0.5, -20.2006, 2.67037, 0.5, -20.9506, 3.42037, 0.5, -20.9506, 4.42037, 0.5, -21.7006, 0.920366, 0.5, -28.4506, 5.67037, 0.5, -21.7006, 1.67037, 0.5, -30.7006, 1.67037, 0.5, -29.2006, 6.67037, 0.5, -19.2006, -3.32963, 0.5, -19.2006, 3.42037, 0.5, -18.9506, -6.07963, 0.5, -18.4506, -7.82963, 0.5, -15.2006, 5.92037, 0.5, -18.4506, 7.92037, 0.5, -15.2006, 3.92037, 0.5, -18.4506, -4.07963, 0.5, -18.4506, -1.07963, -49.5, -16.4506, -1.07963, -49.5, -14.9506, 1.17037, -49.5, -14.9506, 1.17037, -49.5, -16.4506, -1.07963, -49.5, -13.7006, -1.07963, -49.5, -12.2006, 1.17037, -49.5, -12.2006, 1.17037, -49.5, -13.7006, -1.07963, -49.5, -10.9506, -1.07963, -49.5, -9.2006, 1.17037, -49.5, -9.2006, 1.17037, -49.5, -10.9506, -7.82963, 0.5, 5.2994, -0.829634, 0.5, 5.2994, -0.579634, 0.5, 4.2994, -7.82963, 0.5, -10.7006, 0.670366, 0.5, 4.2994, 0.920366, 0.5, 5.2994, 7.92037, 0.5, 5.2994, 7.92037, 0.5, -10.7006)
@@ -77,7 +112,7 @@ nav_mesh = NodePath("WorldEnvironment/NavigationRegion3D")
 go_awayinator = NodePath("FadeOut/ColorRect")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_sw33o")
+environment = SubResource("Environment_b5qh6")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="WorldEnvironment"]
 navigation_mesh = SubResource("NavigationMesh_uqebe")

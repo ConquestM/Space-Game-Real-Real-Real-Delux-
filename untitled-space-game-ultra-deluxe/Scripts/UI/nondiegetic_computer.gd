@@ -178,8 +178,12 @@ func _enter():
 			_back()
 	# Save File Menu Stuff
 	elif current_menu == 4:
-		if current_button[current_menu] == 0 or current_button[current_menu] == 1 or current_button[current_menu] == 2:
-			_load_scene(0, TUTORIAL_SCENE)
+		if current_button[current_menu] == 0:
+			_load_scene(0, SaveData1.current_room)
+		if current_button[current_menu] == 1:
+			_load_scene(0, SaveData2.current_room)
+		if current_button[current_menu] == 2:
+			_load_scene(0, SaveData3.current_room)
 		elif current_button[current_menu] == 3:
 			_back()
 	_get_max_menu_buttons()
