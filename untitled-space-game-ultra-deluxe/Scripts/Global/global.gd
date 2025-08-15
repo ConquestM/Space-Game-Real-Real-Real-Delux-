@@ -11,7 +11,9 @@ var resources: int = 0
 var debug_mode: bool = false
 var last_player_pos: Vector3
 var can_player_move: bool = true
+var can_player_move_camera: bool = true
 var play_camera_cutscene_1: bool = false
+
 
 
 func _hp_change(_value):

@@ -60,7 +60,6 @@ func _enter_tree() -> void:
 	# Kill the resources in the tutorial
 	if get_tree().current_scene.name == "Tutorial":
 		resourcebars.queue_free()
-	
 
 
 func _physics_process(delta: float) -> void:
@@ -159,17 +158,22 @@ func _process(_delta: float) -> void:
 	
 	# Unlock Mouse
 	if Input.is_action_just_pressed("Player_1_Settings") and is_multiplayer_authority():
-		var pause = pause_menu.instantiate()
-		cursor_mode = not cursor_mode
-		if cursor_mode:
-			# Locked Mouse
-			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+		if not global.can_player_move_camera:
+			global.can_player_move_camera = true
 			global.can_player_move = true
+			camera_rotator.get_node("Camera3D").current = true
 		else:
-			# Unlocked Mouse
-			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
-			add_child(pause)
-			global.can_player_move = false
+			var pause = pause_menu.instantiate()
+			cursor_mode = not cursor_mode
+			if cursor_mode:
+				# Locked Mouse
+				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+				global.can_player_move = true
+			else:
+				# Unlocked Mouse
+				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+				add_child(pause)
+				global.can_player_move = false
 	
 	# Flashlight Code
 	if Input.is_action_just_pressed("Player_1_Flashlight") and is_multiplayer_authority():
@@ -181,17 +185,23 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("Player_1_Interact"):
 			global.collected_object = looking_object
 	
+	# Sets the camera to a specific nodes position when using the ship computer.
 	if global.play_camera_cutscene_1:
 		global.play_camera_cutscene_1 = false
 		for index in get_tree().current_scene.get_children():
 			if index.name == "Camera_Cutscene_Point":
 				cam_cutscene_point = index
 				_camera_cutscene()
+	
+	if not global.can_player_move_camera:
+		resourcebars.get_node("CanvasLayer").hide()
+	else:
+		resourcebars.get_node("CanvasLayer").show()
 
 
 # Camera Shtuff
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and global.can_player_move_camera:
 		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_CAPTURED and is_multiplayer_authority():
 			rotate_y(-event.relative.x * sensitivity) # Rotates the x axis reletive to mouse.
 			# Rotates the y axis reletive to mouse, and has a cap to stop the player from breaking their neck.
@@ -212,4 +222,4 @@ func _on_window_close_requested() -> void:
 
 
 func _camera_cutscene():
-	camera_rotator.get_node("Camera3D").position = cam_cutscene_point.position
+	cam_cutscene_point.get_node("Camera3D").current = true
