@@ -193,10 +193,10 @@ func _process(_delta: float) -> void:
 				cam_cutscene_point = index
 				_camera_cutscene()
 	
-	if not global.can_player_move_camera:
-		resourcebars.get_node("CanvasLayer").hide()
-	else:
-		resourcebars.get_node("CanvasLayer").show()
+#	if not global.can_player_move_camera:
+#		resourcebars.get_node("CanvasLayer").hide()
+#	else:
+#		resourcebars.get_node("CanvasLayer").show()
 
 
 # Camera Shtuff
