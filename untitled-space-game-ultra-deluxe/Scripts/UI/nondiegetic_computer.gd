@@ -80,13 +80,13 @@ func _on_multiplayer_pressed() -> void:
 func _on_host_pressed() -> void:
 	global.multiplayer_on = true
 	Online.hosting = true
-	_load_scene(0, SaveData3.current_room)
+	_load_scene(0, SaveData1.current_room)
 
 
 func _on_join_pressed() -> void:
 	global.multiplayer_on = true
 	Online.joining = true
-	_load_scene(0, SaveData3.current_room)
+	_load_scene(0, SaveData1.current_room)
 
 
 func _load_scene(_save_file: int, selected_scene):

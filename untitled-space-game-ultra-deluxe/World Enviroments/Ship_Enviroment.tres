@@ -1,0 +1,10 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://dol1jk481sht3"]
+
+[ext_resource type="Material" uid="uid://etqr8sor0vtn" path="res://Shaders/ship_bg_material.tres" id="1_ecj06"]
+
+[sub_resource type="Sky" id="Sky_gmpc0"]
+sky_material = ExtResource("1_ecj06")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_gmpc0")
