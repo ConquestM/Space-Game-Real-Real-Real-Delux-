@@ -11,12 +11,14 @@
 
 [node name="Ship" type="Node3D"]
 script = ExtResource("1_qwfo7")
+player_scene = ExtResource("2_60m10")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_60m10")
 
-[node name="Player1" parent="." instance=ExtResource("2_60m10")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 0)
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://2dwnnhs7udlh")
+spawn_path = NodePath("..")
 
 [node name="Lights" type="Node" parent="."]
 
@@ -50,7 +52,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13176, 6.61162)
 [node name="Camera3D" type="Camera3D" parent="Camera_Cutscene_Point"]
 transform = Transform3D(-0.707107, 0.298836, -0.640856, 0, 0.906308, 0.422618, 0.707107, 0.298836, -0.640856, -3, 5, -5)
 near = 0.9
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://2dwnnhs7udlh")
-spawn_path = NodePath("..")
