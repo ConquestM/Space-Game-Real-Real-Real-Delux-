@@ -1,6 +1,5 @@
 class_name Player extends CharacterBody3D
 
-
 @export_group("Player Body Stuff")
 @export var looking: RayCast3D
 @export var multiplayer_helper: Label
@@ -185,7 +184,10 @@ func _process(_delta: float) -> void:
 	if looking.is_colliding():
 		looking_object = looking.get_collider()
 		if Input.is_action_just_pressed("Player_1_Interact"):
-			global.collected_object = looking_object
+			if looking_object.has_meta("Crewmate"):
+				looking_object._spawn_ui()
+			else:
+				global.collected_object = looking_object
 	
 	# Sets the camera to a specific nodes position when using the ship computer.
 	if global.play_camera_cutscene_1:
@@ -195,6 +197,7 @@ func _process(_delta: float) -> void:
 				cam_cutscene_point = index
 				_camera_cutscene()
 	
+	if resourcebars == null: return
 	if not global.can_player_move_camera:
 		resourcebars.get_node("CanvasLayer").hide()
 	else:

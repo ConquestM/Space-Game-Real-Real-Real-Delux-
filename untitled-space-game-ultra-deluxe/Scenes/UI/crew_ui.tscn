@@ -39,7 +39,7 @@ selector = NodePath("../DevartCrosshair")
 mouse_collider = NodePath("Mouse")
 
 [node name="Fight" type="Sprite2D" parent="Choice Selectors" node_paths=PackedStringArray("parent")]
-position = Vector2(0, -100)
+position = Vector2(-0.963135, -99.9631)
 rotation = 0.785398
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("1_14c37")
@@ -61,7 +61,7 @@ position = Vector2(-0.36261, 0)
 shape = SubResource("RectangleShape2D_jcwk3")
 
 [node name="Resources" type="Sprite2D" parent="Choice Selectors" node_paths=PackedStringArray("parent")]
-position = Vector2(100, 0)
+position = Vector2(99.0369, 0.0368653)
 rotation = 2.35619
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("1_14c37")
@@ -70,9 +70,8 @@ parent = NodePath("..")
 
 [node name="DevartChoiceResources" type="Sprite2D" parent="Choice Selectors/Resources"]
 z_index = 1
-position = Vector2(-1.62131, -2.37868)
+position = Vector2(-4.08087, -2.37866)
 rotation = 3.92699
-scale = Vector2(1, -1)
 texture = ExtResource("3_ocfk1")
 
 [node name="Resources_Mouse_Area" type="Area2D" parent="Choice Selectors/Resources"]
@@ -85,7 +84,7 @@ position = Vector2(-0.36261, 0)
 shape = SubResource("RectangleShape2D_jcwk3")
 
 [node name="Move" type="Sprite2D" parent="Choice Selectors" node_paths=PackedStringArray("parent")]
-position = Vector2(0, 100)
+position = Vector2(-0.963135, 100.037)
 rotation = -2.3562
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("1_14c37")
@@ -109,7 +108,7 @@ position = Vector2(-0.36261, 0.576996)
 shape = SubResource("RectangleShape2D_s0hqe")
 
 [node name="Cancel" type="Sprite2D" parent="Choice Selectors" node_paths=PackedStringArray("parent")]
-position = Vector2(-100, 0)
+position = Vector2(-100.963, 0.0368652)
 rotation = 5.49779
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("1_14c37")
@@ -136,6 +135,48 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Choice Selectors/Mouse"]
 shape = SubResource("CircleShape2D_jcwk3")
+
+[node name="Text" type="Control" parent="Choice Selectors"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Fight" type="Label" parent="Choice Selectors/Text"]
+visible = false
+layout_mode = 0
+offset_left = -22.0
+offset_top = -164.0
+offset_right = 18.0
+offset_bottom = -141.0
+text = "Fight"
+
+[node name="Resources" type="Label" parent="Choice Selectors/Text"]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_top = -2.0
+offset_right = 203.0
+offset_bottom = 21.0
+text = "Forage"
+
+[node name="Move" type="Label" parent="Choice Selectors/Text"]
+visible = false
+layout_mode = 0
+offset_left = -23.0
+offset_top = 159.0
+offset_right = 20.0
+offset_bottom = 182.0
+text = "Move"
+
+[node name="Cancel" type="Label" parent="Choice Selectors/Text"]
+visible = false
+layout_mode = 0
+offset_left = -227.0
+offset_top = -3.0
+offset_right = -150.0
+offset_bottom = 20.0
+text = "Exit Menu"
 
 [node name="DevartCrosshair" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
