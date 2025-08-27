@@ -27,6 +27,7 @@ Online="*res://Scripts/Global/online.gd"
 SaveData1="*res://Save Data/save_data_1.gd"
 SaveData2="*res://Save Data/save_data_2.gd"
 SaveData3="*res://Save Data/save_data_3.gd"
+SignalBus="*res://Scripts/Global/signal_bus.gd"
 
 [display]
 

@@ -325,7 +325,11 @@ offset_right = 1276.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 0)
 
-[node name="TutorialDialogueUi" parent="." instance=ExtResource("7_b5qh6")]
+[node name="TutorialDialogueUi" parent="." node_paths=PackedStringArray("check_1", "check_2", "check_3", "check_4") instance=ExtResource("7_b5qh6")]
+check_1 = NodePath("../Tutorial_Areas/Dia_3")
+check_2 = NodePath("../Tutorial_Areas/Dia_4")
+check_3 = NodePath("../Tutorial_Areas/Dia_5")
+check_4 = NodePath("../Tutorial_Areas/Dia_6")
 
 [node name="Tutorial_Areas" type="Node" parent="."]
 

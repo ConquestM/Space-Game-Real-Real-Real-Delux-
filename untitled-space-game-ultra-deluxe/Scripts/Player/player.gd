@@ -12,6 +12,7 @@ class_name Player extends CharacterBody3D
 @export var crosshair: Sprite2D
 @export var resourcebars: Control
 @export var debug_console: TextEdit
+@export var green_flash: AnimationPlayer
 @export_group("Script Stuff")
 @export var coyote_timer: Timer
 @export var pause_menu: PackedScene
@@ -60,6 +61,7 @@ func _enter_tree() -> void:
 	# Kill the resources in the tutorial
 	if get_tree().current_scene.name == "Tutorial":
 		resourcebars.queue_free()
+	SignalBus.objective_completion.connect(_objective_completion)
 
 
 func _physics_process(delta: float) -> void:
@@ -196,6 +198,7 @@ func _process(_delta: float) -> void:
 	if not global.can_player_move_camera:
 		resourcebars.get_node("CanvasLayer").hide()
 	else:
+		if get_node_or_null("CanvasLayer") == null: return
 		resourcebars.get_node("CanvasLayer").show()
 
 
@@ -223,3 +226,7 @@ func _on_window_close_requested() -> void:
 
 func _camera_cutscene():
 	cam_cutscene_point.get_node("Camera3D").current = true
+
+
+func _objective_completion():
+	green_flash.play("flash")

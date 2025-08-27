@@ -16,6 +16,7 @@ var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 # Ending Stuff
 var go_away: bool = false
 var increaser: float = 0.0
+signal tutorial_start
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +25,7 @@ func _ready() -> void:
 		var player = player_scene.instantiate()
 		add_child(player, true)
 		player.position.y += 1
+	SignalBus._objective_connect()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

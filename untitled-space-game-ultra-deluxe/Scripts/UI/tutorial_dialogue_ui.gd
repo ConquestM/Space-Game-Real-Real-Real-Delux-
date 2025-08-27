@@ -6,6 +6,10 @@ const TEXT_INCREASER: int = 1
 @export var textbox: Label
 @export var text_increase_timer: Timer
 @export var next_dia_timer: Timer
+@export var check_1: Area3D
+@export var check_2: Area3D
+@export var check_3: Area3D
+@export var check_4: Area3D
 # Current Dialogue
 var current_text: int = 0
 # Current Character (Letter) of current Dialogue
@@ -62,6 +66,7 @@ var req_array: Array = [
 	req_8,
 	req_9
 ]
+signal objective_flag
 
 
 # Called when the node enters the scene tree for the first time.
@@ -143,23 +148,32 @@ func _check_reqs():
 func _on_dia_3_body_entered(body: Node3D) -> void:
 	if body.has_meta("player"):
 		req_array[2] = true
+		objective_flag.emit()
+		check_1.queue_free()
 
 
 func _on_dia_4_body_entered(body: Node3D) -> void:
 	if body.has_meta("player"):
 		req_array[3] = true
+		objective_flag.emit()
+		check_2.queue_free()
 
 
 func _on_sim_resource_1_tree_exited() -> void:
 	if global.resources == 3:
 		req_array[4] = true
+		objective_flag.emit()
 
 
 func _on_dia_5_body_entered(body: Node3D) -> void:
 	if body.has_meta("player"):
 		req_array[5] = true
+		objective_flag.emit()
+		check_3.queue_free()
 
 
 func _on_dia_6_body_entered(body: Node3D) -> void:
 	if body.has_meta("player"):
 		req_array[6] = true
+		objective_flag.emit()
+		check_4.queue_free()

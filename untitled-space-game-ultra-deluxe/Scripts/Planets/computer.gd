@@ -5,6 +5,7 @@ var float_height: float = 2.6
 
 
 func _process(_delta: float) -> void:
+	if get_node_or_null("@StaticBody3D@22304") == null: return
 	var id = get_node("@StaticBody3D@22304").get_instance_id()
 	
 	if global.collected_object == instance_from_id(id):
