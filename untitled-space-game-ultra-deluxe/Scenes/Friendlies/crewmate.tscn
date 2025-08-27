@@ -4,9 +4,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b5qh6"]
 
-[node name="Crewmate" type="CharacterBody3D" node_paths=PackedStringArray("navigation_agent", "raycast")]
+[node name="Crewmate" type="CharacterBody3D" node_paths=PackedStringArray("navigation_agent", "wait_timer", "raycast")]
 script = ExtResource("1_h8bdo")
 navigation_agent = NodePath("NavigationAgent3D")
+wait_timer = NodePath("wait for ui timer")
 raycast = NodePath("RayCast3D")
 metadata/_custom_type_script = "uid://b2h4kcvi0ha2"
 
@@ -17,3 +18,9 @@ debug_color = Color(1, 1, 1, 1)
 [node name="RayCast3D" type="RayCast3D" parent="."]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="wait for ui timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="wait for ui timer" to="." method="_on_wait_for_ui_timer_timeout"]

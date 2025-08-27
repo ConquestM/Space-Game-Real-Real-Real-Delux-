@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dogn4iwa3st8x"]
+[gd_scene load_steps=30 format=3 uid="uid://dogn4iwa3st8x"]
 
 [ext_resource type="Script" uid="uid://cj15ldbi1xku0" path="res://Scripts/Non-Planets/tutorial.gd" id="1_oe6tc"]
 [ext_resource type="PackedScene" uid="uid://2dwnnhs7udlh" path="res://Scenes/Player/Test_Player.tscn" id="4_i0kwk"]
@@ -84,11 +84,11 @@ map_width = 20
 map_depth = 20
 map_data = PackedFloat32Array(100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_i0kwk"]
-size = Vector3(22, 1, 34)
+[sub_resource type="BoxShape3D" id="BoxShape3D_n57pc"]
+size = Vector3(18, 20, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_01wjg"]
-size = Vector3(22, 1, 34)
+[sub_resource type="BoxMesh" id="BoxMesh_dtesn"]
+size = Vector3(18, 20, 1)
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_01wjg"]
 map_width = 4
@@ -99,6 +99,33 @@ map_data = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uqebe"]
 size = Vector3(20, 6.24512, 1)
+
+[sub_resource type="Animation" id="Animation_01wjg"]
+resource_name = "Button"
+length = 0.75
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tutorial/WorldEnvironment/NavigationRegion3D/Grounds/Area4/Button/Button_Bridge")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.366667, 1, 0, -0.15, 0, 0.733333, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_uqebe"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tutorial/WorldEnvironment/NavigationRegion3D/Grounds/Area4/Button/Button_Bridge")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b5qh6"]
+_data = {
+&"Button": SubResource("Animation_01wjg"),
+&"RESET": SubResource("Animation_uqebe")
+}
 
 [node name="Tutorial" type="Node3D" node_paths=PackedStringArray("lerp_timer", "wall_timer", "wall_1", "worldenviro", "nav_mesh", "go_awayinator")]
 script = ExtResource("1_oe6tc")
@@ -182,6 +209,7 @@ debug_color = Color(0.321416, 0.577446, 0.199009, 1)
 [node name="SimResource1" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2" instance=ExtResource("4_w857d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0830665, 2, -30.0886)
 metadata/spin = true
+metadata/Name = "Resource"
 
 [node name="MeshInstance3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource1" index="0"]
 visible = false
@@ -194,6 +222,7 @@ debug_color = Color(0.898642, 0.12543, 0.225405, 1)
 [node name="SimResource2" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2" instance=ExtResource("4_w857d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.992, 2, -19.9721)
 metadata/spin = true
+metadata/Name = "Resource"
 
 [node name="MeshInstance3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource2" index="0"]
 visible = false
@@ -201,6 +230,7 @@ visible = false
 [node name="SimResource3" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2" instance=ExtResource("4_w857d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96712, 2, -19.9236)
 metadata/spin = true
+metadata/Name = "Resource"
 
 [node name="MeshInstance3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource3" index="0"]
 visible = false
@@ -228,27 +258,25 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 shape = SubResource("HeightMapShape3D_w857d")
 debug_color = Color(0, 0.6, 0, 0.419608)
 
-[node name="Walls" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5.07963, 0, -37.3882)
+[node name="Wall" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82047, 0, -43.2971)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_i0kwk")
-debug_color = Color(0.176471, 0.317647, 0.113725, 1)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3/Wall"]
+shape = SubResource("BoxShape3D_n57pc")
+debug_color = Color(0.156863, 0.290196, 0.156863, 1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3/Walls"]
-mesh = SubResource("BoxMesh_01wjg")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3/Wall"]
+mesh = SubResource("BoxMesh_dtesn")
 
-[node name="Walls2" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.87595, 0, -42.9789)
+[node name="Wall2" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86013, 0, -37.526)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3/Walls2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_i0kwk")
-debug_color = Color(0.176471, 0.317647, 0.113725, 1)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3/Wall2"]
+shape = SubResource("BoxShape3D_n57pc")
+debug_color = Color(0.156863, 0.290196, 0.156863, 1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3/Walls2"]
-mesh = SubResource("BoxMesh_01wjg")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area3/Wall2"]
+mesh = SubResource("BoxMesh_dtesn")
 
 [node name="Area4" type="Node" parent="WorldEnvironment/NavigationRegion3D/Grounds"]
 
@@ -259,9 +287,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 shape = SubResource("HeightMapShape3D_sw33o")
 debug_color = Color(0, 0.6, 0, 0.419608)
 
-[node name="Crewmate2" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area4" instance=ExtResource("7_uqebe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.343, 1.2133, -66.4927)
-
 [node name="Button" type="Node3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -73.588)
 
@@ -271,8 +296,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -73.588)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_b5qh6")
 
-[node name="Button_Bridge" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area4/Button"]
+[node name="Button_Bridge" type="StaticBody3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area4/Button" node_paths=PackedStringArray("anim_player")]
 script = ExtResource("6_01wjg")
+anim_player = NodePath("../../../../../../AnimationPlayer")
+metadata/Name = "Bridge Button"
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area4/Button/Button_Bridge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
@@ -307,6 +334,7 @@ shape = SubResource("WorldBoundaryShape3D_w857d")
 
 [node name="lerptimer" type="Timer" parent="Respawn"]
 wait_time = 2.0
+one_shot = true
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://2dwnnhs7udlh")
@@ -356,6 +384,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60.5868)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Areas/Dia_6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.62256, 1.75368)
 shape = SubResource("BoxShape3D_uqebe")
+
+[node name="Tutorial_NPC" parent="." instance=ExtResource("7_uqebe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -70)
+metadata/Crewmate = true
+metadata/Name = "Crewmate"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_b5qh6")
+}
+speed_scale = 2.0
 
 [connection signal="body_entered" from="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/ButtonArea" to="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/Button" method="_on_button_area_body_entered"]
 [connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource1" to="." method="_on_sim_resource_tree_exited"]

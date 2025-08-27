@@ -122,7 +122,7 @@ func _enter():
 		elif current_button[current_menu] == 2:
 			return
 		elif current_button[current_menu] == 3:
-			return
+			get_tree().quit()
 	# Multiplayer Menu UI
 	elif current_menu == 1:
 		if current_button[current_menu] == 0:
