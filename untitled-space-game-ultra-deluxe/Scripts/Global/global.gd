@@ -13,7 +13,7 @@ var last_player_pos: Vector3
 var can_player_move: bool = true
 var can_player_move_camera: bool = true
 var play_camera_cutscene_1: bool = false
-var tutorial_start: bool = false
+var current_save: int = 1
 
 
 
