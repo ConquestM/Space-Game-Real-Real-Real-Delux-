@@ -24,9 +24,7 @@ DamageTaken="*res://Scenes/Global/DamageTaken.tscn"
 ConsoleCommands="*res://Scripts/Global/console_commands.gd"
 global="*res://Scripts/Global/global.gd"
 Online="*res://Scripts/Global/online.gd"
-SaveData1="*res://Save Data/save_data_1.gd"
-SaveData2="*res://Save Data/save_data_2.gd"
-SaveData3="*res://Save Data/save_data_3.gd"
+SaveScript="*res://Scripts/Global/save_script.gd"
 
 [display]
 
@@ -41,7 +39,6 @@ enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
 
 folder_colors={
 "res://Models/": "green",
-"res://Save Data/": "teal",
 "res://Scenes/": "red",
 "res://Scripts/": "blue",
 "res://Sprites/": "yellow",

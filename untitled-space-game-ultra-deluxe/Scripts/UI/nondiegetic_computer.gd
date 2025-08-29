@@ -80,16 +80,19 @@ func _on_multiplayer_pressed() -> void:
 func _on_host_pressed() -> void:
 	global.multiplayer_on = true
 	Online.hosting = true
-	_load_scene(0, SaveData1.current_room)
+	_load_scene(1)
 
 
 func _on_join_pressed() -> void:
 	global.multiplayer_on = true
 	Online.joining = true
-	_load_scene(0, SaveData1.current_room)
+	_load_scene(1)
 
 
-func _load_scene(_save_file: int, selected_scene):
+func _load_scene(_save_file: int):
+	global.current_save = _save_file
+	SaveScript._save_game(_save_file)
+	var selected_scene = SaveScript.current_scene
 	loading_screen.selected_scene = selected_scene
 	loading_screen._start()
 	loading_screen.show()
@@ -179,11 +182,11 @@ func _enter():
 	# Save File Menu Stuff
 	elif current_menu == 4:
 		if current_button[current_menu] == 0:
-			_load_scene(0, SaveData1.current_room)
+			_load_scene(1)
 		if current_button[current_menu] == 1:
-			_load_scene(0, SaveData2.current_room)
+			_load_scene(2)
 		if current_button[current_menu] == 2:
-			_load_scene(0, SaveData3.current_room)
+			_load_scene(3)
 		elif current_button[current_menu] == 3:
 			_back()
 	_get_max_menu_buttons()
