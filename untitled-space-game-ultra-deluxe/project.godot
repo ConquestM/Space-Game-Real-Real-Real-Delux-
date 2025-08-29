@@ -25,6 +25,7 @@ ConsoleCommands="*res://Scripts/Global/console_commands.gd"
 global="*res://Scripts/Global/global.gd"
 Online="*res://Scripts/Global/online.gd"
 SaveScript="*res://Scripts/Global/save_script.gd"
+SignalBus="*res://Scripts/Global/signal_bus.gd"
 
 [display]
 
