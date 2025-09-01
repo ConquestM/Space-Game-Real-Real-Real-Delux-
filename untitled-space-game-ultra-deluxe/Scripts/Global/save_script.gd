@@ -1,20 +1,28 @@
 extends Node
 
-var current_scene = "res://Scenes/Gameplay Scenes/Non-Planetoid/tutorial.tscn"
-
+var current_save: String = ""
+var save: ConfigFile = ConfigFile.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _save_game(current_save: int):
-	var save_file = FileAccess.open("user://savegame.save" + str(current_save), FileAccess.WRITE)
+func _save(file_no: int):
+	current_save = "res://Saves/save" + str(file_no) + ".cfg"
 	
-	save_file.store_line("a")
-	print("saved")
+	global.current_scene = get_tree().current_scene.scene_file_path
+	
+	save.set_value("Save Info", "Current_Scene", global.current_scene)
+	
+	save.save(current_save)
+	print(current_save)
+
+
+func _load(file_no: int):
+	current_save = "res://Saves/save" + str(file_no) + ".cfg"
+	save.load(current_save)
+	
+	
+	print(save.get_value("Save Info", "Current_Scene"))
+	return save.get_value("Save Info", "Current_Scene")

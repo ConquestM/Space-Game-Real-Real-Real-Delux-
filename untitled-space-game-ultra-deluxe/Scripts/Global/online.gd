@@ -10,10 +10,11 @@ var port: int = 20277
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print(IP.get_local_addresses())
 	if OS.has_feature("windows"):
 		print("windows")
 		if OS.has_environment("COMPUTERNAME"):
-			hostip = IP.get_local_addresses()[5]
+			hostip = IP.get_local_addresses()[4]
 	elif OS.has_feature("linuxbsd"):
 		print("linux")
 		if OS.has_environment("HOSTNAME"):

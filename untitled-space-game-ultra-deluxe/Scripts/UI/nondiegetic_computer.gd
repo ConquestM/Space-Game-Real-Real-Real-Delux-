@@ -91,9 +91,8 @@ func _on_join_pressed() -> void:
 
 func _load_scene(_save_file: int):
 	global.current_save = _save_file
-	SaveScript._save_game(_save_file)
-	var selected_scene = SaveScript.current_scene
-	loading_screen.selected_scene = selected_scene
+	loading_screen.selected_scene = SaveScript._load(_save_file)
+	
 	loading_screen._start()
 	loading_screen.show()
 

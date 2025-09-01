@@ -14,7 +14,7 @@ var can_player_move: bool = true
 var can_player_move_camera: bool = true
 var play_camera_cutscene_1: bool = false
 var current_save: int = 1
-
+var current_scene: String = "res://Scenes/Gameplay Scenes/Non-Planetoid/tutorial.tscn"
 
 
 func _hp_change(_value):
