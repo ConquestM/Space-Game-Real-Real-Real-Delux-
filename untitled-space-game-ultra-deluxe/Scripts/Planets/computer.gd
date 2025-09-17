@@ -13,4 +13,6 @@ func _process(_delta: float) -> void:
 		global.play_camera_cutscene_1 = true
 		global.can_player_move = false
 		global.can_player_move_camera = false
-		#get_tree().change_scene_to_file("res://Scenes/UI/nondiegetic_computer_menu.tscn")
+		
+		var scene = load("res://Scenes/UI/space_view.tscn")
+		add_child(scene.instantiate())
