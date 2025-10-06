@@ -146,7 +146,7 @@ func _physics_process(delta: float) -> void:
 # Non-Physics Processing
 func _process(_delta: float) -> void:
 	# Debug Console
-	if Input.is_action_just_pressed("Enable_Debug_Console") and is_multiplayer_authority():
+	if Input.is_action_just_pressed("Enable_Debug_Console") and is_multiplayer_authority() and false:
 		if not global.can_player_move:
 			ConsoleCommands.current_command = debug_console.text.split(" ", true)
 			ConsoleCommands._execute_command()
@@ -156,6 +156,11 @@ func _process(_delta: float) -> void:
 		debug_console.text = ""
 		debug_console.visible = not debug_console.visible
 		debug_console.editable = not debug_console.editable
+	
+	# Fixes a bug with space view UI
+	if global.exitspaceui == true:
+		camera_rotator.get_node("Camera3D").current = true
+		global.exitspaceui = false
 	
 	# Unlock Mouse
 	if Input.is_action_just_pressed("Player_1_Settings") and is_multiplayer_authority():
@@ -170,6 +175,7 @@ func _process(_delta: float) -> void:
 				# Locked Mouse
 				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 				global.can_player_move = true
+				pause.queue_free()
 			else:
 				# Unlocked Mouse
 				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
@@ -207,7 +213,7 @@ func _process(_delta: float) -> void:
 
 # Camera Shtuff
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouse and global.can_player_move_camera:
+	if event is InputEventMouseMotion and global.can_player_move_camera:
 		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_CAPTURED and is_multiplayer_authority():
 			rotate_y(-event.relative.x * sensitivity) # Rotates the x axis reletive to mouse.
 			# Rotates the y axis reletive to mouse, and has a cap to stop the player from breaking their neck.

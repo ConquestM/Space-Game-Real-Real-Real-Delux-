@@ -1,0 +1,48 @@
+extends Control
+
+@export var selectable_areas: Array = [
+	Node2D,
+	Node2D
+]
+@export var selecter: Polygon2D
+var currently_selected: int = 0
+@export var planet1: String
+@export var loading_screen: Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Player_1_Left"):
+		currently_selected -= 1
+	if Input.is_action_just_pressed("Player_1_Right"):
+		currently_selected += 1
+	currently_selected = clampi(currently_selected, 0, 1)
+	selecter.global_position = get_node(selectable_areas[currently_selected]).global_position
+	if Input.is_action_just_pressed("Player_1_Settings"):
+		queue_free()
+	if Input.is_action_just_pressed("Player_1_Accept") or Input.is_action_just_pressed("Player_1_Interact"):
+		if currently_selected == 0:
+			queue_free()
+			if not global.can_player_move_camera:
+				global.can_player_move_camera = true
+				global.can_player_move = true
+				global.exitspaceui = true
+		if currently_selected == 1:
+			_load_scene(global.current_save)
+			if not global.can_player_move_camera:
+				global.can_player_move_camera = true
+				global.can_player_move = true
+				global.exitspaceui = true
+
+
+func _load_scene(_save_file: int):
+	global.current_save = _save_file
+	loading_screen.selected_scene = SaveScript._load(_save_file)
+	loading_screen.selected_scene = str(planet1)
+	loading_screen._start()
+	loading_screen.show()

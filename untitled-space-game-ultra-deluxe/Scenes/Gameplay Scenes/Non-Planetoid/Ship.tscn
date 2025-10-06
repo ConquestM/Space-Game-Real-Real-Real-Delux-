@@ -35,6 +35,10 @@ light_color = Color(1, 0, 1, 1)
 [node name="Computer" parent="Models" instance=ExtResource("4_tyw6f")]
 transform = Transform3D(0.00514871, 0, 0.999987, 0, 1, 0, -0.999987, 0, 0.00514871, 0, 1, 8.5)
 script = ExtResource("5_u1pnl")
+metadata/Name = "Computer"
+
+[node name="@StaticBody3D@22304" parent="Models/Computer" index="1"]
+metadata/Name = "Computer"
 
 [node name="ship" parent="Models" instance=ExtResource("5_qwfo7")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 4, 5)
@@ -52,3 +56,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13176, 6.61162)
 [node name="Camera3D" type="Camera3D" parent="Camera_Cutscene_Point"]
 transform = Transform3D(-0.707107, 0.298836, -0.640856, 0, 0.906308, 0.422618, 0.707107, 0.298836, -0.640856, -3, 5, -5)
 near = 0.9
+
+[editable path="Models/Computer"]

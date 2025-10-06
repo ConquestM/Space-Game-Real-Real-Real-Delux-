@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvrfbpck4he4l"]
+[gd_scene load_steps=7 format=3 uid="uid://cvrfbpck4he4l"]
 
 [ext_resource type="Theme" uid="uid://xersx1rqgqqv" path="res://Themes/computer_terminal.tres" id="1_5w2b1"]
-[ext_resource type="Script" uid="uid://b2hcojkxdisxv" path="res://Scenes/UI/space_view.gd" id="1_thqo7"]
+[ext_resource type="Script" uid="uid://b2hcojkxdisxv" path="res://Scripts/UI/space_view.gd" id="1_thqo7"]
 [ext_resource type="Texture2D" uid="uid://bqfqt0avri5rg" path="res://Sprites/lock.png" id="2_thqo7"]
+[ext_resource type="PackedScene" uid="uid://bjdhwr6uhqfmk" path="res://Scenes/UI/loading_screen.tscn" id="5_gite0"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ow7j1"]
 radius = 50.0
@@ -11,7 +12,7 @@ height = 100.0
 [sub_resource type="BoxMesh" id="BoxMesh_gite0"]
 size = Vector3(100, 75, 100)
 
-[node name="Control" type="Control" node_paths=PackedStringArray("selecter")]
+[node name="Control" type="Control" node_paths=PackedStringArray("selecter", "loading_screen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +22,8 @@ grow_vertical = 2
 script = ExtResource("1_thqo7")
 selectable_areas = [NodePath("MeshInstance2D"), NodePath("Plaent4")]
 selecter = NodePath("Polygon2D")
+planet1 = "res://Scenes/Testing/hunter_test_scene.tscn"
+loading_screen = NodePath("LoadingScreen")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(199, 407, 510, 165, 886, 292, 671, 485)
@@ -71,3 +74,8 @@ text = "Ship"
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0, 0.705882, 0, 1)
 polygon = PackedVector2Array(0, 65, 25, 90, -25, 90)
+
+[node name="LoadingScreen" parent="." node_paths=PackedStringArray("get_progress_from") instance=ExtResource("5_gite0")]
+visible = false
+layout_mode = 1
+get_progress_from = NodePath("")
