@@ -23,7 +23,7 @@ func _ready() -> void:
 	if not global.multiplayer_on:
 		var player = player_scene.instantiate()
 		add_child(player, true)
-		player.position.y += 1
+		player.position = $Stuff/Marker3D.position
 
 
 func _process(delta: float) -> void:
@@ -55,6 +55,12 @@ func _process(delta: float) -> void:
 
 func _on_day_night_cycle_timer_timeout() -> void:
 	sun_lerp += 3.6
+	if ConsoleCommands.time_of_day <= 0.15:
+		world_enviroment.environment.sky.sky_material.sky_top_color = Color(0, 0, 0)
+		world_enviroment.environment.sky.sky_material.sky_horizon_color = Color(1, 0.5, 0)
+	else:
+		world_enviroment.environment.sky.sky_material.sky_top_color = Color(0.355, 0.61, 1)
+		world_enviroment.environment.sky.sky_material.sky_horizon_color = Color(0.19, 0.835, 0.981)
 	if ConsoleCommands.time_frozen == false:
 		# Set Brightness of sky for DAY / NIGHT effect
 		if day_or_night == true: # If day, get darker
@@ -81,3 +87,13 @@ func _add_player(id = 1):
 	player.name = str(id)
 	add_child(player, true)
 	player.position.y += 1
+
+
+func _spawnher():
+	var her = preload("res://Scenes/Planet/Resource.tscn").instantiate()
+	
+	add_child(her)
+	
+	her.position.y = 30
+	her.position.x = randi_range(-50, 50)
+	her.position.z = randi_range(-50, 50)

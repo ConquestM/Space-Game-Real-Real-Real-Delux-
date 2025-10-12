@@ -8,7 +8,7 @@ var thirst: float = 100
 var hp_changing: bool = false
 var collected_object: Object = null
 var resources: int = 0
-var debug_mode: bool = false
+var debug_mode: bool = true
 var last_player_pos: Vector3
 var can_player_move: bool = true
 var can_player_move_camera: bool = true

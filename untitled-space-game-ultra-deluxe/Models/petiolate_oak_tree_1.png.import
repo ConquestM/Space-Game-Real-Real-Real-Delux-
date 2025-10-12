@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bipeegqpujcny"
+path.s3tc="res://.godot/imported/petiolate_oak_tree_1.png-744b3fb5ccdf531d266462af38b2e85d.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "891d91e0b6fb7222ba5ff62a6261cc7b"
+}
+
+[deps]
+
+source_file="res://Models/petiolate_oak_tree_1.png"
+dest_files=["res://.godot/imported/petiolate_oak_tree_1.png-744b3fb5ccdf531d266462af38b2e85d.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Models/petiolate_oak_tree_1.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

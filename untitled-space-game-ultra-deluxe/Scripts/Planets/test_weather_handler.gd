@@ -2,7 +2,7 @@ extends Node
 
 @export var fog_increase_timer: Timer
 @export var planet: Node3D
-@onready var world: WorldEnvironment = get_parent().get_node("WorldEnvironment")
+@export var world: WorldEnvironment
 var fog_density: float = 0.0
 var can_change_fog: bool = false
 var fog_change_rate: float = 0.01

@@ -6,7 +6,7 @@ var time_of_day: float = 0.25
 var level_of_fog: float = 0
 var current_command: PackedStringArray
 var time_frozen: bool = false
-var time_speed: float = 10.0
+var time_speed: float = 1
 var player_speed: float = 1.0
 var player_jump: float = 1.0
 var weather: String = "Overcast"

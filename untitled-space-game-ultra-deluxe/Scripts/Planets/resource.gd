@@ -10,6 +10,7 @@ func _process(_delta: float) -> void:
 		global.resources += 1
 		global.collected_object = null
 		queue_free()
+		get_parent()._spawnher()
 	if has_meta("spin"):
 		rotation_degrees.y += 1
 		position.y = lerp(position.y, float_height, _delta)
