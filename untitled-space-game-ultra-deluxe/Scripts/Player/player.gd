@@ -61,6 +61,7 @@ func _enter_tree() -> void:
 	if get_tree().current_scene.name == "Tutorial":
 		resourcebars.queue_free()
 	SignalBus.objective_completion.connect(_objective_completion)
+	global.player = get_tree().get_first_node_in_group("player")
 
 
 func _physics_process(delta: float) -> void:

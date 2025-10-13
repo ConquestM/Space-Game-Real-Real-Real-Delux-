@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccwj4qlymwnn0"]
+[gd_scene load_steps=7 format=3 uid="uid://ccwj4qlymwnn0"]
 
 [ext_resource type="Script" uid="uid://o2jf3ratf5dw" path="res://Scripts/Enemies/test_enemy.gd" id="1_og2n6"]
+[ext_resource type="PackedScene" uid="uid://2dwnnhs7udlh" path="res://Scenes/Player/Test_Player.tscn" id="2_m5xl4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m5xl4"]
 
@@ -9,9 +10,14 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_og2n6"]
 size = Vector3(30, 5, 30)
 
-[node name="TestEnemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_m5xl4"]
+size = Vector3(4, 2, 4)
+
+[node name="TestEnemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "jump_timer")]
 script = ExtResource("1_og2n6")
 nav_agent = NodePath("NavigationAgent3D")
+jump_timer = NodePath("AttackCD")
+player_scene = ExtResource("2_m5xl4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_m5xl4")
@@ -26,4 +32,15 @@ shape = SubResource("CapsuleShape3D_0b88p")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_og2n6")
 
+[node name="AttackCD" type="Timer" parent="."]
+autostart = true
+
+[node name="AttackRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
+shape = SubResource("BoxShape3D_m5xl4")
+
+[node name="LeapCD" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
