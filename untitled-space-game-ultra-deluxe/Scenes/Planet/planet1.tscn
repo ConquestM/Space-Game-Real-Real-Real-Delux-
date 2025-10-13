@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://0pglm0j171jj"]
+[gd_scene load_steps=19 format=3 uid="uid://0pglm0j171jj"]
 
 [ext_resource type="Environment" uid="uid://cpt4fb1w5r6we" path="res://World Enviroments/Test_Enviroment.tres" id="1_8mju3"]
 [ext_resource type="PackedScene" uid="uid://2dwnnhs7udlh" path="res://Scenes/Player/Test_Player.tscn" id="1_ikxiw"]
@@ -9,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://dgqo3mj1b6pyl" path="res://Sprites/dev art/Foliage001.png" id="7_2n0ef"]
 [ext_resource type="PackedScene" uid="uid://wac0kjvscfvf" path="res://Models/linden_tree.glb" id="8_i8uwj"]
 [ext_resource type="PackedScene" uid="uid://6f6p5l0qx3ke" path="res://Scenes/Planet/Resource.tscn" id="9_i8uwj"]
+[ext_resource type="PackedScene" uid="uid://ccwj4qlymwnn0" path="res://Scenes/Enemies/TestEnemy.tscn" id="10_bidnv"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_t475m"]
+vertices = PackedVector3Array(-49.5, 0.45, -49.5, -49.5, 0.45, 49.5, 49.5, 0.45, 49.5, 49.5, 0.45, -49.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sd6ik"]
 albedo_texture = ExtResource("2_ty0fm")
@@ -41,6 +46,22 @@ world_enviroment = NodePath("Stuff/WorldEnvironment")
 player_scene = ExtResource("1_ikxiw")
 the_sun = NodePath("Stuff/THE FUCKING SUN")
 
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.2005, 0)
+navigation_mesh = SubResource("NavigationMesh_t475m")
+
+[node name="Ground" type="CSGBox3D" parent="NavigationRegion3D"]
+size = Vector3(100, 0.1, 100)
+material = SubResource("StandardMaterial3D_sd6ik")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Ground"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground/StaticBody3D"]
+visible = false
+shape = SubResource("BoxShape3D_li68h")
+
 [node name="WeatherHandler" type="Node" parent="." node_paths=PackedStringArray("fog_increase_timer", "planet", "world")]
 script = ExtResource("2_sd6ik")
 fog_increase_timer = NodePath("FogIncreaseTimer")
@@ -72,19 +93,6 @@ light_color = Color(1, 1, 0.882353, 1)
 light_angular_distance = 7.7
 shadow_enabled = true
 shadow_normal_bias = 1.0
-
-[node name="Ground" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.2005, 0)
-size = Vector3(100, 0.1, 100)
-material = SubResource("StandardMaterial3D_sd6ik")
-metadata/_edit_lock_ = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
-visible = false
-shape = SubResource("BoxShape3D_li68h")
 
 [node name="Wall" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.9108, 36.1317, 0)
@@ -4109,6 +4117,9 @@ skeleton = NodePath("../../../..")
 
 [node name="Resource" parent="." instance=ExtResource("9_i8uwj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2868, 30.1321, -38.7814)
+
+[node name="TestEnemy" parent="." instance=ExtResource("10_bidnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0727, 30.5749, 6.54973)
 
 [connection signal="timeout" from="WeatherHandler/FogIncreaseTimer" to="WeatherHandler" method="_on_fog_increase_timer_timeout"]
 [connection signal="timeout" from="Stuff/DayNightCycleTimer" to="." method="_on_day_night_cycle_timer_timeout"]
