@@ -56,7 +56,7 @@ properties/3/path = NodePath("RotationHelper:rotation")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
-[node name="Player1" type="CharacterBody3D" node_paths=PackedStringArray("looking", "multiplayer_helper", "model", "collision", "camera_rotator", "flashlight", "crosshair", "resourcebars", "debug_console", "green_flash", "coyote_timer")]
+[node name="Player1" type="CharacterBody3D" node_paths=PackedStringArray("looking", "multiplayer_helper", "model", "collision", "camera_rotator", "flashlight", "crosshair", "resourcebars", "debug_console", "green_flash", "coyote_timer") groups=["player"]]
 script = ExtResource("1_ox56v")
 looking = NodePath("RotationHelper/Camera3D/RayCast3D")
 multiplayer_helper = NodePath("Window/MultiplayerHelper")

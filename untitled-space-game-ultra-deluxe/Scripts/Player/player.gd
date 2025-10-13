@@ -61,6 +61,7 @@ func _enter_tree() -> void:
 	if get_tree().current_scene.name == "Tutorial":
 		resourcebars.queue_free()
 	SignalBus.objective_completion.connect(_objective_completion)
+	global.player = get_tree().get_first_node_in_group("player")
 
 
 func _physics_process(delta: float) -> void:
@@ -207,7 +208,7 @@ func _process(_delta: float) -> void:
 
 # Camera Shtuff
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouse and global.can_player_move_camera:
+	if event is InputEventMouseMotion and global.can_player_move_camera:
 		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_CAPTURED and is_multiplayer_authority():
 			rotate_y(-event.relative.x * sensitivity) # Rotates the x axis reletive to mouse.
 			# Rotates the y axis reletive to mouse, and has a cap to stop the player from breaking their neck.

@@ -14,6 +14,7 @@ var can_player_move: bool = true
 var can_player_move_camera: bool = true
 var play_camera_cutscene_1: bool = false
 var current_save: int = 1
+var player: Node = null
 
 
 

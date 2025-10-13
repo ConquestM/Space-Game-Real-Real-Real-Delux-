@@ -50,6 +50,7 @@ folder_colors={
 [global_group]
 
 go_there="Stuff NPC's wanna go to"
+player=""
 
 [input]
 
