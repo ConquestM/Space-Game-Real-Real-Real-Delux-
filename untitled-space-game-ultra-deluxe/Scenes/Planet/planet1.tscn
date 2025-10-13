@@ -34,11 +34,12 @@ albedo_texture = ExtResource("7_2n0ef")
 [sub_resource type="PlaneMesh" id="PlaneMesh_i8uwj"]
 material = SubResource("StandardMaterial3D_k5g6y")
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("daynight_cycle_timer", "world_enviroment", "the_sun")]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("daynight_cycle_timer", "world_enviroment", "win", "the_sun")]
 script = ExtResource("1_sd6ik")
 daynight_cycle_timer = NodePath("Stuff/DayNightCycleTimer")
 world_enviroment = NodePath("Stuff/WorldEnvironment")
 player_scene = ExtResource("1_ikxiw")
+win = NodePath("win")
 the_sun = NodePath("Stuff/THE FUCKING SUN")
 
 [node name="WeatherHandler" type="Node" parent="." node_paths=PackedStringArray("fog_increase_timer", "planet", "world")]
@@ -4109,6 +4110,28 @@ skeleton = NodePath("../../../..")
 
 [node name="Resource" parent="." instance=ExtResource("9_i8uwj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2868, 30.1321, -38.7814)
+
+[node name="win" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="win" type="Label" parent="win"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "you win!
+
+
+
+
+
+
+
+
+yay!~"
 
 [connection signal="timeout" from="WeatherHandler/FogIncreaseTimer" to="WeatherHandler" method="_on_fog_increase_timer_timeout"]
 [connection signal="timeout" from="Stuff/DayNightCycleTimer" to="." method="_on_day_night_cycle_timer_timeout"]

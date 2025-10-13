@@ -8,6 +8,7 @@ const FOG_INCREASER: float = 0.02
 @export var world_enviroment: WorldEnvironment
 @export var player_scene: PackedScene
 @export var terrain: Terrain3D
+@export var win: Control
 # Sun Stuff
 @export var the_sun: DirectionalLight3D
 var sun_lerp: float = 270.0
@@ -27,6 +28,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if global.resources == 10:
+		win.show()
 	if global.debug_mode:
 		print("Fog:", ConsoleCommands.level_of_fog, " Time:", ConsoleCommands.time_of_day)
 	# Set world to their variables

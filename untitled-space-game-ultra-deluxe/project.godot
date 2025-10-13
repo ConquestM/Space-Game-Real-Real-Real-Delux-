@@ -15,7 +15,7 @@ config/tags=PackedStringArray("2025", "school")
 run/main_scene="uid://dv4km2o3f32gn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Huntress and Michael Space Game"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://c31b5jdl1mcfb"
 
 [autoload]
