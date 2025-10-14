@@ -3,7 +3,6 @@ extends CharacterBody3D
 
 @export var nav_agent: Node
 @export var jump_timer: Node
-@export var player_scene: PackedScene
 const SPEED: int = 4 
 const JUMP_HEIGHT: int = 6
 var can_jump: bool = false
