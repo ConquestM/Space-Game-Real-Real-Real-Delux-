@@ -17,6 +17,7 @@ material = SubResource("StandardMaterial3D_pejb1")
 [node name="Resource" type="StaticBody3D" node_paths=PackedStringArray("resource")]
 script = ExtResource("1_pejb1")
 resource = NodePath(".")
+metadata/spin = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_3nxin")

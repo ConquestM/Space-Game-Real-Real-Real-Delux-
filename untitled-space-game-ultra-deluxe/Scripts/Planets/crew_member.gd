@@ -54,14 +54,12 @@ func _physics_process(delta: float) -> void:
 func _run_after_navi(object_type: String):
 	moving = false
 	moved_to.append(target)
-	print(moved_to)
 	target = null
 	if object_type == "Tutorial_Button":
 		get_tree().current_scene._end_tutorial()
 
 
 func _spawn_ui():
-	print(ui_open)
 	var crew_ui = CREW_UI_SCENE.instantiate()
 	
 	if not ui_open:

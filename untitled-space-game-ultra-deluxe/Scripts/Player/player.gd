@@ -158,7 +158,6 @@ func _physics_process(delta: float) -> void:
 
 # Non-Physics Processing
 func _process(_delta: float) -> void:
-	print(global.loading_screen_active)
 	if global.loading_screen_active:
 		crosshair.hide()
 	# Debug Console

@@ -208,7 +208,6 @@ debug_color = Color(0.321416, 0.577446, 0.199009, 1)
 
 [node name="SimResource1" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2" instance=ExtResource("4_w857d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0830665, 2, -30.0886)
-metadata/spin = true
 metadata/Name = "Resource"
 
 [node name="MeshInstance3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource1" index="0"]
@@ -221,7 +220,6 @@ debug_color = Color(0.898642, 0.12543, 0.225405, 1)
 
 [node name="SimResource2" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2" instance=ExtResource("4_w857d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.992, 2, -19.9721)
-metadata/spin = true
 metadata/Name = "Resource"
 
 [node name="MeshInstance3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource2" index="0"]
@@ -229,7 +227,6 @@ visible = false
 
 [node name="SimResource3" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2" instance=ExtResource("4_w857d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96712, 2, -19.9236)
-metadata/spin = true
 metadata/Name = "Resource"
 
 [node name="MeshInstance3D" parent="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource3" index="0"]
