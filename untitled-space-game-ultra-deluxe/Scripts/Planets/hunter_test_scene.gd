@@ -4,6 +4,9 @@ extends Node3D
 const MAX_FOG_DENSITY: float = 1
 const DAYNIGHT_INCREASER: float = 0.005
 const FOG_INCREASER: float = 0.02
+const SPAWN_POS_LIMIT: int = 50
+const SPAWN_Y_POS: int = 30
+const PLAYER_POS_INCREASER: int = 1
 @export var daynight_cycle_timer: Timer
 @export var world_enviroment: WorldEnvironment
 @export var player_scene: PackedScene
@@ -89,7 +92,7 @@ func _add_player(id = 1):
 	var player = player_scene.instantiate()
 	player.name = str(id)
 	add_child(player, true)
-	player.position.y += 1
+	player.position.y += PLAYER_POS_INCREASER
 
 
 func _spawnher():
@@ -97,6 +100,6 @@ func _spawnher():
 	
 	add_child(her)
 	
-	her.position.y = 30
-	her.position.x = randi_range(-50, 50)
-	her.position.z = randi_range(-50, 50)
+	her.position.y = SPAWN_Y_POS
+	her.position.x = randi_range(-SPAWN_POS_LIMIT, SPAWN_POS_LIMIT)
+	her.position.z = randi_range(-SPAWN_POS_LIMIT, SPAWN_POS_LIMIT)

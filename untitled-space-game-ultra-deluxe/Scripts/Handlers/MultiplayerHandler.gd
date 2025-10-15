@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var player_scene: PackedScene
+const PLAYER_POS_INCREASER: int = 1
 # Multiplayer Stuff
 var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 
@@ -34,4 +35,4 @@ func _add_player(id = 1):
 	var player = player_scene.instantiate()
 	player.name = str(id)
 	add_child(player, true)
-	player.position.y += 1
+	player.position.y += PLAYER_POS_INCREASER

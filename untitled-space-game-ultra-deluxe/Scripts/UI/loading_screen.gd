@@ -1,6 +1,6 @@
 extends Control
 
-
+const MAX_PROGRESS: int = 100
 @export var get_progress_from: Node2D
 @export var progress_bar: ProgressBar
 @export var timer: Timer
@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		ResourceLoader.load_threaded_get_status(selected_scene, loading_progress)
 		progress_bar.value = lerp(progress_bar.value, loading_progress[0] * 100, delta * 2)
 		if progress_bar.value > 99.5:
-			progress_bar.value = 100
+			progress_bar.value = MAX_PROGRESS
 			started_loading = false
 			timer.start()
 

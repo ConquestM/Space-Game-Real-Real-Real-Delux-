@@ -1,5 +1,13 @@
 class_name Player extends CharacterBody3D
 
+const CAMERA_ROTATION_DEGREES: int = 80
+const MOVE_CAMERA_LOOKING_TARGET_POS: Vector3 = Vector3(0, 0, -3)
+const CAMERA_LOOKING_TARGET_POS: Vector3 = Vector3(0, -3, -3)
+const EMPTY_STRING: String = " "
+const CROUCH_HEIGHT_FLOAT: float = 0.5
+const ZERO: int = 0
+const JUMP_HEIGHT: int = 2
+const UNSTUCK_HEIGHT: int = 50
 @export_group("Player Body Stuff")
 @export var looking: RayCast3D
 @export var multiplayer_helper: Label
@@ -73,7 +81,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if ConsoleCommands.unstuck == true:
-		position.y += 50
+		position.y += UNSTUCK_HEIGHT
 		ConsoleCommands.unstuck = false
 	
 	# Handle Gravity
@@ -90,26 +98,26 @@ func _physics_process(delta: float) -> void:
 		if can_jump and is_multiplayer_authority() and global.can_player_move:
 			velocity.y = jump_velocity * ConsoleCommands.player_jump
 			can_jump = false
-			global.last_player_pos = position + Vector3(0, 2, 0)
+			global.last_player_pos = position + Vector3(ZERO, JUMP_HEIGHT, ZERO)
 
 	# Movement
 	if global.can_player_move:
-		looking.target_position = Vector3(0, 0, -3)
+		looking.target_position = MOVE_CAMERA_LOOKING_TARGET_POS
 		crosshair.show()
 		# Avoid controlling other players, only yourself
 		if is_multiplayer_authority():
 			var input_dir := Input.get_vector(
 				"Player_1_Left", "Player_1_Right", "Player_1_Forwards", "Player_1_Backwards"
 			)
-			var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			var direction := (transform.basis * Vector3(input_dir.x, ZERO, input_dir.y)).normalized()
 			if direction:
 				# Moves positively in x and z because direction is positive
 				velocity.x = (direction.x * movement_speed)
 				velocity.z = (direction.z * movement_speed)
 			else:
 				# Moves Negatively in x and z because direction is Negative
-				velocity.x = move_toward(velocity.x, 0, movement_speed)
-				velocity.z = move_toward(velocity.z, 0, movement_speed)
+				velocity.x = move_toward(velocity.x, ZERO, movement_speed)
+				velocity.z = move_toward(velocity.z, ZERO, movement_speed)
 			
 			# Sprinting
 			if Input.is_action_pressed("Player_1_Sprint"):
@@ -126,7 +134,7 @@ func _physics_process(delta: float) -> void:
 			# Crouching
 			if Input.is_action_just_pressed("Player_1_Crouch"): 
 				# Smoothen camera going down
-				position.y -= 0.5
+				position.y -= CROUCH_HEIGHT_FLOAT
 			if Input.is_action_pressed("Player_1_Crouch"):
 				# Set Crouch Stats if crouching
 				movement_speed = crouch_stats[0] * ConsoleCommands.player_speed
@@ -140,7 +148,7 @@ func _physics_process(delta: float) -> void:
 				collision.shape.height = normal_stats[1]
 				camera_rotator.position.y = normal_stats[2]
 	else:
-		looking.target_position = Vector3(0, -3, -3)
+		looking.target_position = CAMERA_LOOKING_TARGET_POS
 		crosshair.hide()
 
 	move_and_slide()
@@ -154,12 +162,12 @@ func _process(_delta: float) -> void:
 		and is_multiplayer_authority() and false
 	):
 		if not global.can_player_move:
-			ConsoleCommands.current_command = debug_console.text.split(" ", true)
+			ConsoleCommands.current_command = debug_console.text.split(EMPTY_STRING, true)
 			ConsoleCommands._execute_command()
 		else:
 			debug_console.grab_focus()
 		global.can_player_move = not global.can_player_move
-		debug_console.text = ""
+		debug_console.text = EMPTY_STRING
 		debug_console.visible = not debug_console.visible
 		debug_console.editable = not debug_console.editable
 	
@@ -228,7 +236,7 @@ func _input(event: InputEvent) -> void:
 			# Rotates the y axis reletive to mouse, and has a cap to stop the player from breaking their neck.
 			camera_rotator.rotate_x(-event.relative.y * sensitivity)
 			camera_rotator.rotation.x = clamp(
-				camera_rotator.rotation.x, deg_to_rad(-80), deg_to_rad(80)
+				camera_rotator.rotation.x, deg_to_rad(-CAMERA_ROTATION_DEGREES), deg_to_rad(CAMERA_ROTATION_DEGREES)
 			)
 
 

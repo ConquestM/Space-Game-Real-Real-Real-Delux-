@@ -1,4 +1,7 @@
 extends Control
+
+const HUNGER_DRAIN: float = 0.05
+const THIRST_DRAIN: float = 0.1
 @export var health_bar: Node
 @export var delayed_bar: Node
 @export var hunger_bar: Node
@@ -12,8 +15,8 @@ func _process(_delta: float) -> void:
 		health_bar.value = delayed_bar.value
 	if global.debug_mode:
 		print(delayed_bar.value)
-	global.hunger -= 0.05
-	global.thirst -= 0.1
+	global.hunger -= HUNGER_DRAIN
+	global.thirst -= THIRST_DRAIN
 	hunger_bar.value = global.hunger
 	thirst_bar.value = global.thirst
 	resources_count.text = "Resources: " + str(global.resources)

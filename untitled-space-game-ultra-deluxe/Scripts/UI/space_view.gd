@@ -1,5 +1,13 @@
 extends Control
 
+const CURRENTLY_SELECTED_ARRAY: Array = [
+	0,
+	1,
+	2,
+	3,
+	4,
+	5
+]
 @export var selectable_areas: Array = [
 	Node2D,
 	Node2D
@@ -18,21 +26,26 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Player_1_Left"):
-		currently_selected -= 1
+		currently_selected -= CURRENTLY_SELECTED_ARRAY[1]
 	if Input.is_action_just_pressed("Player_1_Right"):
-		currently_selected += 1
-	currently_selected = clampi(currently_selected, 0, 1)
+		currently_selected += CURRENTLY_SELECTED_ARRAY[1]
+	currently_selected = clampi(
+		currently_selected, CURRENTLY_SELECTED_ARRAY[0], CURRENTLY_SELECTED_ARRAY[1]
+	)
 	selecter.global_position = get_node(selectable_areas[currently_selected]).global_position
 	if Input.is_action_just_pressed("Player_1_Settings"):
 		queue_free()
-	if Input.is_action_just_pressed("Player_1_Accept") or Input.is_action_just_pressed("Player_1_Interact"):
-		if currently_selected == 0:
+	if (
+		Input.is_action_just_pressed("Player_1_Accept") 
+		or Input.is_action_just_pressed("Player_1_Interact")
+	):
+		if currently_selected == CURRENTLY_SELECTED_ARRAY[0]:
 			queue_free()
 			if not global.can_player_move_camera:
 				global.can_player_move_camera = true
 				global.can_player_move = true
 				global.exitspaceui = true
-		if currently_selected == 1:
+		if currently_selected == CURRENTLY_SELECTED_ARRAY[1]:
 			_load_scene(global.current_save)
 			if not global.can_player_move_camera:
 				global.can_player_move_camera = true

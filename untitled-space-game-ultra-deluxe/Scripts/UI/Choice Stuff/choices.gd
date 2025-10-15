@@ -2,6 +2,8 @@ class_name Choice2D
 
 extends Sprite2D
 
+const LARGE_SCALE: float = 1.15
+const SMALL_SCALE: float = 0.85
 @export var parent: Control
 var scale_float: float = 1
 const MOVE_SPEED: int = 15
@@ -14,7 +16,7 @@ func _process(delta: float) -> void:
 	global_scale = lerp(global_scale, Vector2(scale_float, scale_float), delta * MOVE_SPEED)
 	
 	if parent.pos_no != 4 and self == parent.get_child(parent.pos_no):
-		scale_float = 1.15
+		scale_float = LARGE_SCALE
 		if Input.is_action_just_pressed("Player_1_Interact"):
 			if name == "Cancel":
 				_kill_self()
@@ -22,7 +24,7 @@ func _process(delta: float) -> void:
 				parent_crewmate._search_for_move_to()
 				_kill_self()
 	else:
-		scale_float = 0.85
+		scale_float = SMALL_SCALE
 	
 	if parent.pos_no != 4 and self == parent.get_child(parent.pos_no):
 		for i in get_parent().get_node("Text").get_children():

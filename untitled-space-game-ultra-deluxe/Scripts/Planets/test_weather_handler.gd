@@ -3,6 +3,7 @@ extends Node
 @export var fog_increase_timer: Timer
 @export var planet: Node3D
 @export var world: WorldEnvironment
+const MIN_FOG_DENS: int = 0
 var fog_density: float = 0.0
 var can_change_fog: bool = false
 var fog_change_rate: float = 0.01
@@ -24,11 +25,11 @@ func _change_weather(weather_type: String):
 	if weather_type.contains("fog"):
 		if ConsoleCommands.current_command[3].contains("true"):
 			world.environment.volumetric_fog_enabled = true
-			fog_density = 0
+			fog_density = MIN_FOG_DENS
 			can_change_fog = true
 		elif ConsoleCommands.current_command[3].contains("false"):
 			world.environment.volumetric_fog_enabled = false
-			fog_density = 0
+			fog_density = MIN_FOG_DENS
 			can_change_fog = false
 		
 

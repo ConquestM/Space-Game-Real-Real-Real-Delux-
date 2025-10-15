@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var jump_timer: Node
 const SPEED: int = 4 
 const JUMP_HEIGHT: int = 6
+const HEALTH_REMOVER: int = 10
 var can_jump: bool = false
 var is_jump: bool = false
 
@@ -38,4 +39,4 @@ func _on_area_3d_body_entered(body):
 
 func _on_attack_range_body_entered(body):
 	if body is Player:
-		global.health -= 10
+		global.health -= HEALTH_REMOVER
