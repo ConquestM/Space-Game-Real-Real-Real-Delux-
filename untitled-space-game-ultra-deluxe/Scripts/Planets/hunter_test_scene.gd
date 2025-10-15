@@ -12,7 +12,7 @@ const PLAYER_POS_INCREASER: int = 1
 @export var player_scene: PackedScene
 @export var terrain: Terrain3D
 @export var win: Control
-var world_enviroment_e = world_enviroment.environment
+var world_enviroment_e
 # Sun Stuff
 @export var the_sun: DirectionalLight3D
 var sun_lerp: float = 270.0
@@ -29,6 +29,7 @@ func _ready() -> void:
 		var player = player_scene.instantiate()
 		add_child(player, true)
 		player.position = $Stuff/Marker3D.position
+		world_enviroment_e = world_enviroment.environment
 
 
 func _process(delta: float) -> void:
@@ -63,11 +64,11 @@ func _process(delta: float) -> void:
 func _on_day_night_cycle_timer_timeout() -> void:
 	sun_lerp += 3.6
 	if ConsoleCommands.time_of_day <= 0.15:
-		world_enviroment.sky.sky_material.sky_top_color = Color(0, 0, 0)
-		world_enviroment.sky.sky_material.sky_horizon_color = Color(1, 0.5, 0)
+		world_enviroment_e.sky.sky_material.sky_top_color = Color(0, 0, 0)
+		world_enviroment_e.sky.sky_material.sky_horizon_color = Color(1, 0.5, 0)
 	else:
-		world_enviroment.sky.sky_material.sky_top_color = Color(0.355, 0.61, 1)
-		world_enviroment.sky.sky_material.sky_horizon_color = Color(0.19, 0.835, 0.981)
+		world_enviroment_e.sky.sky_material.sky_top_color = Color(0.355, 0.61, 1)
+		world_enviroment_e.sky.sky_material.sky_horizon_color = Color(0.19, 0.835, 0.981)
 	if ConsoleCommands.time_frozen == false:
 		# Set Brightness of sky for DAY / NIGHT effect
 		if day_or_night == true: # If day, get darker
