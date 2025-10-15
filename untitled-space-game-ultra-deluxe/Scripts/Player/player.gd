@@ -36,7 +36,7 @@ var crouch_stats = [
 	0.25 # Camera Height 
 ]
 # Flags
-var cursor_mode = true
+var cursor_mode_bool = true
 var can_jump = true
 var coyote_timer_on = false
 var flashlight_enabled = false
@@ -98,7 +98,9 @@ func _physics_process(delta: float) -> void:
 		crosshair.show()
 		# Avoid controlling other players, only yourself
 		if is_multiplayer_authority():
-			var input_dir := Input.get_vector("Player_1_Left", "Player_1_Right", "Player_1_Forwards", "Player_1_Backwards")
+			var input_dir := Input.get_vector(
+				"Player_1_Left", "Player_1_Right", "Player_1_Forwards", "Player_1_Backwards"
+			)
 			var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 			if direction:
 				# Moves positively in x and z because direction is positive
@@ -147,7 +149,10 @@ func _physics_process(delta: float) -> void:
 # Non-Physics Processing
 func _process(_delta: float) -> void:
 	# Debug Console
-	if Input.is_action_just_pressed("Enable_Debug_Console") and is_multiplayer_authority() and false:
+	if (
+		Input.is_action_just_pressed("Enable_Debug_Console") 
+		and is_multiplayer_authority() and false
+	):
 		if not global.can_player_move:
 			ConsoleCommands.current_command = debug_console.text.split(" ", true)
 			ConsoleCommands._execute_command()
@@ -171,8 +176,8 @@ func _process(_delta: float) -> void:
 			camera_rotator.get_node("Camera3D").current = true
 		else:
 			var pause = pause_menu.instantiate()
-			cursor_mode = not cursor_mode
-			if cursor_mode:
+			cursor_mode_bool = not cursor_mode_bool
+			if cursor_mode_bool:
 				# Locked Mouse
 				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 				global.can_player_move = true
@@ -215,7 +220,10 @@ func _process(_delta: float) -> void:
 # Camera Shtuff
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and global.can_player_move_camera:
-		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_CAPTURED and is_multiplayer_authority():
+		if (
+			DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_CAPTURED 
+			and is_multiplayer_authority()
+		):
 			rotate_y(-event.relative.x * sensitivity) # Rotates the x axis reletive to mouse.
 			# Rotates the y axis reletive to mouse, and has a cap to stop the player from breaking their neck.
 			camera_rotator.rotate_x(-event.relative.y * sensitivity)
