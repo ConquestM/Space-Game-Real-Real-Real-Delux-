@@ -4142,7 +4142,7 @@ text = "you win!
 yay!~"
 
 [node name="TestEnemy" parent="." instance=ExtResource("10_bidnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.14716, 27.250502, 47.8781)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8929, 27.250502, 35.825695)
 
 [connection signal="timeout" from="WeatherHandler/FogIncreaseTimer" to="WeatherHandler" method="_on_fog_increase_timer_timeout"]
 [connection signal="timeout" from="Stuff/DayNightCycleTimer" to="." method="_on_day_night_cycle_timer_timeout"]
