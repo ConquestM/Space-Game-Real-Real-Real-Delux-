@@ -9,7 +9,7 @@ var hp_changing: bool = false
 var collected_object: Object = null
 var resources: int = 0
 var debug_mode: bool = false
-var last_player_pos: Vector3
+var last_player_pos: Vector3 = Vector3(0, 10, 0)
 var can_player_move: bool = true
 
 
