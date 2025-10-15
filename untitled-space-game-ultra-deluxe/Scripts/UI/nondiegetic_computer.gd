@@ -58,7 +58,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var current_menu_button = menus[current_menu].get_child(current_button[current_menu])
-	main_selector.position.x = (current_menu_button.position.x + current_menu_button.size.x + SIZE_INCREASER)
+	main_selector.position.x = (
+		current_menu_button.position.x + current_menu_button.size.x + SIZE_INCREASER
+	)
 	main_selector.position.y = current_menu_button.position.y
 	
 	# Move UI Cursor Up

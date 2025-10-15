@@ -109,7 +109,9 @@ func _physics_process(delta: float) -> void:
 			var input_dir := Input.get_vector(
 				"Player_1_Left", "Player_1_Right", "Player_1_Forwards", "Player_1_Backwards"
 			)
-			var direction := (transform.basis * Vector3(input_dir.x, ZERO, input_dir.y)).normalized()
+			var direction := (
+				transform.basis * Vector3(input_dir.x, ZERO, input_dir.y)
+			).normalized()
 			if direction:
 				# Moves positively in x and z because direction is positive
 				velocity.x = (direction.x * movement_speed)
@@ -236,7 +238,11 @@ func _input(event: InputEvent) -> void:
 			# Rotates the y axis reletive to mouse, and has a cap to stop the player from breaking their neck.
 			camera_rotator.rotate_x(-event.relative.y * sensitivity)
 			camera_rotator.rotation.x = clamp(
-				camera_rotator.rotation.x, deg_to_rad(-CAMERA_ROTATION_DEGREES), deg_to_rad(CAMERA_ROTATION_DEGREES)
+				camera_rotator.rotation.x, deg_to_rad(
+					-CAMERA_ROTATION_DEGREES
+				), deg_to_rad(
+					CAMERA_ROTATION_DEGREES
+				)
 			)
 
 

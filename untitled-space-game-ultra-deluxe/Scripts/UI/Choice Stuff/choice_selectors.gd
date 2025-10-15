@@ -21,7 +21,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	# Constantly lerping position for smooth movement
-	selector.position = lerp(selector.position, Vector2((POS_INT * dir.x),-(POS_INT * dir.y)), delta * DELTA_MULTIPLIER)
+	selector.position = lerp(
+		selector.position, Vector2((POS_INT * dir.x),-(POS_INT * dir.y)), delta * DELTA_MULTIPLIER
+	)
 	
 	# If the player cannot move then let the selector move
 	if global.can_player_move:

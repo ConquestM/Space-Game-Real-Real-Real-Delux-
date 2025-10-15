@@ -28,10 +28,15 @@ func _process(_delta: float) -> void:
 	current_button = clamp(current_button, CURRENT_BUTTON_CLAMP_MIN, CURRENT_BUTTON_CLAMP_MAX)
 	var button = get_node(buttons[current_button])
 	
-	selector.position.x = button.position.x + (button.position.x + button.size.x + BUTTON_SIZE_INCREASER)
+	selector.position.x = button.position.x + (
+		button.position.x + button.size.x + BUTTON_SIZE_INCREASER
+	)
 	selector.position.y = button.position.y
 	
-	if Input.is_action_just_pressed("Player_1_Forwards") or Input.is_action_just_pressed("Player_1_Backwards"): 
+	if (
+		Input.is_action_just_pressed("Player_1_Forwards") 
+		or Input.is_action_just_pressed("Player_1_Backwards")
+	):
 		var dir = Input.get_axis("Player_1_Forwards", "Player_1_Backwards")
 		
 		current_button += int(dir)

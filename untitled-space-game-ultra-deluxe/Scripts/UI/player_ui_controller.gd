@@ -18,7 +18,9 @@ func _process(delta: float) -> void:
 	# If the player raycast is colliding with something interactable, then change the crosshair for player feedback.
 	if get_parent().looking.is_colliding() and get_parent().looking_object.has_meta("Name"):
 		# Changes the size of the crosshair smoothly
-		crosshair.scale = lerp(crosshair.scale, CROSSHAIR_LERP_SIZE_MAX, delta * CROSSHAIR_LERP_SPEED)
+		crosshair.scale = lerp(
+			crosshair.scale, CROSSHAIR_LERP_SIZE_MAX, delta * CROSSHAIR_LERP_SPEED
+		)
 		#If the object the player raycast detects has a name in it's metadata, display it above the crosshair.
 		if get_parent().looking_object.has_meta("Name"):
 			crosshair.get_node("Name").text = get_parent().looking_object.get_meta("Name")
@@ -28,7 +30,9 @@ func _process(delta: float) -> void:
 			shown = true
 	else:
 		# Shrinks Crosshair when not looking at something
-		crosshair.scale = lerp(crosshair.scale, CROSSHAIR_LERP_SIZE_MIN, delta * CROSSHAIR_LERP_SPEED)
+		crosshair.scale = lerp(
+			crosshair.scale, CROSSHAIR_LERP_SIZE_MIN, delta * CROSSHAIR_LERP_SPEED
+		)
 		if functioned_yet:
 			_timer()
 			functioned_yet = false
