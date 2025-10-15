@@ -158,6 +158,9 @@ func _physics_process(delta: float) -> void:
 
 # Non-Physics Processing
 func _process(_delta: float) -> void:
+	print(global.loading_screen_active)
+	if global.loading_screen_active:
+		crosshair.hide()
 	# Debug Console
 	if (
 		Input.is_action_just_pressed("Enable_Debug_Console") 
@@ -203,13 +206,15 @@ func _process(_delta: float) -> void:
 		if global.can_player_move:
 			flashlight.visible = not flashlight.visible
 	
+	# Interaction Code
 	if looking.is_colliding():
 		looking_object = looking.get_collider()
-		if Input.is_action_just_pressed("Player_1_Interact"):
-			if looking_object.has_meta("Crewmate"):
-				looking_object._spawn_ui()
-			else:
-				global.collected_object = looking_object
+		if global.can_player_interact:
+			if Input.is_action_just_pressed("Player_1_Interact"):
+				if looking_object.has_meta("Crewmate"):
+					looking_object._spawn_ui()
+				else:
+					global.collected_object = looking_object
 	
 	# Sets the camera to a specific nodes position when using the ship computer.
 	if global.play_camera_cutscene_1:

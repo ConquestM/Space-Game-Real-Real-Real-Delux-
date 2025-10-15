@@ -12,7 +12,7 @@ var loading_progress: Array = [0]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	global.loading_screen_active = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,6 +33,7 @@ func _start():
 
 func _on_wait_timeout() -> void:
 	var load_it_slowly = ResourceLoader.load_threaded_get(selected_scene)
+	global.loading_screen_active = false
 	get_tree().change_scene_to_packed(load_it_slowly)
 
 

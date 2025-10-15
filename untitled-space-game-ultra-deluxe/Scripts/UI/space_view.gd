@@ -20,7 +20,7 @@ var currently_selected: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	global.can_player_interact = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,12 +34,16 @@ func _process(delta: float) -> void:
 	)
 	selecter.global_position = get_node(selectable_areas[currently_selected]).global_position
 	if Input.is_action_just_pressed("Player_1_Settings"):
+		global.loading_screen_active = false
 		queue_free()
 	if (
 		Input.is_action_just_pressed("Player_1_Accept") 
 		or Input.is_action_just_pressed("Player_1_Interact")
 	):
 		if currently_selected == CURRENTLY_SELECTED_ARRAY[0]:
+			await get_tree().create_timer(0.05).timeout
+			global.can_player_interact = true
+			global.loading_screen_active = false
 			queue_free()
 			if not global.can_player_move_camera:
 				global.can_player_move_camera = true

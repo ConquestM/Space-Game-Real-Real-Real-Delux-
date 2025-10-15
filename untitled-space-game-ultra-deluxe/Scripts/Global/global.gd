@@ -17,6 +17,8 @@ var current_save: int = 1
 var current_scene: String = "res://Scenes/Gameplay Scenes/Non-Planetoid/tutorial.tscn"
 var exitspaceui: bool = false
 var player: Node = null
+var can_player_interact: bool = true
+var loading_screen_active: bool = false
 
 func _hp_change(_value):
 	health = _value

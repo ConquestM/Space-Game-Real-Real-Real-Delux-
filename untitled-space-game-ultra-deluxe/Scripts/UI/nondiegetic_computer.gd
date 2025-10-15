@@ -36,6 +36,7 @@ var current_button: Array = [
 	multiplayer_inputer_host_button,
 	save_file_button
 ]
+var currently_typing: bool = false
 var min_button: int = 0
 var max_button: int = 3
 var button_increaser: int = 1
@@ -64,13 +65,14 @@ func _process(_delta: float) -> void:
 	main_selector.position.y = current_menu_button.position.y
 	
 	# Move UI Cursor Up
-	if Input.is_action_just_pressed("Player_1_Forwards"):
-		if current_button[current_menu] > min_button:
-			current_button[current_menu] -= button_increaser
-	# Move UI Cursor Down
-	if Input.is_action_just_pressed("Player_1_Backwards"):
-		if current_button[current_menu] < max_button:
-			current_button[current_menu] += button_increaser
+	if not currently_typing:
+		if Input.is_action_just_pressed("Player_1_Forwards"):
+			if current_button[current_menu] > min_button:
+				current_button[current_menu] -= button_increaser
+		# Move UI Cursor Down
+		if Input.is_action_just_pressed("Player_1_Backwards"):
+			if current_button[current_menu] < max_button:
+				current_button[current_menu] += button_increaser
 	# Select Current UI
 	if Input.is_action_just_pressed("Player_1_Accept"):
 		_enter()
@@ -147,6 +149,7 @@ func _enter():
 	# Joining Menu Stuff
 	elif current_menu == CURRENT_MENU[2]:
 		if current_button[current_menu] == CURRENT_MENU[0]:
+			currently_typing = not currently_typing
 			if not multiplayer_inputer_join.get_node("IP/IP Input").has_focus():
 				# Grab Text Input's Focus
 				multiplayer_inputer_join.get_node("IP/IP Input").grab_focus()
@@ -158,6 +161,7 @@ func _enter():
 				Online.inputedip = multiplayer_inputer_join.get_node("IP/IP Input").text
 				print(Online.inputedip)
 		elif current_button[current_menu] == CURRENT_MENU[1]:
+			currently_typing = not currently_typing
 			if not multiplayer_inputer_join.get_node("Port/Port Input").has_focus():
 				# Grab Text Input's Focus
 				multiplayer_inputer_join.get_node("Port/Port Input").grab_focus()
@@ -175,6 +179,7 @@ func _enter():
 	# Hosting Menu Stuff
 	elif current_menu == CURRENT_MENU[3]:
 		if current_button[current_menu] == CURRENT_MENU[0]:
+			currently_typing = not currently_typing
 			if not multiplayer_inputer_host.get_node("Port/Port Input").has_focus():
 				# Grab Text Input's Focus
 				multiplayer_inputer_host.get_node("Port/Port Input").grab_focus()
