@@ -3,7 +3,7 @@
 [ext_resource type="Environment" uid="uid://cpt4fb1w5r6we" path="res://World Enviroments/Test_Enviroment.tres" id="1_ol02s"]
 [ext_resource type="Script" uid="uid://btjylgl6i4j3t" path="res://Scripts/Planets/hunter_test_scene.gd" id="1_w0wr8"]
 [ext_resource type="PackedScene" uid="uid://2dwnnhs7udlh" path="res://Scenes/Player/Test_Player.tscn" id="2_x5wmc"]
-[ext_resource type="PackedScene" uid="uid://ccwj4qlymwnn0" path="res://Scenes/Enemies/TestEnemy.tscn" id="3_00jwu"]
+[ext_resource type="PackedScene" uid="uid://ccwj4qlymwnn0" path="res://Scenes/Enemies/LeaperEnemy.tscn" id="3_00jwu"]
 [ext_resource type="Texture2D" uid="uid://cj44pqfodei8d" path="res://Sprites/icon.svg" id="3_ote7y"]
 [ext_resource type="Script" uid="uid://bpgskemgdnxun" path="res://Scripts/Planets/test_weather_handler.gd" id="5_x5wmc"]
 [ext_resource type="PackedScene" uid="uid://6f6p5l0qx3ke" path="res://Scenes/Planet/Resource.tscn" id="6_yxh7b"]

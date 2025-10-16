@@ -1,12 +1,17 @@
 extends CharacterBody3D
+class_name Enemy
 
 
 @export var nav_agent: Node
-@export var jump_timer: Node
+@export var attack_cd: Timer
+@export var leap_cd: Timer
+@export var hitbox_leap: Node
+@export var hitbox_attack: Node
 const SPEED: int = 4 
 const JUMP_HEIGHT: int = 6
 const HEALTH_REMOVER: int = 10
-var can_jump: bool = false
+var can_leap: bool = true
+var can_attack: bool = true
 var is_jump: bool = false
 
 
@@ -29,14 +34,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_area_3d_body_entered(body):
-	if body is Player and is_jump == false:
-		is_jump = true
-		velocity = (global.player.position - position)
-		velocity.y = JUMP_HEIGHT
-		move_and_slide()
+func _on_attack_cd_timeout():
+	can_attack = true
 
 
-func _on_attack_range_body_entered(body):
-	if body is Player:
-		global.health -= HEALTH_REMOVER
+func _on_leap_cd_timeout():
+	can_leap = true

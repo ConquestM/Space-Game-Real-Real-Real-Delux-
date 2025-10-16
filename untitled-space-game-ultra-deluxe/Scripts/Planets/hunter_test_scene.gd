@@ -121,7 +121,7 @@ func _spawnher():
 
 
 func _spawnhim():
-	var him = preload("res://Scenes/Enemies/TestEnemy.tscn").instantiate()
+	var him = preload("res://Scenes/Enemies/LeaperEnemy.tscn").instantiate()
 	var max_choice = (spawn_pos_array.size() - SAFTEY)
 	
 	add_child(him)

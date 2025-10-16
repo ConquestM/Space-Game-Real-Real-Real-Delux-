@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfgbo021n0gvt"]
+
+[ext_resource type="Script" uid="uid://bkwwubdq1xixp" path="res://Scripts/Enemies/runner_enemy.gd" id="1_hep6t"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m5xl4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0b88p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_og2n6"]
+size = Vector3(30, 5, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m5xl4"]
+size = Vector3(4, 2, 4)
+
+[node name="RunnerEnemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "attack_cd", "leap_cd", "hitbox_leap", "hitbox_attack")]
+script = ExtResource("1_hep6t")
+nav_agent = NodePath("NavigationAgent3D")
+attack_cd = NodePath("AttackCD")
+leap_cd = NodePath("LeapCD")
+hitbox_leap = NodePath("Area3D")
+hitbox_attack = NodePath("AttackRange")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_m5xl4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_0b88p")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_og2n6")
+
+[node name="AttackCD" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
+shape = SubResource("BoxShape3D_m5xl4")
+
+[node name="LeapCD" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="AttackCD" to="." method="_on_attack_cd_timeout"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="timeout" from="LeapCD" to="." method="_on_leap_cd_timeout"]
