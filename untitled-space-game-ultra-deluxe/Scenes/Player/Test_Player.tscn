@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://2dwnnhs7udlh"]
+[gd_scene load_steps=17 format=3 uid="uid://2dwnnhs7udlh"]
 
 [ext_resource type="Script" uid="uid://dt0tqgm60pyve" path="res://Scripts/Player/player.gd" id="1_ox56v"]
 [ext_resource type="PackedScene" uid="uid://cg61srfpqg77o" path="res://Scenes/UI/resource_bars.tscn" id="2_nxyyc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://feiwp7rb6bl7" path="res://Scripts/UI/player_ui_controller.gd" id="3_5wyro"]
 [ext_resource type="Texture2D" uid="uid://jn3ndcjfj0cp" path="res://Sprites/dev art/devart_crosshair.png" id="3_743u0"]
 [ext_resource type="Texture2D" uid="uid://b1pkj5to1panf" path="res://Sprites/dev art/green flash.png" id="3_bvyts"]
+[ext_resource type="PackedScene" uid="uid://c7ivskpkxsjay" path="res://Scenes/UI/game_over.tscn" id="3_qkxdc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oopm7"]
 albedo_color = Color(1, 0, 0, 1)
@@ -70,6 +71,7 @@ debug_console = NodePath("Control/TextEdit")
 green_flash = NodePath("Control/AnimationPlayer")
 coyote_timer = NodePath("CoyoteTimer")
 pause_menu = ExtResource("2_oo5qb")
+game_over = ExtResource("3_qkxdc")
 metadata/player = true
 
 [node name="Model" type="MeshInstance3D" parent="."]

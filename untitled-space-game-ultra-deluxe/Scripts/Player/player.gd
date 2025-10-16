@@ -23,6 +23,7 @@ const UNSTUCK_HEIGHT: int = 50
 @export_group("Script Stuff")
 @export var coyote_timer: Timer
 @export var pause_menu: PackedScene
+@export var game_over: PackedScene
 # Player Statistics
 var jump_velocity = 4.5
 var movement_speed = 5.0
@@ -158,6 +159,9 @@ func _physics_process(delta: float) -> void:
 
 # Non-Physics Processing
 func _process(_delta: float) -> void:
+	if global.health <= 0:
+		print("death")
+		get_tree().change_scene_to_packed(game_over)
 	if global.loading_screen_active:
 		crosshair.hide()
 	# Debug Console

@@ -1,12 +1,13 @@
 extends Node3D
 
 @export var resource: Node
+@export var hitbox: NodePath
 var float_height: float = 2.6
 
 
 func _process(_delta: float) -> void:
-	if get_node_or_null("@StaticBody3D@22304") == null: return
-	var id = get_node("@StaticBody3D@22304").get_instance_id()
+	if get_node_or_null(hitbox) == null: return
+	var id = get_node(hitbox).get_instance_id()
 	
 	if global.collected_object == instance_from_id(id):
 		global.collected_object = null
