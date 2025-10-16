@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 	if not global.can_player_move:
 		#region WASD CONTROLS
 		# Get Inputs to move the selector
-		dir = Input.get_vector("Player_POS_NO_ONE_Left", "Player_POS_NO_ONE_Right", "Player_POS_NO_ONE_Backwards", "Player_POS_NO_ONE_Forwards")
+		dir = Input.get_vector("Player_1_Left", "Player_1_Right", "Player_1_Backwards", "Player_1_Forwards")
 		
 		# Tells the game what option you are on
 		if dir.y > POS_NO_ZERO:

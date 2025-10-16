@@ -18,6 +18,7 @@ material = SubResource("StandardMaterial3D_pejb1")
 script = ExtResource("1_pejb1")
 resource = NodePath(".")
 metadata/spin = true
+metadata/Name = "Cube"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_3nxin")
