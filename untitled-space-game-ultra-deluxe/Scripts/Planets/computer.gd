@@ -6,7 +6,7 @@ var float_height: float = 2.6
 
 
 func _process(_delta: float) -> void:
-	var id = get_instance_id()
+	var id = get_child(1).get_instance_id()
 	
 	if global.collected_object == instance_from_id(id):
 		global.collected_object = null
