@@ -4,7 +4,7 @@ extends Node3D
 const PLAYER_POS_INCREASER: int = 1
 const BRIDGE_POS: int = 0
 const REAL_BODY_VECTOR: Vector3 = Vector3(0, 0, 0)
-const GO_AWAY_INCREASER: int = 0.01
+const GO_AWAY_INCREASER: float = 0.01
 const GO_AWAY_COLOR_FLOAT: float = 0.0
 var can_move_body: bool = false
 var body_real: Node3D
@@ -34,6 +34,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print(increaser)
 	if can_move_body and body_real.has_meta("player"):
 		body_real.get_node("Collision").disabled = true
 		body_real.velocity = REAL_BODY_VECTOR

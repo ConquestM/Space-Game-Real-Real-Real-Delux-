@@ -14,7 +14,8 @@ func _process(_delta: float) -> void:
 		global.resources += ROTATE_AMOUNT
 		global.collected_object = null
 		queue_free()
-		get_parent()._spawnher()
+		if get_tree().current_scene.name != "Tutorial":
+			get_parent()._spawnher()
 	if has_meta("spin"):
 		rotation_degrees.y += ROTATE_AMOUNT
 		position.y = lerp(position.y, float_height, _delta)

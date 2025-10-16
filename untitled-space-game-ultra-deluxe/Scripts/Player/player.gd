@@ -185,6 +185,7 @@ func _process(_delta: float) -> void:
 		if not global.can_player_move_camera:
 			global.can_player_move_camera = true
 			global.can_player_move = true
+			global.can_player_interact = true
 			camera_rotator.get_node("Camera3D").current = true
 		else:
 			var pause = pause_menu.instantiate()

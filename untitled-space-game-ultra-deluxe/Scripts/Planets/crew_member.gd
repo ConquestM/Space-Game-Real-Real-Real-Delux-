@@ -52,6 +52,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _run_after_navi(object_type: String):
+	print(object_type)
 	moving = false
 	moved_to.append(target)
 	target = null

@@ -37,6 +37,7 @@ func _ready() -> void:
 	for i in trees.get_children():
 		spawn_pos_array.append(i.position)
 	_spawnher()
+	global.can_player_interact = true
 
 
 func _process(delta: float) -> void:
