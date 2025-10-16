@@ -5,8 +5,11 @@
 [ext_resource type="Theme" uid="uid://xersx1rqgqqv" path="res://Themes/computer_terminal.tres" id="3_73uea"]
 [ext_resource type="PackedScene" uid="uid://bjdhwr6uhqfmk" path="res://Scenes/UI/loading_screen.tscn" id="4_aqsr4"]
 
-[node name="ComputerScene" type="Node2D"]
+[node name="ComputerScene" type="Node2D" node_paths=PackedStringArray("main_selector", "buttons", "loading_screen")]
 script = ExtResource("1_w88jv")
+main_selector = NodePath("Computer/Selector")
+buttons = NodePath("Computer/Buttons")
+loading_screen = NodePath("LoadingScreen")
 metadata/_edit_lock_ = true
 
 [node name="BG" type="Node2D" parent="."]
@@ -62,6 +65,16 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Continue" type="Button" parent="Computer/Buttons"]
+layout_mode = 0
+offset_left = -275.0
+offset_top = -146.0
+offset_right = 8.0
+offset_bottom = -69.0
+theme = ExtResource("3_73uea")
+text = "Continue?"
+alignment = 0
+
 [node name="Main Menu" type="Button" parent="Computer/Buttons"]
 layout_mode = 0
 offset_left = -275.0
@@ -108,4 +121,5 @@ offset_right = -576.0
 offset_bottom = -324.0
 get_progress_from = NodePath("..")
 
+[connection signal="pressed" from="Computer/Buttons/Continue" to="." method="_on_singleplayer_pressed"]
 [connection signal="pressed" from="Computer/Buttons/Main Menu" to="." method="_on_singleplayer_pressed"]
