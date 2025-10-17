@@ -6,7 +6,7 @@ class_name Enemy
 @export var leap_cd: Timer
 @export var hitbox_leap: Node
 @export var hitbox_attack: Node
-const SPEED: int = 4 
+const SPEED: int = 3
 const JUMP_HEIGHT: int = 6
 const HEALTH_REMOVER: int = 10
 var can_leap: bool = true
