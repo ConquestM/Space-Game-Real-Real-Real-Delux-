@@ -1,4 +1,5 @@
-class_name Player extends CharacterBody3D
+class_name Player 
+extends CharacterBody3D
 
 const CAMERA_ROTATION_DEGREES: int = 80
 const MOVE_CAMERA_LOOKING_TARGET_POS: Vector3 = Vector3(0, 0, -3)
@@ -71,6 +72,91 @@ func _enter_tree() -> void:
 		resourcebars.queue_free()
 	SignalBus.objective_completion.connect(_objective_completion)
 	global.player = get_tree().get_first_node_in_group("player")
+
+
+# Non-Physics Processing
+func _process(_delta: float) -> void:
+	if global.health <= 0:
+		print("death")
+		get_tree().change_scene_to_packed(game_over)
+	if global.hunger <= 0:
+		print("death")
+		get_tree().change_scene_to_packed(game_over)
+	if global.thirst <= 0:
+		print("death")
+		get_tree().change_scene_to_packed(game_over)
+	if global.loading_screen_active:
+		crosshair.hide()
+	# Debug Console
+	if (
+		Input.is_action_just_pressed("Enable_Debug_Console") 
+		and is_multiplayer_authority() and false
+	):
+		if not global.can_player_move:
+			ConsoleCommands.current_command = debug_console.text.split(EMPTY_STRING, true)
+			ConsoleCommands._execute_command()
+		else:
+			debug_console.grab_focus()
+		global.can_player_move = not global.can_player_move
+		debug_console.text = EMPTY_STRING
+		debug_console.visible = not debug_console.visible
+		debug_console.editable = not debug_console.editable
+	
+	# Fixes a bug with space view UI
+	if global.exitspaceui == true:
+		camera_rotator.get_node("Camera3D").current = true
+		global.exitspaceui = false
+	
+	# Unlock Mouse
+	if Input.is_action_just_pressed("Player_1_Settings") and is_multiplayer_authority():
+		if not global.can_player_move_camera:
+			global.can_player_move_camera = true
+			global.can_player_move = true
+			global.can_player_interact = true
+			camera_rotator.get_node("Camera3D").current = true
+		else:
+			var pause = pause_menu.instantiate()
+			cursor_mode_bool = not cursor_mode_bool
+			if cursor_mode_bool:
+				# Locked Mouse
+				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+				global.can_player_move = true
+				pause.queue_free()
+			else:
+				# Unlocked Mouse
+				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+				add_child(pause)
+				global.can_player_move = false
+	
+	# Flashlight Code
+	if Input.is_action_just_pressed("Player_1_Flashlight") and is_multiplayer_authority():
+		if global.can_player_move:
+			flashlight.visible = not flashlight.visible
+	
+	# Interaction Code
+	if looking.is_colliding():
+		looking_object = looking.get_collider()
+		if global.can_player_interact:
+			if Input.is_action_just_pressed("Player_1_Interact"):
+				if looking_object.has_meta("Crewmate"):
+					looking_object._spawn_ui()
+				else:
+					global.collected_object = looking_object
+	
+	# Sets the camera to a specific nodes position when using the ship computer.
+	if global.play_camera_cutscene_1:
+		global.play_camera_cutscene_1 = false
+		for index in get_tree().current_scene.get_children():
+			if index.name == "Camera_Cutscene_Point":
+				cam_cutscene_point = index
+				_camera_cutscene()
+	
+	if resourcebars == null: return
+	if not global.can_player_move_camera:
+		resourcebars.get_node("CanvasLayer").hide()
+	else:
+		if get_node_or_null("CanvasLayer") == null: return
+		resourcebars.get_node("CanvasLayer").show()
 
 
 func _physics_process(delta: float) -> void:
@@ -155,86 +241,6 @@ func _physics_process(delta: float) -> void:
 		crosshair.hide()
 
 	move_and_slide()
-
-
-# Non-Physics Processing
-func _process(_delta: float) -> void:
-	if global.health <= 0:
-		print("death")
-		get_tree().change_scene_to_packed(game_over)
-	if global.loading_screen_active:
-		crosshair.hide()
-	# Debug Console
-	if (
-		Input.is_action_just_pressed("Enable_Debug_Console") 
-		and is_multiplayer_authority() and false
-	):
-		if not global.can_player_move:
-			ConsoleCommands.current_command = debug_console.text.split(EMPTY_STRING, true)
-			ConsoleCommands._execute_command()
-		else:
-			debug_console.grab_focus()
-		global.can_player_move = not global.can_player_move
-		debug_console.text = EMPTY_STRING
-		debug_console.visible = not debug_console.visible
-		debug_console.editable = not debug_console.editable
-	
-	# Fixes a bug with space view UI
-	if global.exitspaceui == true:
-		camera_rotator.get_node("Camera3D").current = true
-		global.exitspaceui = false
-	
-	# Unlock Mouse
-	if Input.is_action_just_pressed("Player_1_Settings") and is_multiplayer_authority():
-		if not global.can_player_move_camera:
-			global.can_player_move_camera = true
-			global.can_player_move = true
-			global.can_player_interact = true
-			camera_rotator.get_node("Camera3D").current = true
-		else:
-			var pause = pause_menu.instantiate()
-			cursor_mode_bool = not cursor_mode_bool
-			if cursor_mode_bool:
-				# Locked Mouse
-				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
-				global.can_player_move = true
-				pause.queue_free()
-			else:
-				# Unlocked Mouse
-				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
-				add_child(pause)
-				global.can_player_move = false
-	
-	# Flashlight Code
-	if Input.is_action_just_pressed("Player_1_Flashlight") and is_multiplayer_authority():
-		if global.can_player_move:
-			flashlight.visible = not flashlight.visible
-	
-	# Interaction Code
-	if looking.is_colliding():
-		looking_object = looking.get_collider()
-		if global.can_player_interact:
-			if Input.is_action_just_pressed("Player_1_Interact"):
-				if looking_object.has_meta("Crewmate"):
-					looking_object._spawn_ui()
-				else:
-					global.collected_object = looking_object
-	
-	# Sets the camera to a specific nodes position when using the ship computer.
-	if global.play_camera_cutscene_1:
-		global.play_camera_cutscene_1 = false
-		for index in get_tree().current_scene.get_children():
-			if index.name == "Camera_Cutscene_Point":
-				cam_cutscene_point = index
-				_camera_cutscene()
-	
-	if resourcebars == null: return
-	if not global.can_player_move_camera:
-		resourcebars.get_node("CanvasLayer").hide()
-	else:
-		if get_node_or_null("CanvasLayer") == null: return
-		resourcebars.get_node("CanvasLayer").show()
-
 
 # Camera Shtuff
 func _input(event: InputEvent) -> void:

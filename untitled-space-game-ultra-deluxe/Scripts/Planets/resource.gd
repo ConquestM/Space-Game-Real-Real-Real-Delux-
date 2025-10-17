@@ -1,6 +1,9 @@
 extends StaticBody3D
 
 const ROTATE_AMOUNT: int = 1
+const RESOURCE_VALUE: int = 1
+const FOOD_VALUE: int = 10
+const WATER_VALUE: int = 10
 @export var resource: Node
 @export var max_float_height: float = 1.75
 @export var min_float_height: float = 2.25
@@ -11,7 +14,9 @@ var float_height: float = 2.6
 
 func _process(_delta: float) -> void:
 	if global.collected_object == instance_from_id(id):
-		global.resources += ROTATE_AMOUNT
+		global.resources += RESOURCE_VALUE
+		global.hunger += FOOD_VALUE
+		global.thirst += WATER_VALUE
 		global.collected_object = null
 		queue_free()
 		if get_tree().current_scene.name != "Tutorial":
