@@ -38,7 +38,7 @@ offset_top = 278.0
 offset_right = 264.0
 offset_bottom = 345.0
 theme = ExtResource("1_rrvs5")
-text = "Settings"
+text = "Not Settings"
 
 [node name="Button_3" type="Button" parent="Panel"]
 layout_mode = 0
