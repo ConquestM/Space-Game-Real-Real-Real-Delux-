@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ruoo5p3heiwc"
-path.s3tc="res://.godot/imported/devart_choice_fight.png-0c422709bbee67abbf8ea538eac4dfca.s3tc.ctex"
+uid="uid://ycoeqasmv4fm"
+path.s3tc="res://.godot/imported/evil_spr.png-ce5324f2523548f4c776cf5ff5886f45.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/dev art/devart_choice_fight.png"
-dest_files=["res://.godot/imported/devart_choice_fight.png-0c422709bbee67abbf8ea538eac4dfca.s3tc.ctex"]
+source_file="res://Sprites/dev art/evil_spr.png"
+dest_files=["res://.godot/imported/evil_spr.png-ce5324f2523548f4c776cf5ff5886f45.s3tc.ctex"]
 
 [params]
 

@@ -1,12 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccwj4qlymwnn0"]
+[gd_scene load_steps=6 format=3 uid="uid://ccwj4qlymwnn0"]
 
 [ext_resource type="Script" uid="uid://o2jf3ratf5dw" path="res://Scripts/Enemies/leaper_enemy.gd" id="1_rnwh3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rnwh3"]
-albedo_color = Color(0, 0.9843137, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_m5xl4"]
-material = SubResource("StandardMaterial3D_rnwh3")
+[ext_resource type="Texture2D" uid="uid://bv345cw67ks1r" path="res://Sprites/dev art/2_evil_spr.png" id="2_p5n1o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0b88p"]
 
@@ -24,8 +19,12 @@ leap_cd = NodePath("LeapCD")
 hitbox_leap = NodePath("Area3D")
 hitbox_attack = NodePath("AttackRange")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_m5xl4")
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+visibility_range_end = 17.5
+billboard = 1
+texture_filter = 2
+texture = ExtResource("2_p5n1o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_0b88p")

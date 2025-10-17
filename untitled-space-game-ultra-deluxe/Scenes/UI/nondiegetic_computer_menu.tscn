@@ -91,22 +91,12 @@ text = "Multiplayer
 "
 alignment = 0
 
-[node name="Settings" type="Button" parent="Computer/Buttons"]
-layout_mode = 0
-offset_left = -275.0
-offset_top = -51.0
-offset_right = -89.0
-offset_bottom = 26.0
-theme = ExtResource("4_88gcs")
-text = "Settings"
-alignment = 0
-
 [node name="Quit" type="Button" parent="Computer/Buttons"]
 layout_mode = 0
 offset_left = -275.0
-offset_top = 56.0
+offset_top = -51.0
 offset_right = -174.0
-offset_bottom = 133.0
+offset_bottom = 26.0
 theme = ExtResource("4_88gcs")
 text = "Quit
 "

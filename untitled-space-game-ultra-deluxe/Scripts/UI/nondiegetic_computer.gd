@@ -38,7 +38,7 @@ var current_button: Array = [
 ]
 var currently_typing: bool = false
 var min_button: int = 0
-var max_button: int = 3
+var max_button: int = 2
 var button_increaser: int = 1
 var menu_gap_size = 107
 var loading_progress: Array
