@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cju60noa0woj3"]
+
+[ext_resource type="Script" uid="uid://4spwpkfddbs4" path="res://Scripts/UI/playtime.gd" id="1_8x3qn"]
+[ext_resource type="Theme" uid="uid://xersx1rqgqqv" path="res://Themes/computer_terminal.tres" id="2_okvs6"]
+
+[node name="Playtime" type="Control" node_paths=PackedStringArray("playtime")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8x3qn")
+playtime = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -3.0
+offset_right = 222.0
+offset_bottom = 64.0
+theme = ExtResource("2_okvs6")
+theme_override_font_sizes/font_size = 24
+text = "Playtime:"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

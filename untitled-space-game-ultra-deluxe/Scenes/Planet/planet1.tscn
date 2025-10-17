@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://0pglm0j171jj"]
+[gd_scene load_steps=20 format=3 uid="uid://0pglm0j171jj"]
 
 [ext_resource type="Environment" uid="uid://cpt4fb1w5r6we" path="res://World Enviroments/Test_Enviroment.tres" id="1_8mju3"]
 [ext_resource type="PackedScene" uid="uid://2dwnnhs7udlh" path="res://Scenes/Player/Test_Player.tscn" id="1_ikxiw"]
@@ -9,7 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dgqo3mj1b6pyl" path="res://Sprites/dev art/Foliage001.png" id="7_2n0ef"]
 [ext_resource type="PackedScene" uid="uid://wac0kjvscfvf" path="res://Models/linden_tree.glb" id="8_i8uwj"]
 [ext_resource type="PackedScene" uid="uid://6f6p5l0qx3ke" path="res://Scenes/Planet/Resource.tscn" id="9_i8uwj"]
-[ext_resource type="PackedScene" uid="uid://be6504dyyc5ee" path="res://Scenes/Enemies/HopperEnemy.tscn" id="10_bidnv"]
+[ext_resource type="PackedScene" uid="uid://dfgbo021n0gvt" path="res://Scenes/Enemies/RunnerEnemy.tscn" id="10_t475m"]
+[ext_resource type="PackedScene" uid="uid://cju60noa0woj3" path="res://Scenes/UI/playtime.tscn" id="11_rqkmk"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_i8uwj"]
 vertices = PackedVector3Array(-49.5, 26.650501, -49.5, -49.5, 26.650501, 49.5, 49.5, 26.650501, 49.5, 49.5, 26.650501, -49.5)
@@ -4150,13 +4151,15 @@ horizontal_alignment = 1
 wait_time = 10.0
 autostart = true
 
-[node name="HopperEnemy" parent="." instance=ExtResource("10_bidnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.98703, 27.841389, 0)
-
 [node name="WinTimer" type="Timer" parent="."]
 process_mode = 3
 wait_time = 10.0
 one_shot = true
+
+[node name="RunnerEnemy" parent="." instance=ExtResource("10_t475m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.8254, 27.540287, 33.943726)
+
+[node name="Playtime" parent="." instance=ExtResource("11_rqkmk")]
 
 [connection signal="timeout" from="WeatherHandler/FogIncreaseTimer" to="WeatherHandler" method="_on_fog_increase_timer_timeout"]
 [connection signal="timeout" from="Stuff/DayNightCycleTimer" to="." method="_on_day_night_cycle_timer_timeout"]

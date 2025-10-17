@@ -8,6 +8,7 @@ var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	global.load_time()
 	SaveScript._save(global.current_save)
 	print(SaveScript._save(global.current_save))
 	if not global.multiplayer_on:
@@ -36,3 +37,8 @@ func _add_player(id = 1):
 	player.name = str(id)
 	add_child(player, true)
 	player.position.y += PLAYER_POS_INCREASER
+
+
+func _on_timer_timeout():
+	global.time += 1
+	global.save_time()

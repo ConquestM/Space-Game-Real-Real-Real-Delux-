@@ -1,12 +1,12 @@
 extends Node3D
 
-
 const MAX_FOG_DENSITY: float = 1
 const DAYNIGHT_INCREASER: float = 0.005
 const FOG_INCREASER: float = 0.02
 const SPAWN_Y_POS: float = 28.5
 const PLAYER_POS_INCREASER: int = 1
 const SAFTEY: int = 3
+@export var playtime: Label
 @export var daynight_cycle_timer: Timer
 @export var world_enviroment: WorldEnvironment
 @export var player_scene: PackedScene
@@ -14,6 +14,9 @@ const SAFTEY: int = 3
 @export var win: Control
 @export var trees: Node
 @export var win_timer: Timer
+# Sun Stuff
+@export var the_sun: DirectionalLight3D
+var sun_lerp: float = 270.0
 var spawn_rate : int = 0
 var enemy_spawn: int = 0
 var enemy: Node = null
@@ -24,9 +27,6 @@ var spawn_pos_array: Array = [
 	Vector3(0, 28.5, 0)
 ]
 var enemy_list: Array = []
-# Sun Stuff
-@export var the_sun: DirectionalLight3D
-var sun_lerp: float = 270.0
 # Time Stuff
 var day_or_night: bool = true # True = Day, False = Night
 var can_increase_time: bool = true
@@ -34,8 +34,8 @@ var can_increase_time: bool = true
 var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 
 
-
 func _ready() -> void:
+	global.load_time()
 	global.health = 100
 	global.hunger = 100
 	global.thirst = 100

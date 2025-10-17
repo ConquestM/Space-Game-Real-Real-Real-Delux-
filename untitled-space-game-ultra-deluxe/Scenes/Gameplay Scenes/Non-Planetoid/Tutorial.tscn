@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dogn4iwa3st8x"]
+[gd_scene load_steps=36 format=3 uid="uid://dogn4iwa3st8x"]
 
 [ext_resource type="Script" uid="uid://cj15ldbi1xku0" path="res://Scripts/Non-Planets/tutorial.gd" id="1_oe6tc"]
 [ext_resource type="PackedScene" uid="uid://2dwnnhs7udlh" path="res://Scenes/Player/Test_Player.tscn" id="4_i0kwk"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b7qy57j08aoqf" path="res://Scenes/UI/tutorial_dialogue_ui.tscn" id="7_b5qh6"]
 [ext_resource type="Material" uid="uid://cvjhymnyom8qa" path="res://Sprites/materials/matera.tres" id="7_lip2d"]
 [ext_resource type="PackedScene" uid="uid://q6y055i2kux" path="res://Scenes/Friendlies/crewmate.tscn" id="7_uqebe"]
+[ext_resource type="PackedScene" uid="uid://cju60noa0woj3" path="res://Scenes/UI/playtime.tscn" id="8_6foka"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_01wjg"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -521,7 +522,7 @@ transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -
 size = Vector3(36.211548, 1, 17.173096)
 material = ExtResource("7_lip2d")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Playtime" parent="." instance=ExtResource("8_6foka")]
 
 [connection signal="body_entered" from="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/ButtonArea" to="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/Button" method="_on_button_area_body_entered"]
 [connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource1" to="." method="_on_sim_resource_tree_exited"]

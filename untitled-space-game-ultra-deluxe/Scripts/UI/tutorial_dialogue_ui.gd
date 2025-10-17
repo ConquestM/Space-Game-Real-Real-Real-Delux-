@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-
+signal objective_flag
 # How much the text should increase by.
 const START_TIMES_ARRAY: Array = [
 	0.15,
@@ -76,7 +76,6 @@ var req_array: Array = [
 	req_8,
 	req_9
 ]
-signal objective_flag
 
 
 # Called when the node enters the scene tree for the first time.

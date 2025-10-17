@@ -1,7 +1,7 @@
 extends Control
 
-const HUNGER_DRAIN: float = 0.05
-const THIRST_DRAIN: float = 0.1
+const HUNGER_DRAIN: float = 0.025
+const THIRST_DRAIN: float = 0.03
 @export var health_bar: Node
 @export var delayed_bar: Node
 @export var hunger_bar: Node

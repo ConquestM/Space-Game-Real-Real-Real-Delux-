@@ -1,6 +1,6 @@
 extends Node3D
 
-
+signal tutorial_start
 const PLAYER_POS_INCREASER: int = 1
 const BRIDGE_POS: int = -1
 const REAL_BODY_VECTOR: Vector3 = Vector3(0, 0, 0)
@@ -21,7 +21,6 @@ var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 # Ending Stuff
 var go_away: bool = false
 var increaser: float = 0.0
-signal tutorial_start
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,7 +34,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	global.save_time()
 	print(increaser)
 	if can_move_body and body_real.has_meta("player"):
 		body_real.get_node("Collision").disabled = true

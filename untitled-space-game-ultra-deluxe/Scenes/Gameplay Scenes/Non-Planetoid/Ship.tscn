@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://jlad58w32xd"]
+[gd_scene load_steps=9 format=3 uid="uid://jlad58w32xd"]
 
 [ext_resource type="Script" uid="uid://b3cc51yougveq" path="res://Scripts/Handlers/MultiplayerHandler.gd" id="1_qwfo7"]
 [ext_resource type="PackedScene" uid="uid://2dwnnhs7udlh" path="res://Scenes/Player/Test_Player.tscn" id="2_60m10"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://blwsa2pqdnxxh" path="res://Models/computer.glb" id="4_tyw6f"]
 [ext_resource type="PackedScene" uid="uid://cfyltj4n15st" path="res://Models/ship.glb" id="5_qwfo7"]
 [ext_resource type="Script" uid="uid://do7u3tehy0m6j" path="res://Scripts/Planets/computer.gd" id="5_u1pnl"]
+[ext_resource type="PackedScene" uid="uid://cju60noa0woj3" path="res://Scenes/UI/playtime.tscn" id="7_mu81k"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_mu81k"]
 
@@ -53,5 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13176, 6.61162)
 [node name="Camera3D" type="Camera3D" parent="Camera_Cutscene_Point"]
 transform = Transform3D(-0.707107, 0.298836, -0.640856, 0, 0.906308, 0.422618, 0.707107, 0.298836, -0.640856, -3, 5, -5)
 near = 0.9
+
+[node name="Playtime" parent="." instance=ExtResource("7_mu81k")]
 
 [editable path="Models/Computer"]
