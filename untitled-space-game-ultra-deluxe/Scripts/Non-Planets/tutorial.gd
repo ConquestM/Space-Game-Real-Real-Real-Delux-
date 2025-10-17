@@ -2,7 +2,7 @@ extends Node3D
 
 
 const PLAYER_POS_INCREASER: int = 1
-const BRIDGE_POS: int = 0
+const BRIDGE_POS: int = -1
 const REAL_BODY_VECTOR: Vector3 = Vector3(0, 0, 0)
 const GO_AWAY_INCREASER: float = 0.01
 const GO_AWAY_COLOR_FLOAT: float = 0.0

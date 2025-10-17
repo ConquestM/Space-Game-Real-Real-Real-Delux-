@@ -15,19 +15,23 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print(get_parent().looking_object)
 	# If the player raycast is colliding with something interactable, then change the crosshair for player feedback.
-	if get_parent().looking.is_colliding() and get_parent().looking_object.has_meta("Name"):
-		# Changes the size of the crosshair smoothly
-		crosshair.scale = lerp(
-			crosshair.scale, CROSSHAIR_LERP_SIZE_MAX, delta * CROSSHAIR_LERP_SPEED
-		)
-		#If the object the player raycast detects has a name in it's metadata, display it above the crosshair.
-		if get_parent().looking_object.has_meta("Name"):
-			crosshair.get_node("Name").text = get_parent().looking_object.get_meta("Name")
-		if not functioned_yet:
-			_timer()
-			functioned_yet = true
-			shown = true
+	if get_parent().looking.is_colliding():
+		if get_parent().looking_object.has_meta("Name") or get_parent().looking_object.get_parent().has_meta("Name"):
+			# Changes the size of the crosshair smoothly
+			crosshair.scale = lerp(
+				crosshair.scale, CROSSHAIR_LERP_SIZE_MAX, delta * CROSSHAIR_LERP_SPEED
+			)
+			#If the object the player raycast detects has a name in it's metadata, display it above the crosshair.
+			if get_parent().looking_object.has_meta("Name"):
+				crosshair.get_node("Name").text = get_parent().looking_object.get_meta("Name")
+			elif get_parent().looking_object.get_parent().has_meta("Name"):
+				crosshair.get_node("Name").text = get_parent().looking_object.get_parent().get_meta("Name")
+			if not functioned_yet:
+				_timer()
+				functioned_yet = true
+				shown = true
 	else:
 		# Shrinks Crosshair when not looking at something
 		crosshair.scale = lerp(

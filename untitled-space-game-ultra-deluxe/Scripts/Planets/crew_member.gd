@@ -20,6 +20,8 @@ func _search_for_move_to():
 	# if we are in the tutorial, advance the dialogue.
 	if name == "Tutorial_NPC":
 		get_tree().current_scene.get_node("TutorialDialogueUi").req_array[8] = true
+		await get_tree().create_timer(0.5).timeout
+		_run_after_navi("Tutorial_Button")
 	
 	for i in get_tree().get_nodes_in_group("go_there"):
 		if i == moved_to.back():
