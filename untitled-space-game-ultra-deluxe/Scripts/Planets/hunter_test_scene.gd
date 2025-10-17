@@ -4,7 +4,7 @@ extends Node3D
 const MAX_FOG_DENSITY: float = 1
 const DAYNIGHT_INCREASER: float = 0.005
 const FOG_INCREASER: float = 0.02
-const SPAWN_Y_POS: int = 28.5
+const SPAWN_Y_POS: float = 28.5
 const PLAYER_POS_INCREASER: int = 1
 const SAFTEY: int = 3
 @export var daynight_cycle_timer: Timer
@@ -85,7 +85,6 @@ func _on_day_night_cycle_timer_timeout() -> void:
 			ConsoleCommands.level_of_fog += FOG_INCREASER
 			
 			if ConsoleCommands.time_of_day < 0:
-				_spawnhim()
 				day_or_night = false # Start Night Time
 				can_increase_time = false
 		
@@ -121,12 +120,14 @@ func _spawnher():
 	her.float_height = SPAWN_Y_POS
 
 
-func _spawnhim():
-	var him = preload("res://Scenes/Enemies/LeaperEnemy.tscn").instantiate()
+func _spawn_enemy():
+	var enemy = preload("res://Scenes/Enemies/HopperEnemy.tscn").instantiate()
 	var max_choice = (spawn_pos_array.size() - SAFTEY)
-	
-	add_child(him)
-	
-	him.position.y = SPAWN_Y_POS
-	him.position.x = spawn_pos_array[randi_range(0, max_choice)].x
-	him.position.z = spawn_pos_array[randi_range(0, max_choice)].z
+	add_child(enemy)
+	enemy.position.y = SPAWN_Y_POS
+	enemy.position.x = spawn_pos_array[randi_range(0, max_choice)].x
+	enemy.position.z = spawn_pos_array[randi_range(0, max_choice)].z
+
+
+func _on_spawn_timer_timeout():
+	_spawn_enemy()
