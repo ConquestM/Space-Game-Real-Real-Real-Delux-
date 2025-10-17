@@ -4,6 +4,7 @@
 
 [resource]
 background_mode = 2
+background_energy_multiplier = 0.5
 sky = ExtResource("1_cve15")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 0, 1)

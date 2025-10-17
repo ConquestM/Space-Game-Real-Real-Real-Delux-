@@ -27,21 +27,21 @@ const UNSTUCK_HEIGHT: int = 50
 @export var game_over: PackedScene
 # Player Statistics
 var jump_velocity = 4.5
-var movement_speed = 5.0
+var movement_speed = 4.5
 var sensitivity = 0.01
 var fov = 80 # Field of view
 var normal_stats = [
-	5.0, # Movement Speed
+	4.5, # Movement Speed
 	2, # Height
 	0.75 # Camera Height 
 ]
 var sprint_stats = [
-	8.0, # Movement Speed
+	6.5, # Movement Speed
 	10, # fov Increase
 	0.75 # fov Transitioner
 ]
 var crouch_stats = [
-	2.0, # Movement Speed
+	2, # Movement Speed
 	1.5, # Height
 	0.25 # Camera Height 
 ]

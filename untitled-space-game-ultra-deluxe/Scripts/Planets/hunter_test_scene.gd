@@ -52,7 +52,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if global.resources == 10 and won == false:
+	if global.resources == 15 and won == false:
 		win.show()
 		won = true
 		win_timer.start()

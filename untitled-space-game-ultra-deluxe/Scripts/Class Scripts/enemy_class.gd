@@ -1,14 +1,14 @@
 extends CharacterBody3D
 class_name Enemy
 
-const SPEED: int = 4 
-const JUMP_HEIGHT: int = 6
-const HEALTH_REMOVER: int = 10
 @export var nav_agent: Node
 @export var attack_cd: Timer
 @export var leap_cd: Timer
 @export var hitbox_leap: Node
 @export var hitbox_attack: Node
+const SPEED: int = 3
+const JUMP_HEIGHT: int = 6
+const HEALTH_REMOVER: int = 10
 var can_leap: bool = true
 var can_attack: bool = true
 var is_jump: bool = false
