@@ -101,6 +101,7 @@ func _on_day_night_cycle_timer_timeout() -> void:
 			if ConsoleCommands.time_of_day < 0:
 				day_or_night = false # Start Night Time
 				can_increase_time = false
+				ConsoleCommands.time_frozen = true
 		
 		elif day_or_night == false: # If night, get brighter
 			if can_increase_time == true:
