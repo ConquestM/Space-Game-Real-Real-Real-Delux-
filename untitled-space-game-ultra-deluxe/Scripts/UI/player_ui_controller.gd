@@ -15,7 +15,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(get_parent().looking_object)
 	# If the player raycast is colliding with something interactable, then change the crosshair for player feedback.
 	if get_parent().looking.is_colliding():
 		if get_parent().looking_object.has_meta("Name") or get_parent().looking_object.get_parent().has_meta("Name"):

@@ -51,6 +51,7 @@ folder_colors={
 
 go_there="Stuff NPC's wanna go to"
 player=""
+enemy=""
 
 [input]
 

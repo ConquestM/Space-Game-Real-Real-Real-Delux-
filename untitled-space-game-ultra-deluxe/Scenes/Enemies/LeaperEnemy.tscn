@@ -16,7 +16,7 @@ size = Vector3(30, 5, 30)
 [sub_resource type="BoxShape3D" id="BoxShape3D_m5xl4"]
 size = Vector3(4, 2, 4)
 
-[node name="LeaperEnemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "attack_cd", "leap_cd", "hitbox_leap", "hitbox_attack")]
+[node name="LeaperEnemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "attack_cd", "leap_cd", "hitbox_leap", "hitbox_attack") groups=["enemy"]]
 script = ExtResource("1_rnwh3")
 nav_agent = NodePath("NavigationAgent3D")
 attack_cd = NodePath("AttackCD")

@@ -13,10 +13,17 @@ const SAFTEY: int = 3
 @export var terrain: Terrain3D
 @export var win: Control
 @export var trees: Node
+@export var win_timer: Timer
+var spawn_rate : int = 0
+var enemy_spawn: int = 0
+var enemy: Node = null
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+var won: bool = false
 var world_enviroment_e
 var spawn_pos_array: Array = [
 	Vector3(0, 28.5, 0)
 ]
+var enemy_list: Array = []
 # Sun Stuff
 @export var the_sun: DirectionalLight3D
 var sun_lerp: float = 270.0
@@ -41,8 +48,11 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if global.resources == 10:
+	if global.resources == 10 and won == false:
 		win.show()
+		won = true
+		win_timer.start()
+		get_tree().paused = true
 	if global.debug_mode:
 		print("Fog:", ConsoleCommands.level_of_fog, " Time:", ConsoleCommands.time_of_day)
 	# Set world to their variables
@@ -121,13 +131,30 @@ func _spawnher():
 
 
 func _spawn_enemy():
-	var enemy = preload("res://Scenes/Enemies/HopperEnemy.tscn").instantiate()
-	var max_choice = (spawn_pos_array.size() - SAFTEY)
-	add_child(enemy)
-	enemy.position.y = SPAWN_Y_POS
-	enemy.position.x = spawn_pos_array[randi_range(0, max_choice)].x
-	enemy.position.z = spawn_pos_array[randi_range(0, max_choice)].z
+	enemy_spawn = rng.randi_range(1, 3)
+	print(enemy_spawn)
+	enemy_list.append(enemy_spawn)
+	print(enemy_list)
+	for monster in enemy_list:
+		if monster == 1:
+			enemy = preload("res://Scenes/Enemies/RunnerEnemy.tscn").instantiate()
+		elif monster == 2:
+			enemy = preload("res://Scenes/Enemies/LeaperEnemy.tscn").instantiate()
+		elif monster == 3:
+			enemy = preload("res://Scenes/Enemies/HopperEnemy.tscn").instantiate()
+		spawn_rate = rng.randi_range(1, 10)
+		if spawn_rate == 10:
+			var max_choice = (spawn_pos_array.size() - SAFTEY)
+			add_child(enemy)
+			enemy.position.y = SPAWN_Y_POS
+			enemy.position.x = spawn_pos_array[randi_range(0, max_choice)].x
+			enemy.position.z = spawn_pos_array[randi_range(0, max_choice)].z
 
 
 func _on_spawn_timer_timeout():
 	_spawn_enemy()
+
+
+func _on_win_timer_timeout():
+	win.hide()
+	get_tree().paused = false
