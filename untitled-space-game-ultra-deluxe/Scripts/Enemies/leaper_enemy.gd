@@ -1,6 +1,5 @@
 extends Enemy
 
-
 func _process(_delta: float) -> void:
 	if hitbox_leap.overlaps_body(global.player) and is_jump == false and can_leap:
 		can_leap = false
