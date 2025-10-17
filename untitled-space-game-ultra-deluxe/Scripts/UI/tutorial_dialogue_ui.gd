@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal objective_flag
+
 # How much the text should increase by.
 const START_TIMES_ARRAY: Array = [
 	0.15,
@@ -11,6 +12,7 @@ const OTHER_CONST_ARRAY: Array = [
 	1
 ]
 const TEXT_INCREASER: int = 1
+
 @export var textbox: Label
 @export var text_increase_timer: Timer
 @export var next_dia_timer: Timer
@@ -18,6 +20,7 @@ const TEXT_INCREASER: int = 1
 @export var check_2: Area3D
 @export var check_3: Area3D
 @export var check_4: Area3D
+
 # Current Dialogue
 var current_text: int = OTHER_CONST_ARRAY[0]
 # Current Character (Letter) of current Dialogue

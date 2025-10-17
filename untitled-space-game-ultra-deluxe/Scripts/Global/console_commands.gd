@@ -1,7 +1,7 @@
 extends Node
 
-
 const TIME_DIVISION: float = 4.0
+
 var time_of_day: float = 0.25
 var level_of_fog: float = 0
 var current_command: PackedStringArray
@@ -12,16 +12,6 @@ var player_jump: float = 1.0
 var weather: String = "Overcast"
 var weather_changed: bool = false
 var unstuck: bool = false
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 
 func _execute_command():

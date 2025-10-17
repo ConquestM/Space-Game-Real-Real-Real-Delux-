@@ -1,14 +1,18 @@
-extends CharacterBody3D
 class_name Enemy
+extends CharacterBody3D
+# This is the class for all enemies
+
+# Variables and constants
+const SPEED: int = 3
+const JUMP_HEIGHT: int = 6
+const HEALTH_REMOVER: int = 10
 
 @export var nav_agent: Node
 @export var attack_cd: Timer
 @export var leap_cd: Timer
 @export var hitbox_leap: Node
 @export var hitbox_attack: Node
-const SPEED: int = 3
-const JUMP_HEIGHT: int = 6
-const HEALTH_REMOVER: int = 10
+
 var can_leap: bool = true
 var can_attack: bool = true
 var is_jump: bool = false
@@ -19,14 +23,18 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Gravity if the enemy isn't on the floor
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	else:
 		is_jump = false
+	# Tracks the player and moves towards them if the enemy isn't jumping
 	if not is_jump:
+		# Gets player position
 		nav_agent.set_target_position(global.player.global_transform.origin)
 		var next_path_position = nav_agent.get_next_path_position()
 		var current_position = global_transform.origin
+		# Moves towards player
 		velocity.x = (next_path_position.x - current_position.x)
 		velocity.z = (next_path_position.z - current_position.z)
 		velocity = Vector3(velocity.x, velocity.y, velocity.z).normalized() * SPEED

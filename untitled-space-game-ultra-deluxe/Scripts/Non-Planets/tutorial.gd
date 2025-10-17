@@ -1,13 +1,13 @@
 extends Node3D
 
 signal tutorial_start
+
 const PLAYER_POS_INCREASER: int = 1
 const BRIDGE_POS: int = -1
 const REAL_BODY_VECTOR: Vector3 = Vector3(0, 0, 0)
 const GO_AWAY_INCREASER: float = 0.01
 const GO_AWAY_COLOR_FLOAT: float = 0.0
-var can_move_body: bool = false
-var body_real: Node3D
+
 @export var lerp_timer: Timer
 @export var wall_timer: Timer
 @export var wall_1: AnimatableBody3D
@@ -16,6 +16,10 @@ var body_real: Node3D
 @export var bridges: Array
 @export var nav_mesh: NavigationRegion3D
 @export var go_awayinator: ColorRect
+
+var can_move_body: bool = false
+var body_real: Node3D
+
 # Multiplayer Stuff
 var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 # Ending Stuff

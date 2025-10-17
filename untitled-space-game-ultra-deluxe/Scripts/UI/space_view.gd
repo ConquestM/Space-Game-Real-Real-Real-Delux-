@@ -8,6 +8,7 @@ const CURRENTLY_SELECTED_ARRAY: Array = [
 	4,
 	5
 ]
+
 @export var selectable_areas: Array = [
 	Node2D,
 	Node2D

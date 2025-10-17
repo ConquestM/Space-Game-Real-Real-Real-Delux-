@@ -6,7 +6,7 @@ const FOG_INCREASER: float = 0.02
 const SPAWN_Y_POS: float = 28.5
 const PLAYER_POS_INCREASER: int = 1
 const SAFTEY: int = 3
-@export var playtime: Label
+
 @export var daynight_cycle_timer: Timer
 @export var world_enviroment: WorldEnvironment
 @export var player_scene: PackedScene
@@ -16,6 +16,7 @@ const SAFTEY: int = 3
 @export var win_timer: Timer
 # Sun Stuff
 @export var the_sun: DirectionalLight3D
+
 var sun_lerp: float = 270.0
 var spawn_rate : int = 0
 var enemy_spawn: int = 0
@@ -32,6 +33,7 @@ var day_or_night: bool = true # True = Day, False = Night
 var can_increase_time: bool = true
 # Multiplayer Stuff
 var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+var SPAWN: int = 10
 
 
 func _ready() -> void:
@@ -135,11 +137,15 @@ func _spawnher():
 	her.float_height = SPAWN_Y_POS
 
 
+# Spawns in more enemies
 func _spawn_enemy():
+	# Randomises the enemy chosen
 	enemy_spawn = rng.randi_range(1, 3)
 	print(enemy_spawn)
+	# Adds the enemy to an array
 	enemy_list.append(enemy_spawn)
 	print(enemy_list)
+	# Each enemy in the array has a 10% chance of spawning when ran
 	for monster in enemy_list:
 		if monster == 1:
 			enemy = preload("res://Scenes/Enemies/RunnerEnemy.tscn").instantiate()
@@ -147,10 +153,11 @@ func _spawn_enemy():
 			enemy = preload("res://Scenes/Enemies/LeaperEnemy.tscn").instantiate()
 		elif monster == 3:
 			enemy = preload("res://Scenes/Enemies/HopperEnemy.tscn").instantiate()
-		spawn_rate = rng.randi_range(1, 10)
-		if spawn_rate == 10:
+		spawn_rate = rng.randi_range(1, SPAWN)
+		if spawn_rate == SPAWN:
 			var max_choice = (spawn_pos_array.size() - SAFTEY)
 			add_child(enemy)
+			# Sets the location of the spawned enemy
 			enemy.position.y = SPAWN_Y_POS
 			enemy.position.x = spawn_pos_array[randi_range(0, max_choice)].x
 			enemy.position.z = spawn_pos_array[randi_range(0, max_choice)].z

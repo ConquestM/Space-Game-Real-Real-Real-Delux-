@@ -1,7 +1,9 @@
 extends Node3D
 
-@export var player_scene: PackedScene
 const PLAYER_POS_INCREASER: int = 1
+
+@export var player_scene: PackedScene
+
 # Multiplayer Stuff
 var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 
@@ -37,8 +39,3 @@ func _add_player(id = 1):
 	player.name = str(id)
 	add_child(player, true)
 	player.position.y += PLAYER_POS_INCREASER
-
-
-func _on_timer_timeout():
-	global.time += 1
-	global.save_time()

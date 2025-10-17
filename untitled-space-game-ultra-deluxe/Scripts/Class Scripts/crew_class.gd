@@ -1,6 +1,5 @@
 # Class Name
 class_name Crewmate
-
 # Inherits
 extends CharacterBody3D
 

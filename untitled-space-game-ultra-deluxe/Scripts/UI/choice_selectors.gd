@@ -6,14 +6,15 @@ const POS_NO_ONE: int = 1
 const POS_NO_TWO: int = 2
 const POS_NO_THREE: int = 3
 const POS_NO_FOUR: int = 4
-@export var selector: Sprite2D
-@export var pos_no: int = POS_NO_ZERO
-@export var mouse_collider: StaticBody2D
-var dir: Vector2
-var mouse_active: bool = false
 const MOVE_SPEED: int = 1
 const START_POS: = Vector2(576, 326)
 
+@export var selector: Sprite2D
+@export var pos_no: int = POS_NO_ZERO
+@export var mouse_collider: StaticBody2D
+
+var dir: Vector2
+var mouse_active: bool = false
 
 
 # Called when the node enters the scene tree for the first time.

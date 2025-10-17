@@ -2,6 +2,7 @@ extends StaticBody3D
 
 @export var resource: Node
 @export var anim_player: AnimationPlayer
+
 var id = get_instance_id()
 var float_height: float = 2.6
 

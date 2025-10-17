@@ -25,17 +25,20 @@ var time: int = 0
 var save_path = "user://time.save"
 
 
+# Tells the healthbar that the player is taking damage
 func _hp_change(_value):
 	health = _value
 	hp_changing = true
 	DamageTaken.start()
 
 
+# Saves the player's playtime in a file
 func save_time():
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var(time)
 
 
+# Loads the player's playtime from a file
 func load_time():
 	if FileAccess.file_exists(save_path):
 		print("file found")

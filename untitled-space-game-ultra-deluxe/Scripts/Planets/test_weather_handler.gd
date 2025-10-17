@@ -1,17 +1,14 @@
 extends Node
 
+const MIN_FOG_DENS: int = 0
+
 @export var fog_increase_timer: Timer
 @export var planet: Node3D
 @export var world: WorldEnvironment
-const MIN_FOG_DENS: int = 0
+
 var fog_density: float = 0.0
 var can_change_fog: bool = false
 var fog_change_rate: float = 0.01
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

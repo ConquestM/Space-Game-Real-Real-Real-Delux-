@@ -13,8 +13,10 @@ const CURRENT_BUTTON_ARRAY: Array = [
 	6
 ]
 const NO_DIR: int = 0
+
 @export var selector: Line2D
 @export var buttons: Array
+
 var current_button: int
 
 

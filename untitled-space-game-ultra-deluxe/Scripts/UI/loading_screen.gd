@@ -1,10 +1,12 @@
 extends Control
 
 const MAX_PROGRESS: int = 100
+
 @export var get_progress_from: Node2D
 @export var progress_bar: ProgressBar
 @export var timer: Timer
 @export var loading_text: Button
+
 var selected_scene: String
 var started_loading: bool = false
 var loading_progress: Array = [0]

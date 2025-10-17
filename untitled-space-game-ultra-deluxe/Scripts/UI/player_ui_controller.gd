@@ -1,16 +1,13 @@
 extends Control
 
-@export var crosshair: Sprite2D
 const CROSSHAIR_LERP_SPEED: int = 4
 const CROSSHAIR_LERP_SIZE_MAX: Vector2 = Vector2(0.3, 0.3)
 const CROSSHAIR_LERP_SIZE_MIN: Vector2 = Vector2(0.15, 0.15)
+
+@export var crosshair: Sprite2D
+
 var functioned_yet: bool = false
 var shown: bool = false
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

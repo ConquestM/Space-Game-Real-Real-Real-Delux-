@@ -4,9 +4,11 @@ extends Sprite2D
 
 const LARGE_SCALE: float = 1.15
 const SMALL_SCALE: float = 0.85
-@export var parent: Control
-var scale_float: float = 1
 const MOVE_SPEED: int = 15
+
+@export var parent: Control
+
+var scale_float: float = 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

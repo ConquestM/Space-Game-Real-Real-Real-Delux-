@@ -1,17 +1,18 @@
 extends Node2D
 
-
 const SIZE_INCREASER: int = 50
 const BUTTON_INCREASER: int = 1
 const MIN_BUTTON: int = 0
 const MAX_BUTTON: int = 2
+
 @export var main_selector: Line2D
 @export var buttons: Control
 @export var loading_screen: Control
+
 var current_button: int = 0
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Sets currently selected button
 	var current_menu_button = buttons.get_child(current_button)
 	# Moves UI cursor based on an integer
@@ -34,11 +35,3 @@ func _process(delta: float) -> void:
 			get_tree().change_scene_to_file("res://Scenes/UI/nondiegetic_computer_menu.tscn")
 		elif current_button == 2:
 			get_tree().quit()
-
-
-func _load_scene(_save_file: int):
-	global.current_save = _save_file
-	loading_screen.selected_scene = SaveScript._load(_save_file)
-	
-	loading_screen._start()
-	loading_screen.show()

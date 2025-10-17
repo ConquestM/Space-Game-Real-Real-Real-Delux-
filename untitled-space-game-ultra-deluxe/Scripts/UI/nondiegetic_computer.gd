@@ -13,6 +13,7 @@ const CURRENT_MENU: Array = [
 # Saved Scenes
 const TEST_GAME_SCENE = "res://Scenes/Testing/hunter_test_scene.tscn"
 const TUTORIAL_SCENE = "res://Scenes/Gameplay Scenes/Non-Planetoid/tutorial.tscn"
+
 # In Scene Stuff
 @export var main_selector: Line2D
 @export var main_buttons: Control
@@ -21,6 +22,7 @@ const TUTORIAL_SCENE = "res://Scenes/Gameplay Scenes/Non-Planetoid/tutorial.tscn
 @export var multiplayer_inputer_host: Control
 @export var save_files: Control
 @export var loading_screen: Control
+
 # Menuing Stuff
 var current_menu: int = 0
 var menus: Array

@@ -9,6 +9,7 @@ const CROUCH_HEIGHT_FLOAT: float = 0.5
 const ZERO: int = 0
 const JUMP_HEIGHT: int = 2
 const UNSTUCK_HEIGHT: int = 50
+
 @export_group("Player Body Stuff")
 @export var looking: RayCast3D
 @export var multiplayer_helper: Label
@@ -25,6 +26,7 @@ const UNSTUCK_HEIGHT: int = 50
 @export var coyote_timer: Timer
 @export var pause_menu: PackedScene
 @export var game_over: PackedScene
+
 # Player Statistics
 var jump_velocity = 4.5
 var movement_speed = 4.5

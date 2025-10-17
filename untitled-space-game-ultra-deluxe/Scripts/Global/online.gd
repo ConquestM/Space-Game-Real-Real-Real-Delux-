@@ -1,6 +1,5 @@
 extends Node
 
-
 var hosting: bool = false
 var joining: bool = false
 var hostip: String = "wait"
@@ -8,7 +7,7 @@ var inputedip: String = "localhost"
 var port: int = 20277
 
 
-# Called when the node enters the scene tree for the first time.
+# Gets the IP of the player from different addresses based on their OS
 func _ready() -> void:
 	print(IP.get_local_addresses())
 	if OS.has_feature("windows"):
@@ -25,8 +24,3 @@ func _ready() -> void:
 			print("mac2")
 			hostip = IP.get_local_addresses()[13]
 	print(hostip)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass

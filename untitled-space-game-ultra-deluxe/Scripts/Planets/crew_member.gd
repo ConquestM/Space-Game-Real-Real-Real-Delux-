@@ -1,18 +1,14 @@
 extends Crewmate
 
-
 const CREW_UI_SCENE: PackedScene = preload("res://Scenes/UI/crew_ui.tscn")
+
 @export var navigation_agent: NavigationAgent3D
 @export var wait_timer: Timer
+
 var id = get_instance_id()
 var moving = false
 var moved_to = [null]
 var ui_open: bool = false
-
-
-# Checks if interacted with if so, adds circle crew UI
-func _process(_delta: float) -> void:
-	pass
 
 
 # Search for the closest thing to move to 
