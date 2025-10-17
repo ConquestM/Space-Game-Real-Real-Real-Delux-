@@ -15,8 +15,10 @@ var scale_float: float = 1
 func _process(delta: float) -> void:
 	var parent_crewmate = get_parent().get_parent().get_parent()
 	
+	# lerps the scale of the UI based on if it is selected or not
 	global_scale = lerp(global_scale, Vector2(scale_float, scale_float), delta * MOVE_SPEED)
 	
+	# if the player interacts with UI it runs functions
 	if parent.pos_no != 4 and self == parent.get_child(parent.pos_no):
 		scale_float = LARGE_SCALE
 		if Input.is_action_just_pressed("Player_1_Interact"):
@@ -28,6 +30,7 @@ func _process(delta: float) -> void:
 	else:
 		scale_float = SMALL_SCALE
 	
+	# Shows text based on the currently selected UI
 	if parent.pos_no != 4 and self == parent.get_child(parent.pos_no):
 		for i in get_parent().get_node("Text").get_children():
 			if i.name == name:
@@ -44,6 +47,7 @@ func _kill_self():
 	var parent_crewmate = get_parent().get_parent().get_parent()
 	var ui = get_parent().get_parent()
 	
+	# Queue frees the UI and lets the player and mouse move again
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 	global.can_player_move = true
 	parent_crewmate._wait_ui()

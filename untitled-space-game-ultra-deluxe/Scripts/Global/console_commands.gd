@@ -15,6 +15,7 @@ var unstuck: bool = false
 
 
 func _execute_command():
+	# Takes a string inputed by the player and splits it into multiple words and does smth based off that.
 	if current_command[1].contains("time") and current_command[2].contains("set"):
 		time_of_day = float(current_command[3]) / TIME_DIVISION
 	if current_command[1].contains("time") and current_command[2].contains("speed"):

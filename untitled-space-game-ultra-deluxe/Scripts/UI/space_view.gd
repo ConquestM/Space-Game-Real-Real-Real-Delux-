@@ -6,7 +6,7 @@ const CURRENTLY_SELECTED_ARRAY: Array = [
 	2,
 	3,
 	4,
-	5
+	5,
 ]
 
 @export var selectable_areas: Array = [
@@ -26,6 +26,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	# gets inputed directions and moves the selector to different UI based on the directions inputed.
 	if Input.is_action_just_pressed("Player_1_Left"):
 		currently_selected -= CURRENTLY_SELECTED_ARRAY[1]
 	if Input.is_action_just_pressed("Player_1_Right"):
@@ -34,9 +35,11 @@ func _process(_delta: float) -> void:
 		currently_selected, CURRENTLY_SELECTED_ARRAY[0], CURRENTLY_SELECTED_ARRAY[1]
 	)
 	selecter.global_position = get_node(selectable_areas[currently_selected]).global_position
+	# Quits the menu
 	if Input.is_action_just_pressed("Player_1_Settings"):
 		global.loading_screen_active = false
 		queue_free()
+	# Quits the menu or loads the main gameplay based on what button the player has selected
 	if (
 		Input.is_action_just_pressed("Player_1_Accept") 
 		or Input.is_action_just_pressed("Player_1_Interact")
@@ -59,6 +62,7 @@ func _process(_delta: float) -> void:
 
 
 func _load_scene(_save_file: int):
+	# Loads the loading screen and loading process
 	global.current_save = _save_file
 	loading_screen.selected_scene = SaveScript._load(_save_file)
 	loading_screen.selected_scene = str(planet1)

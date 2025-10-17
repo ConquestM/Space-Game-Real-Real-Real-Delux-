@@ -19,6 +19,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# Updates the progress bar based on the amount of the scene loaded and round it to 100% once it is nearly done.
 	if started_loading:
 		ResourceLoader.load_threaded_get_status(selected_scene, loading_progress)
 		progress_bar.value = lerp(progress_bar.value, loading_progress[0] * 100, delta * 2)
@@ -29,17 +30,20 @@ func _process(delta: float) -> void:
 
 
 func _start():
+	# Chooses the selected scene and enables loading
 	ResourceLoader.load_threaded_request(selected_scene)
 	started_loading = true
 
 
 func _on_wait_timeout() -> void:
+	# Starts loading the selected scene
 	var load_it_slowly = ResourceLoader.load_threaded_get(selected_scene)
 	global.loading_screen_active = false
 	get_tree().change_scene_to_packed(load_it_slowly)
 
 
 func _on_timer_timeout() -> void:
+	# Visual indicator for the players
 	if loading_text.text.contains("..."):
 		loading_text.text = "Loading"
 	else:

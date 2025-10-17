@@ -30,11 +30,13 @@ func _process(_delta: float) -> void:
 	current_button = clamp(current_button, CURRENT_BUTTON_CLAMP_MIN, CURRENT_BUTTON_CLAMP_MAX)
 	var button = get_node(buttons[current_button])
 	
+	# Changes selector position based off inputed integers from the player
 	selector.position.x = button.position.x + (
 		button.position.x + button.size.x + BUTTON_SIZE_INCREASER
 	)
 	selector.position.y = button.position.y
 	
+	# Gets inputed directions from the player and converts them into integers to be used
 	if (
 		Input.is_action_just_pressed("Player_1_Forwards") 
 		or Input.is_action_just_pressed("Player_1_Backwards")
@@ -54,6 +56,7 @@ func _process(_delta: float) -> void:
 			_on_button_3_pressed()
 
 
+# Closes Menu
 func _on_button_1_pressed() -> void:
 	if current_button != CURRENT_BUTTON_ARRAY[0]:
 		current_button = CURRENT_BUTTON_ARRAY[0]
@@ -61,6 +64,7 @@ func _on_button_1_pressed() -> void:
 		queue_free()
 
 
+# DOES NOTHING, THIS FUNCTION IS UNUSED
 func _on_button_2_pressed() -> void:
 	if current_button != CURRENT_BUTTON_ARRAY[1]:
 		current_button = CURRENT_BUTTON_ARRAY[1]
@@ -68,6 +72,7 @@ func _on_button_2_pressed() -> void:
 		print("name")
 
 
+# Returns to main menu
 func _on_button_3_pressed() -> void:
 	if current_button != CURRENT_BUTTON_ARRAY[2]:
 		current_button = CURRENT_BUTTON_ARRAY[2]

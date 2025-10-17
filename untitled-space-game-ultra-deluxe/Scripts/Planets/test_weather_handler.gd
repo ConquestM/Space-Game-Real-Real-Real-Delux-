@@ -19,6 +19,7 @@ func _process(_delta: float) -> void:
 
 func _change_weather(weather_type: String):
 	ConsoleCommands.weather_changed = false
+	# Turn on fog if weather is set to fog
 	if weather_type.contains("fog"):
 		if ConsoleCommands.current_command[3].contains("true"):
 			world.environment.volumetric_fog_enabled = true
@@ -32,6 +33,7 @@ func _change_weather(weather_type: String):
 
 
 func _on_fog_increase_timer_timeout() -> void:
+	# Gradually add fog to the scene if fog is enabled.
 	if can_change_fog:
 		world.environment.volumetric_fog_density = fog_density
 		fog_density += fog_change_rate
