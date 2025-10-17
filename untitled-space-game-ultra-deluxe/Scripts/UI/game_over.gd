@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 			current_button += BUTTON_INCREASER
 	if Input.is_action_just_pressed("Player_1_Interact") or Input.is_action_just_pressed("Player_1_Accept"):
 		if current_button == 0:
-			_load_scene(global.current_save)
+			get_tree().change_scene_to_file("res://Scenes/Planet/planet1.tscn")
 		elif current_button == 1:
 			get_tree().change_scene_to_file("res://Scenes/UI/nondiegetic_computer_menu.tscn")
 		elif current_button == 2:

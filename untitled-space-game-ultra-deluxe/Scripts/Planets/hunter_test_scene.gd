@@ -36,6 +36,10 @@ var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 
 
 func _ready() -> void:
+	global.health = 100
+	global.hunger = 100
+	global.thirst = 100
+	global.resources = 0
 	if not global.multiplayer_on:
 		var player = player_scene.instantiate()
 		add_child(player, true)
