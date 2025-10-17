@@ -26,6 +26,7 @@ signal tutorial_start
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	global.load_time()
 	if not global.multiplayer_on:
 		var player = player_scene.instantiate()
 		add_child(player, true)
@@ -34,6 +35,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	global.save_time()
 	print(increaser)
 	if can_move_body and body_real.has_meta("player"):
 		body_real.get_node("Collision").disabled = true

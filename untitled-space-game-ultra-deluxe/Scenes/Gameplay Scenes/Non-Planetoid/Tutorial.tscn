@@ -521,6 +521,8 @@ transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -
 size = Vector3(36.211548, 1, 17.173096)
 material = ExtResource("7_lip2d")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/ButtonArea" to="WorldEnvironment/NavigationRegion3D/Grounds/Area1/Button/Button" method="_on_button_area_body_entered"]
 [connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource1" to="." method="_on_sim_resource_tree_exited"]
 [connection signal="tree_exited" from="WorldEnvironment/NavigationRegion3D/Grounds/Area2/SimResource1" to="TutorialDialogueUi" method="_on_sim_resource_1_tree_exited"]

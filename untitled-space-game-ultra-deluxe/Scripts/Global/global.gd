@@ -1,6 +1,5 @@
 extends Node
 
-
 var multiplayer_on: bool = false
 var health: int = 100 : set = _hp_change
 var hunger: float = 100 
@@ -22,8 +21,26 @@ var loading_screen_active: bool = false
 var max_float_height: float = 1.75
 var min_float_height: float = 2.25
 var float_height: float = 2.6
+var time: int = 0
+var save_path = "user://time.save"
+
 
 func _hp_change(_value):
 	health = _value
 	hp_changing = true
 	DamageTaken.start()
+
+
+func save_time():
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_var(time)
+
+
+func load_time():
+	if FileAccess.file_exists(save_path):
+		print("file found")
+		var file = FileAccess.open(save_path, FileAccess.READ)
+		time = file.get_var()
+	else:
+		print("file not found")
+		time = 0
